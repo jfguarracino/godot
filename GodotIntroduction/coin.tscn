@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cfykowxjsrpgv"]
+
+[ext_resource type="Texture2D" uid="uid://cgn37rm017m54" path="res://Intro to Godot - Assets/Sprites/Coin.png" id="1_d5gmh"]
+
+[node name="Coin" type="Sprite2D" unique_id=1307532297]
+modulate = Color(0.7220302, 0.14988878, 0.29134867, 1)
+texture = ExtResource("1_d5gmh")

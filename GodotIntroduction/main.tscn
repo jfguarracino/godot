@@ -1,3 +1,22 @@
 [gd_scene format=3 uid="uid://bwyptc281s380"]
 
+[ext_resource type="Texture2D" uid="uid://6hgnqhih8k40" path="res://Intro to Godot - Assets/Sprites/Player.png" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cfykowxjsrpgv" path="res://coin.tscn" id="2_0xm2m"]
+
 [node name="Main" type="Node2D" unique_id=359532328]
+
+[node name="Player" type="Sprite2D" parent="." unique_id=1466484799]
+position = Vector2(200, 150)
+texture = ExtResource("1_ig7tw")
+
+[node name="Coin" parent="." unique_id=1307532297 instance=ExtResource("2_0xm2m")]
+position = Vector2(298, 153)
+
+[node name="Coin2" parent="." unique_id=867065477 instance=ExtResource("2_0xm2m")]
+position = Vector2(387, 152)
+
+[node name="Coin3" parent="." unique_id=97512840 instance=ExtResource("2_0xm2m")]
+position = Vector2(490, 155)
+
+[node name="Coin4" parent="." unique_id=1057499650 instance=ExtResource("2_0xm2m")]
+position = Vector2(601, 155)
