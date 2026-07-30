@@ -20,3 +20,38 @@ position = Vector2(490, 155)
 
 [node name="Coin4" parent="." unique_id=1057499650 instance=ExtResource("2_0xm2m")]
 position = Vector2(601, 155)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=532936690]
+position = Vector2(-479, 205)
+scale = Vector2(3, 3)
+texture = ExtResource("1_ig7tw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1659583216]
+position = Vector2(-248, 215)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ig7tw")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1349102728]
+position = Vector2(-728, 219)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ig7tw")
+
+[node name="Sprite2D4" type="Sprite2D" parent="." unique_id=2121453318]
+position = Vector2(-640, 48.00003)
+rotation = -0.7853982
+texture = ExtResource("1_ig7tw")
+
+[node name="Sprite2D5" type="Sprite2D" parent="." unique_id=2020896773]
+position = Vector2(-325, 49)
+rotation = 0.7853982
+texture = ExtResource("1_ig7tw")
+
+[node name="Sprite2D6" type="Sprite2D" parent="." unique_id=987253746]
+position = Vector2(-333, 387)
+rotation = 2.3561945
+texture = ExtResource("1_ig7tw")
+
+[node name="Sprite2D7" type="Sprite2D" parent="." unique_id=1384614208]
+position = Vector2(-611, 389)
+rotation = -2.3561945
+texture = ExtResource("1_ig7tw")

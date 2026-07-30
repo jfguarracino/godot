@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cq55cif1evcuk"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_6t7i6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ietan"]
+size = Vector3(1.7588501, 0.27545166, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ietan"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_uujeg"]
+
+[node name="Main" type="Node3D" unique_id=847872398]
+
+[node name="snowman" type="Node3D" parent="." unique_id=1795036981]
+transform = Transform3D(0.99070215, -0.016618356, 0.13502875, 0.023683228, 0.99842364, -0.050884485, -0.13397029, 0.053609308, 0.989534, 0, 0.03426361, 0.033403397)
+
+[node name="head" type="MeshInstance3D" parent="snowman" unique_id=165647332]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 3.1022916, 0)
+mesh = SubResource("SphereMesh_6t7i6")
+
+[node name="arms" type="MeshInstance3D" parent="snowman" unique_id=1823542130]
+transform = Transform3D(2.25, 0, 0, 0, 2.335182, 0, 0, 0, 0.5836858, -0.10174878, 1.7776284, -0.27373838)
+mesh = SubResource("BoxMesh_ietan")
+
+[node name="legs" type="MeshInstance3D" parent="snowman" unique_id=1699758374]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("SphereMesh_ietan")
+
+[node name="torso" type="MeshInstance3D" parent="snowman" unique_id=529638868]
+transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, -0.08034237, 1.7568905, -0.1488204)
+mesh = SubResource("SphereMesh_uujeg")

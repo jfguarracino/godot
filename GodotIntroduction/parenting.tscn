@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bb4m7m6jyjcm4"]
+
+[ext_resource type="Texture2D" uid="uid://6hgnqhih8k40" path="res://Intro to Godot - Assets/Sprites/Player.png" id="1_447uq"]
+[ext_resource type="Texture2D" uid="uid://cgn37rm017m54" path="res://Intro to Godot - Assets/Sprites/Coin.png" id="2_42gd5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ietan"]
+size = Vector2(66, 92)
+
+[node name="Main" type="Node2D" unique_id=801700333]
+
+[node name="Player" type="Sprite2D" parent="." unique_id=1610654325]
+position = Vector2(179, 197)
+texture = ExtResource("1_447uq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1630212365]
+shape = SubResource("RectangleShape2D_ietan")
+
+[node name="Coin" type="Sprite2D" parent="Player" unique_id=1031008490]
+position = Vector2(28, 30)
+texture = ExtResource("2_42gd5")
