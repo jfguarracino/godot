@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cq55cif1evcuk"]
 
+[ext_resource type="Material" uid="uid://i4ao0ogf0o08" path="res://Materials/my_first_material.tres" id="1_g22v7"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_6t7i6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ietan"]
@@ -12,20 +14,41 @@ size = Vector3(1.7588501, 0.27545166, 1)
 [node name="Main" type="Node3D" unique_id=847872398]
 
 [node name="snowman" type="Node3D" parent="." unique_id=1795036981]
-transform = Transform3D(0.99070215, -0.016618356, 0.13502875, 0.023683228, 0.99842364, -0.050884485, -0.13397029, 0.053609308, 0.989534, 0, 0.03426361, 0.033403397)
+transform = Transform3D(0.9999998, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999976, 0, 0, 0)
 
 [node name="head" type="MeshInstance3D" parent="snowman" unique_id=165647332]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 3.1022916, 0)
+transform = Transform3D(1.3757248, -0.069031395, -0.5938135, 0.0751727, 1.4981145, 0, 0.59306735, -0.029759057, 1.3774561, -0.07206348, 3.1022904, -0.14750102)
+material_override = ExtResource("1_g22v7")
 mesh = SubResource("SphereMesh_6t7i6")
 
 [node name="arms" type="MeshInstance3D" parent="snowman" unique_id=1823542130]
 transform = Transform3D(2.25, 0, 0, 0, 2.335182, 0, 0, 0, 0.5836858, -0.10174878, 1.7776284, -0.27373838)
+material_override = ExtResource("1_g22v7")
 mesh = SubResource("BoxMesh_ietan")
 
 [node name="legs" type="MeshInstance3D" parent="snowman" unique_id=1699758374]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+transform = Transform3D(2.999999, 0, 0, 0, 2.999999, 0, 0, 0, 3, -0.06487464, 0.08670388, -0.20185713)
+material_override = ExtResource("1_g22v7")
 mesh = SubResource("SphereMesh_ietan")
 
 [node name="torso" type="MeshInstance3D" parent="snowman" unique_id=529638868]
 transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, -0.08034237, 1.7568905, -0.1488204)
+material_override = ExtResource("1_g22v7")
 mesh = SubResource("SphereMesh_uujeg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=973030673]
+transform = Transform3D(0.44860554, 0.8932448, -0.029441737, -0.682748, 0.36377528, 0.63365823, 0.5767222, -0.26416138, 0.7730526, -9.712032, 6.8895817, 0)
+visible = false
+light_color = Color(0.99289745, 0.9401974, 0.80756205, 1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1239127790]
+transform = Transform3D(0.44860548, 0.89324486, -0.029441623, -0.892406, 0.44590548, -0.069136776, -0.048627887, 0.05728902, 0.99717265, -1.4246712, 1.2822471, -2.1259556)
+visible = false
+light_color = Color(0.14941648, 0.5037961, 0.21498322, 1)
+light_energy = 6.571
+omni_range = 1.5472591
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1492927716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5669384)
+light_color = Color(0.17917934, 0.48874742, 0.8761955, 1)
+shadow_enabled = true
