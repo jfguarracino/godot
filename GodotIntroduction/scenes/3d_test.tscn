@@ -36,19 +36,10 @@ transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, -0.08034237, 1.75689
 material_override = ExtResource("1_g22v7")
 mesh = SubResource("SphereMesh_uujeg")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=973030673]
-transform = Transform3D(0.44860554, 0.8932448, -0.029441737, -0.682748, 0.36377528, 0.63365823, 0.5767222, -0.26416138, 0.7730526, -9.712032, 6.8895817, 0)
-visible = false
-light_color = Color(0.99289745, 0.9401974, 0.80756205, 1)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2054222370]
+transform = Transform3D(1, 0, 0, 0, 0.9119793, 0.41023624, 0, -0.41023624, 0.9119793, -1.0518136, 3.1156645, 3.492786)
+fov = 90.0
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1239127790]
-transform = Transform3D(0.44860548, 0.89324486, -0.029441623, -0.892406, 0.44590548, -0.069136776, -0.048627887, 0.05728902, 0.99717265, -1.4246712, 1.2822471, -2.1259556)
-visible = false
-light_color = Color(0.14941648, 0.5037961, 0.21498322, 1)
-light_energy = 6.571
-omni_range = 1.5472591
-
-[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1492927716]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5669384)
-light_color = Color(0.17917934, 0.48874742, 0.8761955, 1)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1402438374]
+transform = Transform3D(1, 0, 0, 0, 0.9119793, 0.41023624, 0, -0.41023624, 0.9119793, -1.0518136, 5.2609086, 3.4927864)
 shadow_enabled = true
