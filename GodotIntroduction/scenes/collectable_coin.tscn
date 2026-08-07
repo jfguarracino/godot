@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cohh574tt40xd"]
+
+[ext_resource type="Script" uid="uid://oo1yksw1j3v5" path="res://scripts/coin.gd" id="1_kgcju"]
+[ext_resource type="Texture2D" uid="uid://cgn37rm017m54" path="res://Intro to Godot - Assets/Sprites/Coin.png" id="2_hsxjo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uujeg"]
+radius = 17.0
+
+[node name="coin" type="Area2D" unique_id=1731789272]
+script = ExtResource("1_kgcju")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=287146319]
+texture = ExtResource("2_hsxjo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=234019080]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_uujeg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

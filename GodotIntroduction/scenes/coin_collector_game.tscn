@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bfqmb2ggcxiqm" path="res://scripts/player.gd" id="1_8dkgr"]
 [ext_resource type="Texture2D" uid="uid://6hgnqhih8k40" path="res://Intro to Godot - Assets/Sprites/Player.png" id="2_o1252"]
+[ext_resource type="PackedScene" uid="uid://cohh574tt40xd" path="res://scenes/collectable_coin.tscn" id="3_o1252"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uujeg"]
 size = Vector2(66, 93)
@@ -9,7 +10,7 @@ size = Vector2(66, 93)
 [node name="main" type="Node2D" unique_id=1351339348]
 
 [node name="player" type="CharacterBody2D" parent="." unique_id=51539182]
-position = Vector2(125, 113)
+position = Vector2(150, 150)
 script = ExtResource("1_8dkgr")
 
 [node name="sprite" type="Sprite2D" parent="player" unique_id=291074883]
@@ -17,3 +18,23 @@ texture = ExtResource("2_o1252")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1075216351]
 shape = SubResource("RectangleShape2D_uujeg")
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=380944797]
+
+[node name="coin" parent="." unique_id=1731789272 instance=ExtResource("3_o1252")]
+position = Vector2(300, 300)
+
+[node name="coin2" parent="." unique_id=2077396029 instance=ExtResource("3_o1252")]
+position = Vector2(637, 450)
+
+[node name="coin3" parent="." unique_id=1054331143 instance=ExtResource("3_o1252")]
+position = Vector2(396, 517)
+
+[node name="coin4" parent="." unique_id=1681414526 instance=ExtResource("3_o1252")]
+position = Vector2(130, 409)
+
+[node name="coin5" parent="." unique_id=1562182016 instance=ExtResource("3_o1252")]
+position = Vector2(637, 246)
+
+[node name="coin6" parent="." unique_id=2042591785 instance=ExtResource("3_o1252")]
+position = Vector2(423, 177)
