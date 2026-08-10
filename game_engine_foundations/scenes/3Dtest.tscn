@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://r74lmbp3d6qv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uujeg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_uujeg"]
+
+[node name="main" type="Node3D" unique_id=1470208039]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1928497790]
+transform = Transform3D(3.1902888, 0, 0, 0, 0.022725902, 0, 0, 0, 2.8226094, 0, 0, 0)
+mesh = SubResource("BoxMesh_uujeg")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1693670290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6299159, 0)
+mesh = SubResource("SphereMesh_uujeg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=518607233]
+transform = Transform3D(0.9579946, -0.12163071, -0.25971568, 0.13314621, -0.6134569, 0.7784232, -0.25400463, -0.7803054, -0.5714937, 0, 3.5201066, -3.9376812)
+light_color = Color(0.9529412, 0.09019608, 0.007843138, 1)
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1568543962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0080349445, 0.44959408, 0.9173441)
+visible = false
+light_color = Color(0.23000002, 1, 0.7433334, 1)
+omni_range = 0.70983833
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1286100975]
+transform = Transform3D(0.044810474, 0.297611, -0.95363504, -0.0139690675, 0.95468724, 0.297283, 0.99889785, 0, 0.046937335, -2.8290343, 1.1505115, -0.29325342)
+light_color = Color(0.07999998, 0.44799984, 1, 1)
+light_energy = 5.594
+spot_angle = 11.389392
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=473407490]
+transform = Transform3D(-0.79188937, 0.056811698, 0.6080162, 0.038642287, 0.99832946, -0.042953357, -0.6094406, -0.010519162, -0.792762, 1.8227875, 0.43267262, -1.6401875)
+fov = 72.206215
