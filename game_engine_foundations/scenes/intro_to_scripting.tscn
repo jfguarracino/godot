@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://caudobmkvxp5h"]
 
 [ext_resource type="Script" uid="uid://gphlkhp2w5e7" path="res://scripts/intro_to_scripting.gd" id="1_57bi2"]
+[ext_resource type="Texture2D" uid="uid://btexyoi2bcagd" path="res://sprites/Player.png" id="2_d200o"]
+[ext_resource type="Script" uid="uid://cmfbajx8lvg4i" path="res://scripts/mover.gd" id="3_dod0o"]
 
 [node name="main" type="Node2D" unique_id=1266176677]
 script = ExtResource("1_57bi2")
+
+[node name="Player" type="Sprite2D" parent="." unique_id=1573684432]
+position = Vector2(251, 224)
+texture = ExtResource("2_d200o")
+script = ExtResource("3_dod0o")
