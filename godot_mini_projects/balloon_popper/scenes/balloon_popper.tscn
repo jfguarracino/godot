@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://biqt37lfb3mfc"]
+
+[ext_resource type="Script" uid="uid://c03heoqm2mvp7" path="res://balloon_popper/scripts/balloon.gd" id="1_5cg6j"]
+[ext_resource type="ArrayMesh" uid="uid://d3rn55u3ekcjc" path="res://balloon_popper/assets/Balloon.obj" id="1_8qnr4"]
+[ext_resource type="Material" uid="uid://b5kewwe7uf608" path="res://balloon_popper/assets/balloon_red.tres" id="1_kl75m"]
+
+[sub_resource type="Environment" id="Environment_6t7i6"]
+background_mode = 1
+background_color = Color(0.115815274, 0.7021808, 0.9434017, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uujeg"]
+radius = 0.49841407
+
+[node name="main" type="Node3D" unique_id=630540295]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1448635124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0367315)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2109728809]
+transform = Transform3D(1, 0, 0, 0, 0.8354498, 0.5495667, 0, -0.5495667, 0.8354498, 0, 2.4823751, 3.582646)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1585090082]
+environment = SubResource("Environment_6t7i6")
+
+[node name="balloon" type="Area3D" parent="." unique_id=2040936296]
+script = ExtResource("1_5cg6j")
+
+[node name="model" type="MeshInstance3D" parent="balloon" unique_id=1261780336]
+material_override = ExtResource("1_kl75m")
+mesh = ExtResource("1_8qnr4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="balloon" unique_id=1772318154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 0)
+shape = SubResource("SphereShape3D_uujeg")
+
+[connection signal="input_event" from="balloon" to="balloon" method="_on_input_event"]
