@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://1nkjk75sudgi"]
+
+[ext_resource type="Texture2D" uid="uid://dumk5s53x3k7x" path="res://physics/sprites/PhysicsCharacter.png" id="1_krne4"]
+[ext_resource type="Script" uid="uid://dk8odujnlsyxv" path="res://physics/scripts/player.gd" id="1_q1w30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uujeg"]
+size = Vector2(18, 18)
+
+[node name="main" type="Node2D" unique_id=584941506]
+
+[node name="player" type="RigidBody2D" parent="." unique_id=267023625]
+position = Vector2(90, 46)
+mass = 5.0
+gravity_scale = 0.0
+linear_damp = 1.0
+script = ExtResource("1_q1w30")
+
+[node name="sprite" type="Sprite2D" parent="player" unique_id=129667576]
+texture = ExtResource("1_krne4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" unique_id=1837610571]
+shape = SubResource("RectangleShape2D_uujeg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=528877280]
+zoom = Vector2(3, 3)

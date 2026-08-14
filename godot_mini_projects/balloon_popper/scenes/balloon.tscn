@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b00gqnoeklf2h"]
+
+[ext_resource type="Script" uid="uid://c03heoqm2mvp7" path="res://balloon_popper/scripts/balloon.gd" id="1_61y2f"]
+[ext_resource type="Material" uid="uid://b5kewwe7uf608" path="res://balloon_popper/assets/balloon_red.tres" id="2_00f3p"]
+[ext_resource type="ArrayMesh" uid="uid://d3rn55u3ekcjc" path="res://balloon_popper/assets/Balloon.obj" id="3_nr8i1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uujeg"]
+radius = 0.49841407
+
+[node name="balloon" type="Area3D" unique_id=677099853]
+script = ExtResource("1_61y2f")
+
+[node name="model" type="MeshInstance3D" parent="." unique_id=1209834996]
+material_override = ExtResource("2_00f3p")
+mesh = ExtResource("3_nr8i1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1147241515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 0)
+shape = SubResource("SphereShape3D_uujeg")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
