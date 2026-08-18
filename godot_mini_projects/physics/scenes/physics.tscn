@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dumk5s53x3k7x" path="res://physics/sprites/PhysicsCharacter.png" id="1_krne4"]
 [ext_resource type="Script" uid="uid://dk8odujnlsyxv" path="res://physics/scripts/player.gd" id="1_q1w30"]
+[ext_resource type="PackedScene" uid="uid://baj2xukt6dcgj" path="res://physics/scenes/crate.tscn" id="3_cuf0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uujeg"]
 size = Vector2(18, 18)
@@ -9,7 +10,7 @@ size = Vector2(18, 18)
 [node name="main" type="Node2D" unique_id=584941506]
 
 [node name="player" type="RigidBody2D" parent="." unique_id=267023625]
-position = Vector2(90, 46)
+position = Vector2(87.5, 50)
 mass = 5.0
 gravity_scale = 0.0
 linear_damp = 1.0
@@ -23,3 +24,116 @@ shape = SubResource("RectangleShape2D_uujeg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=528877280]
 zoom = Vector2(3, 3)
+
+[node name="crate" parent="." unique_id=1906445620 instance=ExtResource("3_cuf0l")]
+
+[node name="crate10" parent="." unique_id=860318852 instance=ExtResource("3_cuf0l")]
+position = Vector2(25, 0)
+
+[node name="crate27" parent="." unique_id=2078625845 instance=ExtResource("3_cuf0l")]
+position = Vector2(25, 25)
+
+[node name="crate28" parent="." unique_id=224906164 instance=ExtResource("3_cuf0l")]
+position = Vector2(25, 50)
+
+[node name="crate29" parent="." unique_id=1558188220 instance=ExtResource("3_cuf0l")]
+position = Vector2(25, 75)
+
+[node name="crate11" parent="." unique_id=1065590641 instance=ExtResource("3_cuf0l")]
+position = Vector2(50, 0)
+
+[node name="crate30" parent="." unique_id=512302488 instance=ExtResource("3_cuf0l")]
+position = Vector2(50, 25)
+
+[node name="crate31" parent="." unique_id=1155786256 instance=ExtResource("3_cuf0l")]
+position = Vector2(50, 50)
+
+[node name="crate32" parent="." unique_id=1248385639 instance=ExtResource("3_cuf0l")]
+position = Vector2(50, 75)
+
+[node name="crate12" parent="." unique_id=1634158880 instance=ExtResource("3_cuf0l")]
+position = Vector2(100, 0)
+
+[node name="crate14" parent="." unique_id=2094131603 instance=ExtResource("3_cuf0l")]
+position = Vector2(125, 0)
+
+[node name="crate15" parent="." unique_id=1259433598 instance=ExtResource("3_cuf0l")]
+position = Vector2(150, 0)
+
+[node name="crate16" parent="." unique_id=677778485 instance=ExtResource("3_cuf0l")]
+position = Vector2(175, 0)
+
+[node name="crate17" parent="." unique_id=1192280243 instance=ExtResource("3_cuf0l")]
+position = Vector2(175, 25)
+
+[node name="crate18" parent="." unique_id=710655916 instance=ExtResource("3_cuf0l")]
+position = Vector2(175, 50)
+
+[node name="crate19" parent="." unique_id=1253677179 instance=ExtResource("3_cuf0l")]
+position = Vector2(175, 75)
+
+[node name="crate20" parent="." unique_id=1317519243 instance=ExtResource("3_cuf0l")]
+position = Vector2(175, 100)
+
+[node name="crate21" parent="." unique_id=524610618 instance=ExtResource("3_cuf0l")]
+position = Vector2(150, 100)
+
+[node name="crate22" parent="." unique_id=749793072 instance=ExtResource("3_cuf0l")]
+position = Vector2(125, 100)
+
+[node name="crate23" parent="." unique_id=937517746 instance=ExtResource("3_cuf0l")]
+position = Vector2(100, 100)
+
+[node name="crate24" parent="." unique_id=557768641 instance=ExtResource("3_cuf0l")]
+position = Vector2(75, 100)
+
+[node name="crate25" parent="." unique_id=1545473622 instance=ExtResource("3_cuf0l")]
+position = Vector2(50, 100)
+
+[node name="crate26" parent="." unique_id=1548482981 instance=ExtResource("3_cuf0l")]
+position = Vector2(25, 100)
+
+[node name="crate13" parent="." unique_id=496059042 instance=ExtResource("3_cuf0l")]
+position = Vector2(75, 0)
+
+[node name="crate33" parent="." unique_id=197847115 instance=ExtResource("3_cuf0l")]
+position = Vector2(125, 50)
+
+[node name="crate35" parent="." unique_id=178823198 instance=ExtResource("3_cuf0l")]
+position = Vector2(125, 75)
+
+[node name="crate36" parent="." unique_id=2138015899 instance=ExtResource("3_cuf0l")]
+position = Vector2(150, 75)
+
+[node name="crate37" parent="." unique_id=1252386184 instance=ExtResource("3_cuf0l")]
+position = Vector2(150, 50)
+
+[node name="crate38" parent="." unique_id=534947091 instance=ExtResource("3_cuf0l")]
+position = Vector2(150, 25)
+
+[node name="crate34" parent="." unique_id=2058100680 instance=ExtResource("3_cuf0l")]
+position = Vector2(125, 25)
+
+[node name="crate6" parent="." unique_id=951103951 instance=ExtResource("3_cuf0l")]
+position = Vector2(0, -25)
+
+[node name="crate7" parent="." unique_id=957057933 instance=ExtResource("3_cuf0l")]
+position = Vector2(0, -50)
+
+[node name="crate8" parent="." unique_id=1084315940 instance=ExtResource("3_cuf0l")]
+position = Vector2(0, -75)
+
+[node name="crate9" parent="." unique_id=178784627 instance=ExtResource("3_cuf0l")]
+position = Vector2(0, -100)
+
+[node name="crate2" parent="." unique_id=990333442 instance=ExtResource("3_cuf0l")]
+position = Vector2(0, 25)
+
+[node name="crate3" parent="." unique_id=63687704 instance=ExtResource("3_cuf0l")]
+position = Vector2(0, 50)
+
+[node name="crate4" parent="." unique_id=1131473505 instance=ExtResource("3_cuf0l")]
+position = Vector2(0, 75)
+
+[node name="crate5" parent="." unique_id=528460583 instance=ExtResource("3_cuf0l")]
+position = Vector2(0, 100)

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ub57a1l73b08"]
+
+[ext_resource type="Script" uid="uid://cnhuokoqeo11g" path="res://loops/scripts/loops.gd" id="1_nhpp5"]
+
+[node name="main" type="Node2D" unique_id=437664631]
+script = ExtResource("1_nhpp5")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=163274203]
+zoom = Vector2(2, 2)
