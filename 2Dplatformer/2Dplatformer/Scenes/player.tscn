@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dv7ksimup6twa"]
+
+[ext_resource type="Script" uid="uid://pljd52wjycs4" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://bw2x83ly7ioro" path="res://Sprites/Characters/character_0000.png" id="1_v0iea"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uujeg"]
+height = 24.0
+
+[node name="Player" type="CharacterBody2D" unique_id=345371017]
+script = ExtResource("1_cvnsp")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=246494382]
+texture = ExtResource("1_v0iea")
+offset = Vector2(0, -12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1559477808]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_uujeg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=530999197]
+position = Vector2(0, -72)
+zoom = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1735680426]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=150225779]
