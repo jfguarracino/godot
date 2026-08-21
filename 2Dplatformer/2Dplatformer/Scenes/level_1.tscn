@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://qcnutynj5q20" path="res://Sprites/Backgrounds/backgroundForest.png" id="1_8ffim"]
 [ext_resource type="TileSet" uid="uid://cfw4ti1375egd" path="res://Sprites/Tiles/new_tile_set.tres" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://dv7ksimup6twa" path="res://Scenes/player.tscn" id="3_xfk5q"]
+[ext_resource type="PackedScene" uid="uid://dht5ymdirddjv" path="res://Scenes/enemy.tscn" id="4_7p6j4"]
 
-[node name="main" type="Node2D" unique_id=2092432897]
+[node name="Main" type="Node2D" unique_id=2092432897]
 
 [node name="BackgroundSprite" type="Sprite2D" parent="." unique_id=1792955682]
 position = Vector2(512, 137)
@@ -16,3 +17,7 @@ tile_set = ExtResource("1_vk57k")
 
 [node name="Player" parent="." unique_id=345371017 instance=ExtResource("3_xfk5q")]
 position = Vector2(96, 504)
+
+[node name="Enemy" parent="." unique_id=400298496 instance=ExtResource("4_7p6j4")]
+position = Vector2(126, 531)
+move_direction = Vector2(0, -50)
