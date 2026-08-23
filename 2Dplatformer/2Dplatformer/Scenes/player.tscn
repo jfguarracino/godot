@@ -80,7 +80,7 @@ _data = {
 &"move": SubResource("Animation_3smsa")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=345371017]
+[node name="Player" type="CharacterBody2D" unique_id=345371017 groups=["Player"]]
 script = ExtResource("1_cvnsp")
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=246494382]

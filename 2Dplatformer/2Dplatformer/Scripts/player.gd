@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var braking : float = 20
 @export var gravity : float = 500
 @export var jump_force : float = 200
+@export var health : int = 3
 
 var move_input : float
 
@@ -46,4 +47,15 @@ func _manage_animation():
 	else:
 		anim.play('idle')
 		
+func _take_damage(amount : int) -> void:
+	health -= amount
 	
+	if health <= 0:
+		call_deferred('game_over')
+		
+func game_over():
+	get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+	
+func increase_score(amount : int) -> void:
+	PlayerStats.score += amount
+	print(PlayerStats.score)

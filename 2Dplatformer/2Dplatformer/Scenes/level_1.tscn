@@ -4,6 +4,8 @@
 [ext_resource type="TileSet" uid="uid://cfw4ti1375egd" path="res://Sprites/Tiles/new_tile_set.tres" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://dv7ksimup6twa" path="res://Scenes/player.tscn" id="3_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://dht5ymdirddjv" path="res://Scenes/enemy.tscn" id="4_7p6j4"]
+[ext_resource type="PackedScene" uid="uid://bxa1kbuxsimlp" path="res://Scenes/coin.tscn" id="5_6444e"]
+[ext_resource type="PackedScene" uid="uid://kccs02g0oqxy" path="res://Scenes/end_flag.tscn" id="6_evi0p"]
 
 [node name="Main" type="Node2D" unique_id=2092432897]
 
@@ -18,6 +20,46 @@ tile_set = ExtResource("1_vk57k")
 [node name="Player" parent="." unique_id=345371017 instance=ExtResource("3_xfk5q")]
 position = Vector2(96, 504)
 
-[node name="Enemy" parent="." unique_id=400298496 instance=ExtResource("4_7p6j4")]
-position = Vector2(126, 531)
+[node name="Enemies" type="Node" parent="." unique_id=1234023092]
+
+[node name="Enemy" parent="Enemies" unique_id=400298496 groups=["Player"] instance=ExtResource("4_7p6j4")]
+position = Vector2(125, 512)
 move_direction = Vector2(0, -50)
+
+[node name="Enemy2" parent="Enemies" unique_id=648662594 groups=["Player"] instance=ExtResource("4_7p6j4")]
+position = Vector2(229, 513)
+move_direction = Vector2(0, -50)
+
+[node name="Enemy3" parent="Enemies" unique_id=1791110711 groups=["Player"] instance=ExtResource("4_7p6j4")]
+position = Vector2(677, 477)
+move_direction = Vector2(0, -50)
+
+[node name="Enemy4" parent="Enemies" unique_id=783792926 groups=["Player"] instance=ExtResource("4_7p6j4")]
+position = Vector2(902, 547)
+move_direction = Vector2(0, -50)
+
+[node name="Coins" type="Node" parent="." unique_id=2037541599]
+
+[node name="Coin" parent="Coins" unique_id=11310332 instance=ExtResource("5_6444e")]
+
+[node name="Coin2" parent="Coins" unique_id=1490902436 instance=ExtResource("5_6444e")]
+position = Vector2(114, 53)
+
+[node name="Coin3" parent="Coins" unique_id=1942093789 instance=ExtResource("5_6444e")]
+position = Vector2(236, -36)
+
+[node name="Coin4" parent="Coins" unique_id=352122983 instance=ExtResource("5_6444e")]
+position = Vector2(453, -35)
+
+[node name="Coin5" parent="Coins" unique_id=773915753 instance=ExtResource("5_6444e")]
+position = Vector2(571, -16)
+
+[node name="Coin6" parent="Coins" unique_id=662983126 instance=ExtResource("5_6444e")]
+position = Vector2(667, -15)
+
+[node name="Coin7" parent="Coins" unique_id=1812876686 instance=ExtResource("5_6444e")]
+position = Vector2(802, 37)
+
+[node name="EndFlag" parent="." unique_id=720622299 instance=ExtResource("6_evi0p")]
+
+[connection signal="body_entered" from="EndFlag" to="EndFlag" method="_on_body_entered"]
