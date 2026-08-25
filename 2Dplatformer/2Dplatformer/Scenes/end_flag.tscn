@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://kccs02g0oqxy"]
 
 [ext_resource type="Script" uid="uid://brak2q4iutgd5" path="res://Scripts/end_flag.gd" id="1_thwiu"]
+[ext_resource type="PackedScene" uid="uid://dv7ksimup6twa" path="res://Scenes/player.tscn" id="2_apwkr"]
 [ext_resource type="Texture2D" uid="uid://c7fnsira51om6" path="res://Sprites/Objects/tile_0112.png" id="2_xlkuy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uujeg"]
@@ -8,6 +9,7 @@ size = Vector2(18, 18)
 
 [node name="EndFlag" type="Area2D" unique_id=720622299]
 script = ExtResource("1_thwiu")
+scene_to_load = ExtResource("2_apwkr")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1124144859]
 position = Vector2(1000, 531)
@@ -16,3 +18,5 @@ texture = ExtResource("2_xlkuy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=289029051]
 position = Vector2(1000, 531)
 shape = SubResource("RectangleShape2D_uujeg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
