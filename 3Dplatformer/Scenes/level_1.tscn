@@ -5,6 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dar5vgnhr33ly" path="res://Models/Platformer/block-grass-overhang-large-slope-narrow.obj" id="3_evi0p"]
 [ext_resource type="ArrayMesh" uid="uid://b4dk87v0ytcnc" path="res://Models/Platformer/block-grass-overhang-narrow.obj" id="4_lsmp6"]
 [ext_resource type="ArrayMesh" uid="uid://dm6ulmvpg7hn6" path="res://Models/Platformer/block-grass-overhang-large-tall.obj" id="5_xrdnt"]
+[ext_resource type="PackedScene" uid="uid://bp8mc4wu7e5o5" path="res://Scenes/player.tscn" id="6_evi0p"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wrinw"]
 points = PackedVector3Array(-0.9604686, 0, -0.712585, 1.022246, 0.37556842, 0.79854685, 0.92504716, 0.34350848, -0.9568746, -0.9768895, 0.5, 0.7563571, 0.8055162, 0, 0.929408, -0.7561676, 0.5, -0.97688717, -0.86729723, -2.7755576e-17, 0.89854425, 0.8674363, -2.7755576e-17, -0.89854425, 0.7563099, 0.5, 0.97688717, 0.9768344, 0.5, -0.7563571, -0.7985215, 0.37556326, 1.0222589, -0.7123999, 0, -0.9604659, -1.0220782, 0.40755552, -0.7665578, 0.9604135, 2.7755576e-17, -0.712585, 0.733024, 0.43908638, -1.0200285, -1.022261, 0.3755634, 0.79851556, 0.9604135, 0, 0.712585, 0.7984792, 0.37556532, 1.0222753, -0.7123999, 0, 0.9604659, -0.79852134, 0.37556323, -1.0222588, -0.9604686, 2.7755576e-17, 0.712585, 0.71253896, 0, -0.9604659, 1.022246, 0.37556842, -0.79854685, 0.9768344, 0.5, 0.7563571, -0.7561676, 0.5, 0.97688717, -0.9768895, 0.5, -0.7563571, 0.7563099, 0.5, -0.97688717, -0.9568596, 0.34350672, -0.9250816, 0.71253896, 0, 0.9604659, 0.95684505, 0.34351078, 0.9251208, 0.7984794, 0.37556535, -1.0222754, -0.86729723, -2.7755576e-17, -0.89854425)
@@ -42,10 +43,6 @@ adjustment_contrast = 1.2
 adjustment_saturation = 1.2
 
 [node name="main" type="Node3D" unique_id=1324473258]
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2066612409]
-transform = Transform3D(1, 0, 0, 0, 0.9396927, 0.34202015, 0, -0.34202015, 0.9396927, 0, 3.2253425, 2)
-cull_mask = 1048511
 
 [node name="platforms" type="Node" parent="." unique_id=537446282]
 
@@ -110,3 +107,6 @@ environment = SubResource("Environment_uujeg")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="environment" unique_id=1895799161]
 transform = Transform3D(0.7071068, 0.70710677, 0, -0.5, 0.5, 0.7071068, 0.5, -0.5, 0.7071068, 0, 5.114035, 0)
 shadow_enabled = true
+
+[node name="player" parent="." unique_id=21462780 instance=ExtResource("6_evi0p")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6183278, 0)
