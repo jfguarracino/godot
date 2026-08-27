@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bo26jodf27npn" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="ArrayMesh" uid="uid://ctodhf3rsmuky" path="res://Models/Characters/character-female-a.obj" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://c2chrbtagn57" path="res://Scripts/player_visual.gd" id="3_6t5aa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uujeg"]
 radius = 0.16796875
@@ -12,11 +13,12 @@ script = ExtResource("1_cvnsp")
 
 [node name="model" type="MeshInstance3D" parent="." unique_id=859391377]
 mesh = ExtResource("1_v0iea")
+script = ExtResource("3_6t5aa")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1786996504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35601038, 0)
 shape = SubResource("CapsuleShape3D_uujeg")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1317758790]
-transform = Transform3D(-1, 2.9900352e-08, -8.215054e-08, 0, 0.9396927, 0.34202015, 8.742278e-08, 0.34202015, -0.9396927, 0, 0.84222215, -1.1366582)
+transform = Transform3D(-1, 2.9900352e-08, -8.215054e-08, 0, 0.9396927, 0.34202015, 8.742278e-08, 0.34202015, -0.9396927, 0, 1.2385783, -1.4064584)
 cull_mask = 1048511
