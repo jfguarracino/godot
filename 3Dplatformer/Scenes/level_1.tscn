@@ -6,6 +6,8 @@
 [ext_resource type="ArrayMesh" uid="uid://b4dk87v0ytcnc" path="res://Models/Platformer/block-grass-overhang-narrow.obj" id="4_lsmp6"]
 [ext_resource type="ArrayMesh" uid="uid://dm6ulmvpg7hn6" path="res://Models/Platformer/block-grass-overhang-large-tall.obj" id="5_xrdnt"]
 [ext_resource type="PackedScene" uid="uid://bp8mc4wu7e5o5" path="res://Scenes/player.tscn" id="6_evi0p"]
+[ext_resource type="Script" uid="uid://cxabkqb83uvg" path="res://Scripts/enemy.gd" id="7_xrdnt"]
+[ext_resource type="ArrayMesh" uid="uid://bn3gxheuqj0u7" path="res://Models/Platformer/saw.obj" id="8_wrinw"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wrinw"]
 points = PackedVector3Array(-0.9604686, 0, -0.712585, 1.022246, 0.37556842, 0.79854685, 0.92504716, 0.34350848, -0.9568746, -0.9768895, 0.5, 0.7563571, 0.8055162, 0, 0.929408, -0.7561676, 0.5, -0.97688717, -0.86729723, -2.7755576e-17, 0.89854425, 0.8674363, -2.7755576e-17, -0.89854425, 0.7563099, 0.5, 0.97688717, 0.9768344, 0.5, -0.7563571, -0.7985215, 0.37556326, 1.0222589, -0.7123999, 0, -0.9604659, -1.0220782, 0.40755552, -0.7665578, 0.9604135, 2.7755576e-17, -0.712585, 0.733024, 0.43908638, -1.0200285, -1.022261, 0.3755634, 0.79851556, 0.9604135, 0, 0.712585, 0.7984792, 0.37556532, 1.0222753, -0.7123999, 0, 0.9604659, -0.79852134, 0.37556323, -1.0222588, -0.9604686, 2.7755576e-17, 0.712585, 0.71253896, 0, -0.9604659, 1.022246, 0.37556842, -0.79854685, 0.9768344, 0.5, 0.7563571, -0.7561676, 0.5, 0.97688717, -0.9768895, 0.5, -0.7563571, 0.7563099, 0.5, -0.97688717, -0.9568596, 0.34350672, -0.9250816, 0.71253896, 0, 0.9604659, 0.95684505, 0.34351078, 0.9251208, 0.7984794, 0.37556535, -1.0222754, -0.86729723, -2.7755576e-17, -0.89854425)
@@ -41,6 +43,9 @@ fog_height_density = 0.4
 adjustment_enabled = true
 adjustment_contrast = 1.2
 adjustment_saturation = 1.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uujeg"]
+size = Vector3(0.6707382, 0.6072998, 0.18841553)
 
 [node name="main" type="Node3D" unique_id=1324473258]
 
@@ -108,5 +113,18 @@ environment = SubResource("Environment_uujeg")
 transform = Transform3D(0.7071068, 0.70710677, 0, -0.5, 0.5, 0.7071068, 0.5, -0.5, 0.7071068, 0, 5.114035, 0)
 shadow_enabled = true
 
-[node name="player" parent="." unique_id=21462780 instance=ExtResource("6_evi0p")]
+[node name="player" parent="." unique_id=21462780 groups=["player"] instance=ExtResource("6_evi0p")]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0.6183278, 0)
+
+[node name="enemy" type="Area3D" parent="." unique_id=922282627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029576898, 1.900099, -0.008876622)
+script = ExtResource("7_xrdnt")
+
+[node name="model" type="MeshInstance3D" parent="enemy" unique_id=1556991414]
+mesh = ExtResource("8_wrinw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="enemy" unique_id=2075944832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009181738, 0.012268066, 0.0140686035)
+shape = SubResource("BoxShape3D_uujeg")
+
+[connection signal="body_entered" from="enemy" to="enemy" method="_on_body_entered"]
