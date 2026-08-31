@@ -2,17 +2,26 @@ extends Area3D
 
 @export var move_speed : float = 2
 @export var move_direction : Vector3
-@export var spin_speed : float = 900
+@export var spin_speed : float = 360
 
 @onready var start_pos : Vector3 = global_position
 @onready var target_pos : Vector3 = start_pos + move_direction
 @onready var model = $model
 
 func _process(delta : float) -> void:
-	pass
+	model.rotation.z += deg_to_rad(spin_speed) * delta
+	
+	global_position = global_position.move_toward(target_pos, move_speed * delta)
+	
+	if global_position == start_pos:
+		target_pos = start_pos + move_direction
+	
+	elif global_position == start_pos + move_direction:
+		target_pos = start_pos 
+		
 	
 func _on_body_entered(body: Node3D) -> void:
 	if not body.is_in_group('player'):
 		return
 		
-	print('take damage')
+	body.take_damage(1)

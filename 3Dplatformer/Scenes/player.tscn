@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bp8mc4wu7e5o5"]
 
-[ext_resource type="Script" uid="uid://bo26jodf27npn" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://bo26jodf27npn" path="res://Scripts/player_controller.gd" id="1_cvnsp"]
 [ext_resource type="ArrayMesh" uid="uid://ctodhf3rsmuky" path="res://Models/Characters/character-female-a.obj" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://c2chrbtagn57" path="res://Scripts/player_visual.gd" id="3_6t5aa"]
 
@@ -20,5 +20,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35601038, 0)
 shape = SubResource("CapsuleShape3D_uujeg")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1317758790]
-transform = Transform3D(-1, 2.9900352e-08, -8.215054e-08, 0, 0.9396927, 0.34202015, 8.742278e-08, 0.34202015, -0.9396927, 0, 1.2385783, -1.4064584)
+transform = Transform3D(-1, 4.371139e-08, -7.5710346e-08, 0, 0.8660254, 0.5, 8.742278e-08, 0.5, -0.8660254, 0, 1.9522766, -1.6823069)
 cull_mask = 1048511
