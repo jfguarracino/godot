@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+signal OnTakeDamage(hp : int)
+signal OnUpdateScore(sore : int)
+
 @export var health : int = 3
 
 @export var move_speed : float = 3.0
@@ -7,6 +10,10 @@ extends CharacterBody3D
 @export var gravity : float = 20
 
 @onready var camera : Camera3D = $Camera3D
+@onready var audio : AudioStreamPlayer = $AudioStreamPlayer
+
+var coin_sfx : AudioStream = preload("res://Audio/coin.wav")
+var take_damage_sfx : AudioStream = preload("res://Audio/take_damage.wav")
 
 func _process(delta : float) -> void:
 	if global_position.y <= -5:
@@ -31,9 +38,21 @@ func _physics_process(delta: float) -> void:
 
 func take_damage(amount : int) -> void:
 	health -= amount
+	OnTakeDamage.emit(health)
+	_play_sound(take_damage_sfx)
 	
 	if health <= 0:
-		_game_over()
+		call_deferred('_game_over')
 	
 func _game_over() -> void:
-	get_tree().reload_current_scene()
+	PlayerStats.score = 0
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	
+func increase_score(amount : int) -> void:
+	PlayerStats.score += amount
+	OnUpdateScore.emit(PlayerStats.score)
+	_play_sound(coin_sfx)
+	
+func _play_sound(sound : AudioStream) -> void:
+	audio.stream = sound
+	audio.play()

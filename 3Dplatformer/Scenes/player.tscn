@@ -3,10 +3,18 @@
 [ext_resource type="Script" uid="uid://bo26jodf27npn" path="res://Scripts/player_controller.gd" id="1_cvnsp"]
 [ext_resource type="ArrayMesh" uid="uid://ctodhf3rsmuky" path="res://Models/Characters/character-female-a.obj" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://c2chrbtagn57" path="res://Scripts/player_visual.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://cqsej5ivxfeh5" path="res://Scripts/player_ui.gd" id="4_fkybt"]
+[ext_resource type="Texture2D" uid="uid://nvo7vyfd6guk" path="res://Sprites/hud_heartFull.png" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://bfw72uqfx2kej" path="res://Scripts/camera_shake.gd" id="4_x3wgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uujeg"]
 radius = 0.16796875
 height = 0.70329285
+
+[sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
+font_size = 38
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.78431374)
 
 [node name="player" type="CharacterBody3D" unique_id=21462780]
 script = ExtResource("1_cvnsp")
@@ -22,3 +30,35 @@ shape = SubResource("CapsuleShape3D_uujeg")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1317758790]
 transform = Transform3D(-1, 4.371139e-08, -7.5710346e-08, 0, 0.8660254, 0.5, 8.742278e-08, 0.5, -0.8660254, 0, 1.9522766, -1.6823069)
 cull_mask = 1048511
+script = ExtResource("4_x3wgy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=696041679]
+script = ExtResource("4_fkybt")
+
+[node name="heart_container" type="HBoxContainer" parent="CanvasLayer" unique_id=1213431350]
+offset_left = 35.0
+offset_top = 32.0
+offset_right = 281.0
+offset_bottom = 77.0
+
+[node name="heart" type="TextureRect" parent="CanvasLayer/heart_container" unique_id=1713329607]
+layout_mode = 2
+texture = ExtResource("4_vgqql")
+
+[node name="heart2" type="TextureRect" parent="CanvasLayer/heart_container" unique_id=1414311379]
+layout_mode = 2
+texture = ExtResource("4_vgqql")
+
+[node name="heart3" type="TextureRect" parent="CanvasLayer/heart_container" unique_id=1805213534]
+layout_mode = 2
+texture = ExtResource("4_vgqql")
+
+[node name="score_text" type="Label" parent="CanvasLayer" unique_id=1312514530]
+offset_left = 40.0
+offset_top = 98.0
+offset_right = 223.0
+offset_bottom = 153.0
+text = "Score:  0"
+label_settings = SubResource("LabelSettings_uujeg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=663959053]

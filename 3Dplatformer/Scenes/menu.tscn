@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ds3q5k7ga0t2x"]
+
+[ext_resource type="Texture2D" uid="uid://bevfolil767cf" path="res://Sprites/menu_background.png" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://6d3fa353rcou" path="res://Scripts/menu.gd" id="1_xhh6f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
+font_size = 48
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.78431374)
+
+[node name="menu" type="Control" unique_id=1759102381]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhh6f")
+
+[node name="background" type="TextureRect" parent="." unique_id=43287758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1rerr")
+
+[node name="title" type="Label" parent="." unique_id=620271572]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -174.0
+offset_right = 83.0
+offset_bottom = -151.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3D Platformer Game"
+label_settings = SubResource("LabelSettings_uujeg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="." unique_id=1742246879]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -31.5
+offset_right = 60.0
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="." unique_id=2007838611]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 68.0
+offset_right = 60.0
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
