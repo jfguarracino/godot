@@ -1,13 +1,18 @@
 [gd_scene format=4 uid="uid://cgnajk7k8rksn"]
 
+[ext_resource type="Script" uid="uid://cx3wyv00hxwic" path="res://Scripts/unit_controller.gd" id="1_8gbba"]
 [ext_resource type="TileSet" uid="uid://ei65wlipiacq" path="res://Sprites/Tiles/new_tile_set.tres" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://fv8o8fodp25p" path="res://Scenes/unit_player.tscn" id="2_bo1nx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uujeg"]
-vertices = PackedVector2Array(197.5, 57, 155, 57, 69.5, 40, 69.5, -23, 171, -24, 213.5, -24, 197.5, 120, 262, 134, -262, 134, 155, 120, -74.5, 120, -117, 120, 213.5, -87, 262, -102, -262, -102, 171, -87, -122.5, 8, -122.5, -55, 27, -23, 27, 40, -74.5, 57, -117, 57, -165, 8, -165, -55)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 9, 8), PackedInt32Array(11, 10, 8), PackedInt32Array(5, 12, 13, 7), PackedInt32Array(14, 13, 12, 15), PackedInt32Array(5, 7, 6, 0), PackedInt32Array(16, 17, 18, 19, 20, 21), PackedInt32Array(11, 8, 14, 22), PackedInt32Array(19, 2, 1, 9, 10, 20), PackedInt32Array(14, 15, 4, 3, 18, 17), PackedInt32Array(14, 17, 23), PackedInt32Array(22, 16, 21, 11), PackedInt32Array(14, 23, 22)])
+vertices = PackedVector2Array(197.5, 57, 155, 57, 69.5, 32, 69.5, -23, 171, -32, 213.5, -32, 197.5, 112, 262, 134, -262, 134, 155, 112, -74.5, 112, -117, 112, 213.5, -87, 262, -102, -262, -102, 171, -87, -122.5, 0, -122.5, -55, 27, -23, 27, 32, -74.5, 57, -117, 57, -165, 0, -165, -55)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 9, 8), PackedInt32Array(11, 10, 8), PackedInt32Array(5, 12, 13, 7), PackedInt32Array(14, 13, 12, 15), PackedInt32Array(5, 7, 6, 0), PackedInt32Array(16, 17, 18, 19, 20, 21), PackedInt32Array(21, 11, 8, 14, 22), PackedInt32Array(19, 2, 1, 9, 10, 20), PackedInt32Array(14, 15, 4, 3, 18, 17), PackedInt32Array(14, 17, 23), PackedInt32Array(22, 16, 21), PackedInt32Array(14, 23, 22)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-272, -112, 272, -112, 272, 144, -272, 144)])
 
 [node name="main" type="Node2D" unique_id=1576956997]
+
+[node name="unit_controller" type="Node2D" parent="." unique_id=1142533414]
+script = ExtResource("1_8gbba")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1804223777]
 zoom = Vector2(2, 2)
@@ -20,30 +25,39 @@ tile_set = ExtResource("1_jjgbg")
 navigation_polygon = SubResource("NavigationPolygon_uujeg")
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="NavigationRegion2D" unique_id=1456821343]
-vertices = PackedVector2Array(-165, -55, -122.5, -55, -122.5, 8, -165, 8)
+vertices = PackedVector2Array(-165, -55, -122.5, -55, -122.5, 0, -165, 0)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
 [node name="NavigationObstacle2D2" type="NavigationObstacle2D" parent="NavigationRegion2D" unique_id=2017374384]
 position = Vector2(192, 32)
-vertices = PackedVector2Array(-165, -55, -122.5, -55, -122.5, 8, -165, 8)
+vertices = PackedVector2Array(-165, -55, -122.5, -55, -122.5, 0, -165, 0)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
 [node name="NavigationObstacle2D3" type="NavigationObstacle2D" parent="NavigationRegion2D" unique_id=781972005]
 position = Vector2(48, 112)
-vertices = PackedVector2Array(-165, -55, -122.5, -55, -122.5, 8, -165, 8)
+vertices = PackedVector2Array(-165, -55, -122.5, -55, -122.5, 0, -165, 0)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
 [node name="NavigationObstacle2D4" type="NavigationObstacle2D" parent="NavigationRegion2D" unique_id=763784195]
 position = Vector2(336, -32)
-vertices = PackedVector2Array(-165, -55, -122.5, -55, -122.5, 8, -165, 8)
+vertices = PackedVector2Array(-165, -55, -122.5, -55, -122.5, 0, -165, 0)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
 
 [node name="NavigationObstacle2D5" type="NavigationObstacle2D" parent="NavigationRegion2D" unique_id=610106799]
 position = Vector2(320, 112)
-vertices = PackedVector2Array(-165, -55, -122.5, -55, -122.5, 8, -165, 8)
+vertices = PackedVector2Array(-165, -55, -122.5, -55, -122.5, 0, -165, 0)
 affect_navigation_mesh = true
 carve_navigation_mesh = true
+
+[node name="unit_player" parent="." unique_id=581802807 instance=ExtResource("2_bo1nx")]
+position = Vector2(-64, 24)
+
+[node name="unit_player2" parent="." unique_id=600226568 instance=ExtResource("2_bo1nx")]
+position = Vector2(-56, -32)
+
+[node name="unit_player3" parent="." unique_id=1919477974 instance=ExtResource("2_bo1nx")]
+position = Vector2(-32, 80)

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://fv8o8fodp25p"]
+
+[ext_resource type="PackedScene" uid="uid://bvwhmn0enaiay" path="res://Scenes/unit_base.tscn" id="1_mlbbb"]
+[ext_resource type="Script" uid="uid://etc6vcso71o7" path="res://Scripts/player_unit.gd" id="2_66hmh"]
+
+[sub_resource type="Gradient" id="Gradient_mlbbb"]
+offsets = PackedFloat32Array(0.5481928)
+colors = PackedColorArray(3.3210217e-06, 0.79792583, 0.061630495, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uujeg"]
+gradient = SubResource("Gradient_mlbbb")
+width = 24
+height = 16
+fill_to = Vector2(1, 1)
+
+[node name="unit_player" unique_id=581802807 instance=ExtResource("1_mlbbb")]
+move_speed = 30.0
+
+[node name="PlayerUnit" type="Node" parent="." index="0" unique_id=1936166143]
+script = ExtResource("2_66hmh")
+
+[node name="selection_visual" type="Sprite2D" parent="." index="1" unique_id=1339037231]
+visible = false
+position = Vector2(0, 6)
+scale = Vector2(0.85714287, 0.37499994)
+texture = SubResource("GradientTexture2D_uujeg")
