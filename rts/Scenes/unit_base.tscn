@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cenbtb8ul0wa7" path="res://Scripts/unit.gd" id="1_2vsbj"]
 [ext_resource type="Texture2D" uid="uid://bpgebaup8d8g8" path="res://Sprites/Characters/tile_0087.png" id="1_yagyl"]
+[ext_resource type="Script" uid="uid://bdc37rj5gpm6h" path="res://Scripts/unit_health_bar.gd" id="3_aj46g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uujeg"]
 radius = 8.0
@@ -17,7 +18,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 
-[node name="unit_base" type="Area2D" unique_id=581802807]
+[node name="unit_base" type="Area2D" unique_id=581802807 groups=["Unit"]]
 script = ExtResource("1_2vsbj")
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=2010674235]
@@ -40,3 +41,4 @@ theme_override_styles/background = SubResource("StyleBoxFlat_uujeg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6t7i6")
 value = 100.0
 show_percentage = false
+script = ExtResource("3_aj46g")

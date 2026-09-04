@@ -13,7 +13,7 @@ width = 24
 height = 16
 fill_to = Vector2(1, 1)
 
-[node name="unit_player" unique_id=581802807 instance=ExtResource("1_mlbbb")]
+[node name="unit_player" unique_id=581802807 groups=["UnitPlayer"] instance=ExtResource("1_mlbbb")]
 move_speed = 30.0
 
 [node name="PlayerUnit" type="Node" parent="." index="0" unique_id=1936166143]
