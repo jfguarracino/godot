@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://3n5lkqcnv706"]
+
+[ext_resource type="Texture2D" uid="uid://e33ukyq7vfg4" path="res://Sprites/Backgrounds/menu_background.png" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://c2qrop5oir2do" path="res://Scripts/menu.gd" id="1_xhh6f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
+font_size = 48
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.8509804)
+shadow_offset = Vector2(2, 2)
+
+[node name="Menu" type="Control" unique_id=533717170]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhh6f")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2000199305]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1rerr")
+
+[node name="Title" type="Label" parent="." unique_id=1218801932]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -384.0
+offset_top = -196.0
+offset_right = 384.0
+offset_bottom = -129.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Real Time Strategy Game"
+label_settings = SubResource("LabelSettings_uujeg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="." unique_id=705501513]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -28.0
+offset_right = 128.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play
+"
+
+[node name="QuitButton" type="Button" parent="." unique_id=214232152]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 60.0
+offset_right = 128.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit
+"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
