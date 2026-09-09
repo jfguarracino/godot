@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://bht5xgvh30moc" path="res://Scripts/game_manager.gd" id="1_1otgo"]
 [ext_resource type="Texture2D" uid="uid://xipdjeo721fr" path="res://Sprites/backgroundCastles.png" id="1_1ruyk"]
 [ext_resource type="PackedScene" uid="uid://ciu18vi3mhvl1" path="res://Scenes/character.tscn" id="3_1ruyk"]
+[ext_resource type="Script" uid="uid://c0so04dksnfaj" path="res://Scripts/combat_action.gd" id="4_ww2ai"]
+[ext_resource type="Resource" uid="uid://dom2f8l7s3j7j" path="res://CombatActions/slash.tres" id="5_lrv64"]
+[ext_resource type="Resource" uid="uid://xc0g6cipc38w" path="res://CombatActions/heavy_hit.tres" id="6_qeyqd"]
+[ext_resource type="Resource" uid="uid://bmyg26shbymvc" path="res://CombatActions/heal.tres" id="7_k7mbx"]
+[ext_resource type="Script" uid="uid://8dpy2bs6vlvs" path="res://Scripts/combat_action_button.gd" id="8_lrv64"]
+[ext_resource type="Script" uid="uid://pqx0qvrdclm7" path="res://Scripts/combat_actions_ui.gd" id="8_qeyqd"]
 
 [node name="main" type="Node2D" unique_id=1366993660]
 script = ExtResource("1_1otgo")
@@ -18,4 +24,62 @@ stretch_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=664328725]
 
-[node name="character" parent="." unique_id=305340256 instance=ExtResource("3_1ruyk")]
+[node name="player_character" parent="." unique_id=305340256 instance=ExtResource("3_1ruyk")]
+position = Vector2(-300, 0)
+combat_actions = Array[ExtResource("4_ww2ai")]([ExtResource("5_lrv64"), ExtResource("6_qeyqd"), ExtResource("7_k7mbx")])
+
+[node name="ai_character" parent="." unique_id=1806209691 instance=ExtResource("3_1ruyk")]
+position = Vector2(300, 0)
+combat_actions = Array[ExtResource("4_ww2ai")]([ExtResource("5_lrv64"), ExtResource("6_qeyqd"), ExtResource("7_k7mbx")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1656862770]
+
+[node name="CombatActionsUI" type="Panel" parent="CanvasLayer" unique_id=1706489474]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -186.0
+offset_right = 225.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("8_qeyqd")
+
+[node name="ButtonContainer" type="VBoxContainer" parent="CanvasLayer/CombatActionsUI" unique_id=301085528]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 210.0
+offset_bottom = 149.0
+
+[node name="CombatActionButton" type="Button" parent="CanvasLayer/CombatActionsUI/ButtonContainer" unique_id=424293284]
+layout_mode = 2
+text = "Slash"
+script = ExtResource("8_lrv64")
+
+[node name="CombatActionButton2" type="Button" parent="CanvasLayer/CombatActionsUI/ButtonContainer" unique_id=1719925322]
+layout_mode = 2
+text = "Slash"
+script = ExtResource("8_lrv64")
+
+[node name="CombatActionButton3" type="Button" parent="CanvasLayer/CombatActionsUI/ButtonContainer" unique_id=1751568878]
+layout_mode = 2
+text = "Slash"
+script = ExtResource("8_lrv64")
+
+[node name="PassTurnButton" type="Button" parent="CanvasLayer/CombatActionsUI/ButtonContainer" unique_id=1950604110]
+layout_mode = 2
+text = "Pass Turn"
+
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/CombatActionsUI" unique_id=1315038315]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 9.0
+offset_right = 440.0
+offset_bottom = 149.0
+bbcode_enabled = true
+text = "[b]Slash[/b]
+Deal 8 damage."

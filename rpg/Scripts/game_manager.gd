@@ -26,11 +26,14 @@ func next_turn() -> void:
 		# disable player ui
 		var wait_time = randf_range(0.5, 1.5)
 		await get_tree().create_timer(wait_time).timeout
-		# cast combat action
+		
+		var action_to_cast = ai_decide_combat_action()
+		ai_character.cast_combat_action(action_to_cast, player_character)
+		
 		await get_tree().create_timer(0.5).timeout
 		next_turn()
 		
-func player_cast_combat_action(action) -> void:
+func player_cast_combat_action(action : CombatAction) -> void:
 	if player_character != current_character:
 		return
 		
@@ -39,5 +42,5 @@ func player_cast_combat_action(action) -> void:
 	await get_tree().create_timer(0.5).timeout
 	next_turn()
 	
-func ai_decide_combat_action() -> void:
-	pass
+func ai_decide_combat_action() -> CombatAction:
+	return null
