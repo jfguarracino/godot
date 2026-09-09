@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://8470ia55qji0"]
+
+[ext_resource type="Script" uid="uid://bht5xgvh30moc" path="res://Scripts/game_manager.gd" id="1_1otgo"]
+[ext_resource type="Texture2D" uid="uid://xipdjeo721fr" path="res://Sprites/backgroundCastles.png" id="1_1ruyk"]
+[ext_resource type="PackedScene" uid="uid://ciu18vi3mhvl1" path="res://Scenes/character.tscn" id="3_1ruyk"]
+
+[node name="main" type="Node2D" unique_id=1366993660]
+script = ExtResource("1_1otgo")
+
+[node name="background" type="TextureRect" parent="." unique_id=785000454]
+z_index = -4096
+offset_left = -941.0
+offset_top = -457.0
+offset_right = 995.0
+offset_bottom = 567.0
+texture = ExtResource("1_1ruyk")
+stretch_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=664328725]
+
+[node name="character" parent="." unique_id=305340256 instance=ExtResource("3_1ruyk")]
