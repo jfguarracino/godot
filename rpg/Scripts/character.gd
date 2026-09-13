@@ -1,6 +1,6 @@
+class_name  Character
 extends Node2D
 
-class_name  Character
 
 signal OnTakeDamage(health : int)
 signal OnHeal(health : int)
@@ -16,19 +16,26 @@ var target_scale : float = 1
 var take_damage_sfx :AudioStream = preload("res://Audio/take_damage.wav")
 var heal_sfx : AudioStream = preload("res://Audio/heal.wav")
 
+@export var facing_left : bool = false
+@export var display_texture : Texture2D
+@onready var sprite : Sprite2D = $sprite
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	sprite.flip_h = facing_left
+	sprite.texture = display_texture
+	
 func begin_turn() -> void:
 	target_scale = 1.1
 	
 func end_turn() -> void:
 	target_scale = 0.9
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	scale.x = lerp(scale.x, target_scale, delta * 10)
+	scale.y = lerp(scale.y, target_scale, delta * 10)
 
 func take_damage(amount : int) -> void:
 	cur_health -= amount
@@ -52,4 +59,5 @@ func cast_combat_action(action : CombatAction, opponent : Character) -> void:
 		heal(action.heal_amount)
 	
 func _play_audio(stream : AudioStream) -> void:
-	pass
+	audio.stream = stream
+	audio.play()

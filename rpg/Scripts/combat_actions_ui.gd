@@ -3,7 +3,7 @@ extends Panel
 @onready var button_container = $ButtonContainer
 var ca_buttons : Array[CombatActionButton]
 
-@onready var description_text : RichTextLabel = $Description
+@onready var description_text : RichTextLabel = $ButtonContainer/Description
 @onready var game_manager = $"../.."
 
 # Called when the node enters the scene tree for the first time.
@@ -20,10 +20,10 @@ func _ready() -> void:
 func set_combat_actions(actions : Array[CombatAction]) -> void:
 	for i in len(ca_buttons):
 		if i >= len(actions):
-			ca_buttons[i].visble = false
+			ca_buttons[i].visible = false
 			continue
 			
-		ca_buttons[i].visble = true
+		ca_buttons[i].visible = true
 		ca_buttons[i].set_combat_action(actions[i])
 		
 func _button_pressed(button : CombatActionButton) -> void:

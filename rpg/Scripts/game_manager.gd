@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var player_character : Character
-@export var ai_character : Character
+@onready var player_character : Character = $player_character
+@onready var ai_character : Character = $ai_character
 var current_character : Character
 var game_over : bool = false
 @onready var player_ui = $CanvasLayer/CombatActionsUI

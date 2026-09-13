@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://brf0g6hm3irs"]
+
+[ext_resource type="Texture2D" uid="uid://xipdjeo721fr" path="res://Sprites/backgroundCastles.png" id="1_1rerr"]
+[ext_resource type="Script" uid="uid://ci1m3mb46qw4m" path="res://Scripts/menu.gd" id="1_xhh6f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0.7750634, 0.7750634, 0.7750634, 0.023529412)
+shadow_offset = Vector2(2, 2)
+
+[node name="Menu" type="Control" unique_id=1186983208]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhh6f")
+
+[node name="background" type="TextureRect" parent="." unique_id=946459163]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -285.0
+offset_right = 1358.0
+offset_bottom = 1070.0
+texture = ExtResource("1_1rerr")
+expand_mode = 4
+
+[node name="title" type="Label" parent="." unique_id=282721383]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -342.0
+offset_top = -192.0
+offset_right = 343.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Micro Turn-based RPG"
+label_settings = SubResource("LabelSettings_uujeg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="." unique_id=859893487]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.5
+offset_top = -31.0
+offset_right = 83.5
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="." unique_id=82963507]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = 57.0
+offset_right = 84.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
