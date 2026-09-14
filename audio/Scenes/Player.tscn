@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cf1pwgl0y0mi6"]
+
+[ext_resource type="Script" uid="uid://dveneqret74rb" path="res://Player Controller/PlayerController.gd" id="1_krxqb"]
+[ext_resource type="Script" uid="uid://dibq80x4w106u" path="res://Player Controller/Interaction/InteractionController.gd" id="2_xq075"]
+[ext_resource type="Script" uid="uid://cvkpc5akwu5gd" path="res://Scripts/footsteps.gd" id="3_nn08x"]
+[ext_resource type="AudioStream" uid="uid://04e06cg7sxgg" path="res://Audio/Sound Effects/Footsteps/footstep03.ogg" id="4_52ee3"]
+[ext_resource type="AudioStream" uid="uid://bfam3l24ekn07" path="res://Audio/Sound Effects/Footsteps/footstep04.ogg" id="5_bhhdu"]
+[ext_resource type="AudioStream" uid="uid://dinulh7w3kusf" path="res://Audio/Sound Effects/Footsteps/footstep06.ogg" id="6_megsn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lt5te"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="LabelSettings" id="LabelSettings_cbwra"]
+font_size = 24
+
+[node name="Player" type="CharacterBody3D" unique_id=2110953043 groups=["Player"]]
+script = ExtResource("1_krxqb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1695217827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_lt5te")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=939281133]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+current = true
+
+[node name="InteractionController" type="RayCast3D" parent="Camera3D" unique_id=70400872]
+target_position = Vector3(0, 0, -2)
+script = ExtResource("2_xq075")
+
+[node name="InteractionPrompt" type="Label" parent="Camera3D/InteractionController" unique_id=2134031880]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -247.0
+offset_top = -50.0
+offset_right = 247.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_cbwra")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="footsteps" type="AudioStreamPlayer3D" parent="." unique_id=1497696836]
+volume_db = -10.0
+script = ExtResource("3_nn08x")
+footstep_sounds = Array[AudioStream]([ExtResource("4_52ee3"), ExtResource("5_bhhdu"), ExtResource("6_megsn")])

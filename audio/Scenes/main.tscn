@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://oidejqslka8c"]
+
+[ext_resource type="PackedScene" uid="uid://cf1pwgl0y0mi6" path="res://Scenes/Player.tscn" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://crvwglv0qgjy0" path="res://Scenes/CityMap.tscn" id="2_bo1nx"]
+[ext_resource type="AudioStream" uid="uid://c23ls77ap1eb8" path="res://Audio/Sound Effects/StreetAmbience (2).ogg" id="3_8gbba"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_8gbba"]
+sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
+
+[sub_resource type="Environment" id="Environment_jjvhh"]
+background_mode = 2
+sky = SubResource("Sky_8gbba")
+ssao_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.423974, 0.80338806, 0.7519507, 1)
+fog_density = 0.05
+
+[node name="main" type="Node3D" unique_id=1573692249]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2048917721]
+environment = SubResource("Environment_jjvhh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1182579977]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=2000350739 instance=ExtResource("1_jjgbg")]
+
+[node name="CityMap" parent="." unique_id=965100384 instance=ExtResource("2_bo1nx")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="." unique_id=975929608]
+stream = ExtResource("3_8gbba")
+volume_db = -20.0
+autoplay = true
