@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cjpiqibfosabm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uujeg"]
+size = Vector3(10.417435, 6.2597656, 5.8656006)
+
+[node name="reverbZone" type="Area3D" unique_id=28544733]
+reverb_bus_enabled = true
+reverb_bus_name = &"SFX Reverb"
+reverb_bus_amount = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1436361781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0783005, 1.3300781, -0.5363159)
+shape = SubResource("BoxShape3D_uujeg")

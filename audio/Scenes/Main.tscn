@@ -1,0 +1,192 @@
+[gd_scene format=3 uid="uid://oidejqslka8c"]
+
+[ext_resource type="PackedScene" uid="uid://cf1pwgl0y0mi6" path="res://Scenes/Player.tscn" id="1_50glp"]
+[ext_resource type="PackedScene" uid="uid://crvwglv0qgjy0" path="res://Scenes/CityMap.tscn" id="2_vy5pj"]
+[ext_resource type="AudioStream" uid="uid://c23ls77ap1eb8" path="res://Audio/Sound Effects/StreetAmbience (2).ogg" id="3_bmxlf"]
+[ext_resource type="Script" uid="uid://4lcjj6iw4c35" path="res://Scripts/taxi.gd" id="4_4kpch"]
+[ext_resource type="PackedScene" uid="uid://dwt2me8jiwhde" path="res://City/Models/taxi.glb" id="5_grg3l"]
+[ext_resource type="AudioStream" uid="uid://cv0q3i16m4gyq" path="res://Audio/Sound Effects/Car_Engine_Loop.ogg" id="6_frkhe"]
+[ext_resource type="AudioStream" uid="uid://bxel47geti0y8" path="res://Audio/Music/Alexander Ehlers - Twists.mp3" id="7_1p5hy"]
+[ext_resource type="PackedScene" uid="uid://cjpiqibfosabm" path="res://Scenes/ReverbZone.tscn" id="8_h1m7h"]
+[ext_resource type="Script" uid="uid://bixdodmwbylg4" path="res://Scripts/audio_manager.gd" id="9_vy5pj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bo1nx"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_8gbba"]
+sky_material = SubResource("ProceduralSkyMaterial_bo1nx")
+
+[sub_resource type="Environment" id="Environment_jjvhh"]
+background_mode = 2
+sky = SubResource("Sky_8gbba")
+ssao_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.423974, 0.80338806, 0.7519507, 1)
+fog_density = 0.05
+
+[sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
+font_size = 32
+font_color = Color(1, 1, 0.07058824, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.7529412)
+shadow_offset = Vector2(2, 2)
+
+[node name="main" type="Node3D" unique_id=1573692249]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2048917721]
+environment = SubResource("Environment_jjvhh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1182579977]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=2000350739 instance=ExtResource("1_50glp")]
+
+[node name="CityMap" parent="." unique_id=965100384 instance=ExtResource("2_vy5pj")]
+
+[node name="ambience" type="AudioStreamPlayer3D" parent="." unique_id=975929608]
+stream = ExtResource("3_bmxlf")
+volume_db = -20.0
+autoplay = true
+bus = &"SFX"
+
+[node name="taxi" type="Area3D" parent="." unique_id=339528170]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -25)
+script = ExtResource("4_4kpch")
+
+[node name="model" parent="taxi" unique_id=1113688068 instance=ExtResource("5_grg3l")]
+
+[node name="carAudio" type="AudioStreamPlayer3D" parent="taxi" unique_id=19818922]
+stream = ExtResource("6_frkhe")
+volume_db = -15.0
+autoplay = true
+max_distance = 50.0
+bus = &"SFX"
+doppler_tracking = 1
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=2098078825]
+stream = ExtResource("7_1p5hy")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
+
+[node name="reverbZone" parent="." unique_id=28544733 instance=ExtResource("8_h1m7h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.20365, 1.977354, -14.772246)
+
+[node name="AudioManager" type="Node" parent="." unique_id=747443625]
+script = ExtResource("9_vy5pj")
+
+[node name="Audiowindow" type="Panel" parent="AudioManager" unique_id=763253264]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="AudioManager/Audiowindow" unique_id=1953874355]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -257.0
+offset_right = 149.0
+offset_bottom = -167.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_uujeg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolumeLabel" type="Label" parent="AudioManager/Audiowindow" unique_id=1356183272]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -89.0
+offset_right = 149.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_uujeg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXVolumeLabel" type="Label" parent="AudioManager/Audiowindow" unique_id=2128220927]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = 103.0
+offset_right = 149.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SFX Volume"
+label_settings = SubResource("LabelSettings_uujeg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MasterVolumeSlider" type="HSlider" parent="AudioManager/Audiowindow" unique_id=1547873352]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -192.0
+offset_right = 152.0
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+
+[node name="MusicVolumeSlider" type="HSlider" parent="AudioManager/Audiowindow" unique_id=1290235052]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = -26.0
+offset_right = 152.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+
+[node name="SFXVolumeSlider" type="HSlider" parent="AudioManager/Audiowindow" unique_id=1399227009]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.0
+offset_top = 165.0
+offset_right = 152.0
+offset_bottom = 255.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.01
+
+[connection signal="value_changed" from="AudioManager/Audiowindow/MasterVolumeSlider" to="AudioManager" method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="AudioManager/Audiowindow/MusicVolumeSlider" to="AudioManager" method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="AudioManager/Audiowindow/SFXVolumeSlider" to="AudioManager" method="_on_sfx_volume_slider_value_changed"]
