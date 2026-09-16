@@ -1,0 +1,24 @@
+# Third Party Asset Licenses
+
+Some of the assets provided in this course are subject to third-party licenses:
+
+===================================
+
+Crop Sprites
+Created by josehzz
+Source: https://opengameart.org/content/farming-crops-16x16
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Player Character
+Created by Fleurman
+Source: https://opengameart.org/content/tiny-characters-set
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Button UI
+Created by Kenney
+Source: https://www.kenney.nl/assets/ui-pack-pixel-adventure
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
