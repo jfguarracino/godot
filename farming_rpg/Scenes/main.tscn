@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dffd3u1unsbgk" path="res://Scripts/player.gd" id="1_bo1nx"]
 [ext_resource type="Texture2D" uid="uid://cri2b733hqxt" path="res://Sprites/Player/Player.png" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://c0skkr4skr2lg" path="res://Scripts/farm_manager.gd" id="1_jjvhh"]
+[ext_resource type="Script" uid="uid://ckckyb420mcob" path="res://Scripts/player_tools.gd" id="5_kry3j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jjvhh"]
 texture = ExtResource("1_8gbba")
@@ -204,9 +205,13 @@ zoom = Vector2(4, 4)
 script = ExtResource("1_bo1nx")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=391491779]
+position = Vector2(0, -6.5)
 sprite_frames = SubResource("SpriteFrames_ietan")
 animation = &"walk_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=56204678]
-position = Vector2(0, 1)
+position = Vector2(0, -5.5)
 shape = SubResource("CapsuleShape2D_uujeg")
+
+[node name="Tools" type="Node2D" parent="Player" unique_id=1834483623]
+script = ExtResource("5_kry3j")
