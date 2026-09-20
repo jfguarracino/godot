@@ -25,15 +25,24 @@ var tile_atlas_coords : Dictionary[TileType, Vector2i] = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# remember connect to signals
+	GameManager.NewDay.connect(_on_new_day)
+	GameManager.HarvestCrop.connect(_on_harvest_crop)
+	
 	for cell in tile_map.get_used_cells():
 		tile_info[cell] = TileInfo.new()
 
 func _on_new_day(day : int):
-	pass
+	for tile_pos in tile_map.get_used_cells():
+		if tile_info[tile_pos].watered:
+			_set_tile_state(tile_pos, TileType.TILLED)
+			
+		elif tile_info[tile_pos].tilled:
+			if tile_info[tile_pos].crop == null:
+				_set_tile_state(tile_pos, TileType.GRASS)
 	
 func _on_harvest_crop(crop : Crop):
-	pass
+	tile_info[crop.tile_map_coords].crop = null
+	_set_tile_state(crop.tile_map_coords, TileType.TILLED)
 	
 func try_till_tile(player_pos : Vector2):
 	var coords : Vector2i = tile_map.local_to_map(player_pos)
@@ -60,13 +69,45 @@ func try_water_tile(player_pos : Vector2):
 	
 	
 func try_seed_tile(player_pos : Vector2, crop_data : CropData):
-	pass
+	var coords : Vector2i = tile_map.local_to_map(player_pos)
+	
+	if not tile_info[coords].tilled:
+		return
+		
+	if tile_info[coords].crop:
+		return
+		
+	if GameManager.owned_seeds[crop_data] <= 0:
+		return
+		
+	
+	var crop : Crop = crop_scene.instantiate()
+	add_child(crop)
+	crop.global_position = tile_map.map_to_local(coords)
+	crop.set_crop(crop_data, is_tile_watered(coords), coords)
+	
+	tile_info[coords].crop = crop
+	
+	GameManager.consume_seed(crop_data)
 	
 func try_harvest_tile(player_pos : Vector2):
-	pass
+	var coords : Vector2i = tile_map.local_to_map(player_pos)
+	
+	if not tile_info[coords].crop:
+		return
+		
+	if not tile_info[coords].crop.harvestable:
+		return
+		
+	GameManager.harvest_crop(tile_info[coords].crop)
+	tile_info[coords].crop = null
+	
+	
 	
 func is_tile_watered(pos : Vector2) -> bool:
-	return false
+	var coords : Vector2i = tile_map.local_to_map(pos)
+	
+	return tile_info[coords].watered
 	
 func _set_tile_state(coords : Vector2i, tile_type : TileType):
 	tile_map.set_cell(coords, 0, tile_atlas_coords[tile_type])
