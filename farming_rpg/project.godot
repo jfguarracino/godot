@@ -61,3 +61,4 @@ interact={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.095076345, 0.34727153, 0.31638455, 1)

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://ddst7tneivvvf"]
+
+[ext_resource type="Script" uid="uid://dxgysasyxavgh" path="res://Scripts/menu.gd" id="1_1rerr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sw52a"]
+font_size = 48
+font_color = Color(1, 0.5137255, 0.23921569, 1)
+outline_size = 5
+outline_color = Color(0.6392157, 0.41568628, 0.043137256, 1)
+shadow_size = 5
+shadow_offset = Vector2(2, 2)
+
+[node name="Menu" type="Control" unique_id=1444012862]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1rerr")
+
+[node name="Title" type="Label" parent="." unique_id=1421725424]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 108.0
+grow_horizontal = 2
+text = "Farming RPG"
+label_settings = SubResource("LabelSettings_sw52a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="." unique_id=1924500663]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -104.0
+offset_right = 133.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="." unique_id=1354852284]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = 35.0
+offset_right = 133.0
+offset_bottom = 122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

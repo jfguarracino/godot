@@ -6,7 +6,7 @@ signal HarvestCrop(crop : Crop)
 signal ChangeSeedQuantity(crop_data : CropData, quantity : int)
 signal ChangeMoney(money : int)
 
-var day : int = 1
+var day : int = 0
 var money : int = 0
 var all_crop_data : Array[CropData] = [
 	preload("res://Crops/corn.tres"),
@@ -15,11 +15,20 @@ var all_crop_data : Array[CropData] = [
 var owned_seeds : Dictionary[CropData, int]
 
 func _ready():
+	get_tree().scene_changed.connect(_on_change_scene)
+	
+	if get_tree().current_scene.name == "main":
+		_on_change_scene()
+	
+func _on_change_scene():
+	if get_tree().current_scene.name != "main":
+		return
+	
 	for cd in all_crop_data:
 		give_seed.call_deferred(cd, 2)
 		
 	give_money.call_deferred(10)
-	
+	set_next_day.call_deferred()
 	
 func set_next_day():
 	day += 1
