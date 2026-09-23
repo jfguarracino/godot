@@ -1,0 +1,31 @@
+# Third Party Asset Licenses
+
+Some of the assets provided in this course are subject to third-party licenses:
+
+===================================
+
+Sprites
+Created by MedicineStorm and maintained Chris Hamons
+Source: https://opengameart.org/content/dungeon-crawl-32x32-tiles
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Drink Potion SFX
+Created by artisticdude
+Source: https://opengameart.org/content/rpg-sound-pack
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Player Damaged SFX
+Created by Rick Hoppmann (TinyWorlds)
+Source: https://opengameart.org/content/5-hit-sounds-dying
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Background Music
+Created by nene
+Source: https://opengameart.org/content/boss-battle-2-symphonic-metal
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)

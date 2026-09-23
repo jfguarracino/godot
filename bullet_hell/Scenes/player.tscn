@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dsn4dlqlxyfux"]
+
+[ext_resource type="Script" uid="uid://cpjdo5j1ary8g" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://b2iqnr1neyr7g" path="res://Sprites/Spritesheet.png" id="1_v0iea"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sw52a"]
+
+[node name="Player" type="CharacterBody2D" unique_id=429842028 groups=["Player"]]
+script = ExtResource("1_cvnsp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1221823524]
+texture = ExtResource("1_v0iea")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(513, 32, 30, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1634824483]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_sw52a")
+
+[node name="Muzzle" type="Node2D" parent="." unique_id=1384596518]
+position = Vector2(-8, -17)
