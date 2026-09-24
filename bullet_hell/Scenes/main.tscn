@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b2iqnr1neyr7g" path="res://Sprites/Spritesheet.png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://dsn4dlqlxyfux" path="res://Scenes/player.tscn" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://cnsxnyeneaai7" path="res://Scripts/camera_controller.gd" id="3_8gbba"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_jjgbg")
@@ -2918,3 +2919,9 @@ position = Vector2(-3, 790)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=311244173]
 position = Vector2(0, 767)
 zoom = Vector2(2, 2)
+limit_left = -1948
+limit_top = -1625
+limit_right = 3217
+limit_bottom = 1705
+editor_draw_limits = true
+script = ExtResource("3_8gbba")
