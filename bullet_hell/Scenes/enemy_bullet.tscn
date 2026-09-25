@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cl708grip0jsw"]
+
+[ext_resource type="PackedScene" uid="uid://d1yd2wfv4il2n" path="res://Scenes/bullet.tscn" id="1_tcvu8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_54jiv"]
+radius = 4.2426405
+
+[node name="Bullet" unique_id=949758134 instance=ExtResource("1_tcvu8")]
+rotation = -1.5707964
+
+[node name="Sprite" parent="." index="0" unique_id=2129065631]
+scale = Vector2(0.5, 0.5)
+flip_h = true
+region_rect = Rect2(291, 1378, 27, 27)
+
+[node name="Collider" parent="." index="1" unique_id=904033150]
+position = Vector2(2.1213205, 2.1213202)
+rotation = -3.1135314
+shape = SubResource("CircleShape2D_54jiv")

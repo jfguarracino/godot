@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b2iqnr1neyr7g" path="res://Sprites/Spritesheet.png" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://dsn4dlqlxyfux" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://cnsxnyeneaai7" path="res://Scripts/camera_controller.gd" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://vaufyw3xpot6" path="res://Scenes/enemy.tscn" id="4_jjvhh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_jjgbg")
@@ -2907,6 +2908,9 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_bo1nx")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw52a"]
+size = Vector2(26, 22)
+
 [node name="Main" type="Node2D" unique_id=1083127746]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1433480823]
@@ -2914,7 +2918,7 @@ tile_map_data = PackedByteArray("AADm/+7/AAAiAA4AAADm/+//AAAgAA4AAADm//D/AAAhAA4
 tile_set = SubResource("TileSet_sw52a")
 
 [node name="Player" parent="." unique_id=429842028 instance=ExtResource("2_bo1nx")]
-position = Vector2(-3, 790)
+position = Vector2(0, 800)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=311244173]
 position = Vector2(0, 767)
@@ -2925,3 +2929,18 @@ limit_right = 3217
 limit_bottom = 1705
 editor_draw_limits = true
 script = ExtResource("3_8gbba")
+
+[node name="Enemy" parent="." unique_id=722553653 instance=ExtResource("4_jjvhh")]
+position = Vector2(-200, 800)
+
+[node name="TempObs" type="StaticBody2D" parent="." unique_id=26327417]
+position = Vector2(-120, 800)
+
+[node name="Sprite2D" type="Sprite2D" parent="TempObs" unique_id=941406324]
+texture = ExtResource("1_jjgbg")
+region_enabled = true
+region_rect = Rect2(1028, 744, 27, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TempObs" unique_id=573241957]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_sw52a")
