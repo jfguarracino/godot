@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dsn4dlqlxyfux" path="res://Scenes/player.tscn" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://cnsxnyeneaai7" path="res://Scripts/camera_controller.gd" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://vaufyw3xpot6" path="res://Scenes/enemy.tscn" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://bx7yvhlvqieel" path="res://Scripts/enemy_spawner.gd" id="5_21xkr"]
+[ext_resource type="Script" uid="uid://b5ewfar3mh3dr" path="res://Scripts/node_pool.gd" id="6_6bp64"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo1nx"]
 texture = ExtResource("1_jjgbg")
@@ -2944,3 +2946,29 @@ region_rect = Rect2(1028, 744, 27, 21)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TempObs" unique_id=573241957]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_sw52a")
+
+[node name="EnemySpawner" type="Node" parent="." unique_id=753611021 node_paths=PackedStringArray("enemy_pool", "spawn_points")]
+script = ExtResource("5_21xkr")
+enemy_pool = NodePath("EnemyPool")
+spawn_points = [NodePath("EnemySpawnPoint"), NodePath("EnemySpawnPoint2"), NodePath("EnemySpawnPoint3"), NodePath("EnemySpawnPoint4")]
+
+[node name="SpawnTimer" type="Timer" parent="EnemySpawner" unique_id=1041228733]
+one_shot = true
+
+[node name="EnemyPool" type="Node" parent="EnemySpawner" unique_id=1933234732]
+script = ExtResource("6_6bp64")
+node_scene = ExtResource("4_jjvhh")
+
+[node name="EnemySpawnPoint" type="Node2D" parent="EnemySpawner" unique_id=1132921208]
+position = Vector2(-639, -671)
+
+[node name="EnemySpawnPoint2" type="Node2D" parent="EnemySpawner" unique_id=580771768]
+position = Vector2(796, -671)
+
+[node name="EnemySpawnPoint3" type="Node2D" parent="EnemySpawner" unique_id=1277754616]
+position = Vector2(800, 1120)
+
+[node name="EnemySpawnPoint4" type="Node2D" parent="EnemySpawner" unique_id=679751836]
+position = Vector2(-639, 1120)
+
+[connection signal="timeout" from="EnemySpawner/SpawnTimer" to="EnemySpawner" method="_on_spawn_timer_timeout"]

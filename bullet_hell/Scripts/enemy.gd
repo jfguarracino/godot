@@ -6,16 +6,23 @@ extends CharacterBody2D
 @export var stop_range : float
 @export var shoot_rate : float
 @export var shoot_range : float
+@export var cur_hp : int = 5
+@export var max_hp : int = 5
 
 @onready var player = get_tree().get_first_node_in_group('Player')
 @onready var avoidance_ray : RayCast2D = $AvoidanceRay
 @onready var sprite : Sprite2D = $Sprite
 @onready var bullet_pool : Node = $EnemyBulletPool
 @onready var muzzle : Node2D = $Muzzle
+@onready var health_bar : ProgressBar = $HealthBar
 
 var player_dist : float
 var player_dir : Vector2
 var last_shoot_time : float
+
+func _ready():
+	health_bar.max_value = max_hp
+	health_bar.value= cur_hp
 
 func _process(delta: float) -> void:
 	player_dist = global_position.distance_to(player.global_position)
@@ -26,6 +33,8 @@ func _process(delta: float) -> void:
 	if player_dist < shoot_range:
 		if Time.get_unix_time_from_system() - last_shoot_time > shoot_rate:
 			_shoot()
+			
+		_move_wobble()
 	
 func _physics_process(delta : float) -> void:
 	var move_dir = player_dir
@@ -57,10 +66,52 @@ func _local_avoidance() -> Vector2:
 	var obstacle_dir = global_position.direction_to(obstacle_point)
 	
 	return Vector2(-obstacle_dir.y, obstacle_dir.x)
-	
+
+
 func _shoot():
 	last_shoot_time = Time.get_unix_time_from_system()
 	
 	var bullet = bullet_pool.spawn()
 	bullet.global_position = muzzle.global_position
 	bullet.move_dir = muzzle.global_position.direction_to(player.global_position)
+
+
+func take_damage(damage : int):
+	cur_hp -= damage
+	
+	if cur_hp <= 0:
+		visible = false
+	else:
+		_damage_flash()
+		health_bar.value = cur_hp
+
+
+func _damage_flash():
+	sprite.modulate = Color.BLACK
+	await get_tree().create_timer(0.05).timeout
+	sprite.modulate = Color.WHITE
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		set_process(true)
+		set_physics_process(true)
+		
+		cur_hp = max_hp
+		
+		if health_bar:
+			health_bar.value = cur_hp
+		
+	else:
+		set_process(false)
+		set_physics_process(false)
+		
+		global_position = Vector2(0, 999999)
+
+func _move_wobble():
+	if velocity.length() == 0:
+		sprite.rotation_degrees = 0
+		return
+		
+	var t = Time.get_unix_time_from_system()
+	var rot = sin(t * 20) * 2
