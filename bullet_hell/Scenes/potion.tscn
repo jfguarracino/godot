@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bywtiwvvivkwf"]
+
+[ext_resource type="Texture2D" uid="uid://b2iqnr1neyr7g" path="res://Sprites/Spritesheet.png" id="1_4l8vr"]
+[ext_resource type="Script" uid="uid://dtnvvhye0maoa" path="res://Scripts/potion.gd" id="1_nymo1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uujeg"]
+radius = 7.071068
+
+[node name="Potion" type="Area2D" unique_id=243825447]
+script = ExtResource("1_nymo1")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=892414873]
+position = Vector2(4, -5)
+texture = ExtResource("1_4l8vr")
+region_enabled = true
+region_rect = Rect2(71.87514, 802.8769, 22.464935, 26.762146)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1757119976]
+shape = SubResource("CircleShape2D_uujeg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

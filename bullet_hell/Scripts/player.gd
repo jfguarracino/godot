@@ -14,6 +14,7 @@ extends CharacterBody2D
 
 var move_input : Vector2
 var last_shoot_time : float
+var additional_bullet_speed : float
 
 func _ready():
 	health_bar.max_value = max_hp
@@ -59,6 +60,7 @@ func _shoot():
 	var mouse_dir = muzzle.global_position.direction_to(mouse_pos)
 	
 	bullet.move_dir = mouse_dir
+	bullet.additional_speed = additional_bullet_speed
 
 func take_damage(damage : int):
 	cur_hp -= damage
@@ -74,3 +76,12 @@ func _damage_flash():
 	sprite.modulate = Color.RED
 	await get_tree().create_timer(0.05).timeout
 	sprite.modulate = Color.WHITE
+
+
+func heal(amount : int):
+	cur_hp += amount
+	
+	if cur_hp > max_hp:
+		cur_hp = max_hp
+		
+	health_bar.value = cur_hp

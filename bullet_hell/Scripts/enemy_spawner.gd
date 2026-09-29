@@ -22,7 +22,20 @@ func _process(delta: float) -> void:
 	spawn_rate = 1.0 / enemies_per_second
 
 func _get_random_enemy_index() -> int:
-	return 0
+	var total_weight = 0
+	
+	for weight in enemy_spawn_weights:
+		total_weight += weight
+		
+	var rand = randf() * total_weight
+	
+	for i in len(enemy_spawn_weights):
+		rand -= enemy_spawn_weights[i]
+		
+		if rand < 0:
+			return i
+			
+	return -1
 
 func _on_spawn_timer_timeout() -> void:
 	var enemy = enemy_pools[_get_random_enemy_index()].spawn()

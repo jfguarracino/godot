@@ -2,8 +2,11 @@ extends Area2D
 
 @export var speed : float = 200
 @export var owner_group : String
+
 @onready var destroy_timer : Timer = $DestroyTimer
+
 var move_dir : Vector2
+var additional_speed : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +15,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	translate(move_dir * speed * delta)
+	translate(move_dir * (speed + additional_speed) * delta)
 	
 	rotation = move_dir.angle()
 	
@@ -34,4 +37,4 @@ func _on_destroy_timer_timeout() -> void:
 func _on_visibility_changed() -> void:
 	if visible == true and destroy_timer:
 		destroy_timer.start()
-		
+		additional_speed = 0
