@@ -32,4 +32,6 @@ func _on_body_entered(body: Node2D) -> void:
 	elif type == PotionType.MOVE_SPEED:
 		body.max_speed *= value
 		
+	body.drink_potion()
+	
 	queue_free()

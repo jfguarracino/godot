@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2iqnr1neyr7g" path="res://Sprites/Spritesheet.png" id="1_hghv2"]
 [ext_resource type="Script" uid="uid://b5ewfar3mh3dr" path="res://Scripts/node_pool.gd" id="3_287tu"]
 [ext_resource type="PackedScene" uid="uid://cl708grip0jsw" path="res://Scenes/enemy_bullet.tscn" id="4_0830c"]
+[ext_resource type="AudioStream" uid="uid://c6hmy58itnxq6" path="res://Audio/EnemyDamaged.wav" id="5_0830c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ste36"]
 radius = 11.045361
@@ -23,6 +24,9 @@ drag = 0.9
 stop_range = 100.0
 shoot_rate = 0.5
 shoot_range = 250.0
+cur_hp = null
+max_hp = null
+flip_sprite = null
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=323905026]
 position = Vector2(0, 8)
@@ -54,5 +58,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0830c")
 max_value = 50.0
 value = 25.0
 show_percentage = false
+
+[node name="DamageAudio" type="AudioStreamPlayer" parent="." unique_id=582417581]
+stream = ExtResource("5_0830c")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

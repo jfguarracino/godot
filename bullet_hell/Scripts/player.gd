@@ -11,6 +11,9 @@ extends CharacterBody2D
 @onready var muzzle : Node2D = $Muzzle
 @onready var bullet_pool : Node = $PlayerBulletPool
 @onready var health_bar : ProgressBar = $HealthBar
+@onready var shoot_audio : AudioStreamPlayer = $ShootAudio
+@onready var damage_audio : AudioStreamPlayer = $DamageAudio
+@onready var potion_audio : AudioStreamPlayer = $PotionAudio
 
 var move_input : Vector2
 var last_shoot_time : float
@@ -61,15 +64,19 @@ func _shoot():
 	
 	bullet.move_dir = mouse_dir
 	bullet.additional_speed = additional_bullet_speed
+	
+	shoot_audio.play()
 
 func take_damage(damage : int):
 	cur_hp -= damage
 	
 	if cur_hp <= 0:
-		print("dead")
+		$"..".set_game_over()
 	else:
 		_damage_flash()
 		health_bar.value = cur_hp
+		$"../Camera2D".damage_shake()
+		damage_audio.play()
 
 
 func _damage_flash():
@@ -85,3 +92,7 @@ func heal(amount : int):
 		cur_hp = max_hp
 		
 	health_bar.value = cur_hp
+
+
+func drink_potion():
+	potion_audio.play()

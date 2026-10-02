@@ -5,7 +5,7 @@ extends Node
 @export var max_bounds : Vector2
 
 func _on_spawn_timer_timeout() -> void:
-	var potion = potion_scenes[randi() % len(potion_scenes)].instantiate()
+	var potion = potion_scenes[randi_range(0, len(potion_scenes) - 1)].instantiate()
 	add_child(potion)
 	
 	var spawn_x = randf_range(min_bounds.x, max_bounds.x)

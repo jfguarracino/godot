@@ -16,6 +16,7 @@ extends CharacterBody2D
 @onready var bullet_pool : Node = $EnemyBulletPool
 @onready var muzzle : Node2D = $Muzzle
 @onready var health_bar : ProgressBar = $HealthBar
+@onready var damage_audio : AudioStreamPlayer = $DamageAudio
 
 var player_dist : float
 var player_dir : Vector2
@@ -26,6 +27,9 @@ func _ready():
 	health_bar.value= cur_hp
 
 func _process(delta: float) -> void:
+	if not player:
+		return
+		
 	player_dist = global_position.distance_to(player.global_position)
 	player_dir = global_position.direction_to(player.global_position)
 	
@@ -41,6 +45,9 @@ func _process(delta: float) -> void:
 		_move_wobble()
 	
 func _physics_process(delta : float) -> void:
+	if not player:
+		return
+		
 	var move_dir = player_dir
 	var local_avoidance = _local_avoidance()
 	
@@ -88,6 +95,8 @@ func take_damage(damage : int):
 	else:
 		_damage_flash()
 		health_bar.value = cur_hp
+		
+	damage_audio.play()
 
 
 func _damage_flash():
