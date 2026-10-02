@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://ck0oy51w1gqr4"]
+
+[node name="Presets" type="Control" unique_id=762218862]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1570286755]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2038462405]
+layout_mode = 0
+offset_right = 479.0
+offset_bottom = 204.0
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer" unique_id=1564005535]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer" unique_id=816323254]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect3" type="ColorRect" parent="HBoxContainer" unique_id=1786932399]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect4" type="ColorRect" parent="HBoxContainer" unique_id=2007951425]
+layout_mode = 2
+size_flags_horizontal = 3

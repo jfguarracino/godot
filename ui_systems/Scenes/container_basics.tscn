@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://cgr3ps8v01iax"]
+
+[node name="ContainerBasics" type="Control" unique_id=1593351735]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2071119810]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 23.0
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer" unique_id=173409058]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer" unique_id=2012873700]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1777133156]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 15.0
+offset_right = 112.0
+offset_bottom = 55.0
+columns = 3
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer" unique_id=1557699178]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect2" type="ColorRect" parent="GridContainer" unique_id=725438733]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect3" type="ColorRect" parent="GridContainer" unique_id=1654774736]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect4" type="ColorRect" parent="GridContainer" unique_id=1709057431]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer" unique_id=537536434]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer/VBoxContainer" unique_id=1331542258]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect2" type="ColorRect" parent="GridContainer/VBoxContainer" unique_id=788193793]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect3" type="ColorRect" parent="GridContainer/VBoxContainer" unique_id=1282538569]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect4" type="ColorRect" parent="GridContainer/VBoxContainer" unique_id=294318613]
+layout_mode = 2
+size_flags_vertical = 3
