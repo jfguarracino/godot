@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://7ldq7qi4g180"]
+
+[ext_resource type="Theme" uid="uid://dba78owfy7kao" path="res://Resources/new_theme.tres" id="1_gr350"]
+
+[node name="Theme" type="Control" unique_id=1989960817]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_gr350")
+
+[node name="Panel" type="Panel" parent="." unique_id=1121359931]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="." unique_id=1448904801]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 101.0
+offset_right = 123.0
+offset_bottom = 132.0
+text = "Button
+"
+
+[node name="Button2" type="Button" parent="." unique_id=308790693]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 106.0
+offset_right = 322.0
+offset_bottom = 137.0
+theme_type_variation = &"RedButton"
+text = "Button 2
+"

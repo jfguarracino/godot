@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://b0kmspy7wh6kf"]
+
+[ext_resource type="Script" uid="uid://dvqfug5jqtbvy" path="res://Scripts/focus.gd" id="1_ppk04"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppk04"]
+bg_color = Color(0.96510595, 0.36605442, 0.4450537, 1)
+
+[sub_resource type="Theme" id="Theme_dljf8"]
+Button/styles/focus = SubResource("StyleBoxFlat_ppk04")
+
+[node name="Focus" type="Control" unique_id=508013502]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -11.0
+offset_right = -3.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_dljf8")
+script = ExtResource("1_ppk04")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=47618041]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -118.5
+offset_right = 351.0
+offset_bottom = 118.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=908709015]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Button5")
+text = "Button"
+
+[node name="Button2" type="Button" parent="HBoxContainer" unique_id=950242995]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Button"
+
+[node name="Button3" type="Button" parent="HBoxContainer" unique_id=1122715868]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Button"
+
+[node name="Button4" type="Button" parent="HBoxContainer" unique_id=1376662600]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Button"
+
+[node name="Button5" type="Button" parent="HBoxContainer" unique_id=562856264]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_right = NodePath("../Button")
+text = "Button"
+
+[node name="HSlider" type="HSlider" parent="." unique_id=1044177349]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 480.0
+offset_right = 922.0
+offset_bottom = 496.0
