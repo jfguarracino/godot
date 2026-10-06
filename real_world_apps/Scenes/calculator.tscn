@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://dxrivitpqr8n2"]
+
+[ext_resource type="Script" uid="uid://voq8ubnojgaf" path="res://Scripts/calculator.gd" id="1_57imy"]
+[ext_resource type="Theme" uid="uid://dlscywxdqb7lb" path="res://light_theme.tres" id="1_xst5o"]
+
+[node name="Calculator" type="Control" unique_id=684948710]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xst5o")
+script = ExtResource("1_57imy")
+
+[node name="Background" type="Panel" parent="." unique_id=999240791]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=385544638]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=926572152]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer" unique_id=2122932711]
+layout_mode = 2
+text = "00000"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1732773682]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/PanelContainer" unique_id=689348643]
+layout_mode = 2
+columns = 4
+
+[node name="C" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=1286571218]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "C"
+
+[node name="PlusMinus" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=1289530626]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "+ / -"
+
+[node name="Percentage" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=1685235939]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "%"
+
+[node name="Division" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=960798752]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"FunctionBotton"
+text = "/"
+
+[node name="Seven" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=1515673241]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "7"
+
+[node name="Eight" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=1099063865]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "8"
+
+[node name="Nine" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=1575653880]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "9"
+
+[node name="Multiplication" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=300026155]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"FunctionBotton"
+text = "X"
+
+[node name="Four" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=482920403]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "4"
+
+[node name="Five" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=1909132248]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "5"
+
+[node name="Six" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=1512723535]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "6"
+
+[node name="Minus" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=632055241]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"FunctionBotton"
+text = "-"
+
+[node name="One" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=1657875033]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1"
+
+[node name="Two" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=944629602]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "2"
+
+[node name="Three" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=618636209]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "3"
+
+[node name="Plus" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=1803121103]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"FunctionBotton"
+text = "+"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=651898869]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ZeroButtonContainer" type="Control" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=1185224990]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Zero" type="Button" parent="VBoxContainer/PanelContainer/GridContainer/ZeroButtonContainer" unique_id=1154710492]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+
+[node name="Dot" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=2023253780]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "."
+
+[node name="Equal" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=942943380]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"FunctionBotton"
+text = "="
+
+[connection signal="resized" from="VBoxContainer/PanelContainer/GridContainer/ZeroButtonContainer/Zero" to="." method="_on_zero_resized"]

@@ -1,0 +1,10 @@
+# Third Party Asset Licenses
+
+Some of the assets provided in this course are subject to third-party licenses:
+
+===================================
+
+Unageo Font
+Created by Richard SepÅ¡i
+Source: https://www.dafont.com/unageo.font
+License Info: SIL Open Font License, Version 1.1 (https://openfontlicense.org/)
