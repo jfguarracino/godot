@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dxrivitpqr8n2"]
 
 [ext_resource type="Script" uid="uid://voq8ubnojgaf" path="res://Scripts/calculator.gd" id="1_57imy"]
-[ext_resource type="Theme" uid="uid://dlscywxdqb7lb" path="res://light_theme.tres" id="1_xst5o"]
+[ext_resource type="Theme" uid="uid://cp6sd73gi068c" path="res://dark_theme.tres" id="1_xst5o"]
 
 [node name="Calculator" type="Control" unique_id=684948710]
 layout_mode = 3
@@ -96,7 +96,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_type_variation = &"FunctionBotton"
-text = "X"
+text = "x"
 
 [node name="Four" type="Button" parent="VBoxContainer/PanelContainer/GridContainer" unique_id=482920403]
 layout_mode = 2

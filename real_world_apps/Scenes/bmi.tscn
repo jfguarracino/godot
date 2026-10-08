@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://cmp7r1wc0w61p"]
+
+[node name="BMI" type="Control" unique_id=911100673]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="." unique_id=683366875]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=624122902]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Output" type="CenterContainer" parent="VBoxContainer" unique_id=1333176147]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Output" unique_id=32633850]
+layout_mode = 2
+text = "BMI"
+
+[node name="HeightInput" type="MarginContainer" parent="VBoxContainer" unique_id=1867721979]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HeightInput" unique_id=1061992822]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HeightInput/PanelContainer" unique_id=1228244213]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HeightInput/PanelContainer/MarginContainer" unique_id=1208814590]
+layout_mode = 2
+alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HeightInput/PanelContainer/MarginContainer/VBoxContainer" unique_id=253903057]
+layout_mode = 2
+text = "166"
+alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer/HeightInput/PanelContainer/MarginContainer/VBoxContainer" unique_id=1619523979]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/HeightInput/PanelContainer/MarginContainer/VBoxContainer/Control" unique_id=26519936]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/HeightInput/PanelContainer" unique_id=120848833]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HeightInput/PanelContainer/Control" unique_id=585733438]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Height (cm)"
+
+[node name="WeightInput" type="MarginContainer" parent="VBoxContainer" unique_id=556630887]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/WeightInput" unique_id=463055288]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/WeightInput/PanelContainer" unique_id=1752043099]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/WeightInput/PanelContainer/HBoxContainer" unique_id=465580842]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/WeightInput/PanelContainer/HBoxContainer" unique_id=268421700]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "62"
+alignment = 1
+
+[node name="Button2" type="Button" parent="VBoxContainer/WeightInput/PanelContainer/HBoxContainer" unique_id=741228353]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "+"
+
+[node name="Control" type="Control" parent="VBoxContainer/WeightInput/PanelContainer" unique_id=1139664076]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/WeightInput/PanelContainer/Control" unique_id=274622585]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Weight (kg)"
