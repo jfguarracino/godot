@@ -4,12 +4,26 @@
 [ext_resource type="Texture2D" uid="uid://bxlgdbswwsbcv" path="res://Sprites/grabber_dark.png" id="2_m02wu"]
 [ext_resource type="FontFile" uid="uid://draadt5w6ybae" path="res://Fonts/Unageo-Medium.ttf" id="2_mrdxr"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m02wu"]
+bg_color = Color(0.07450981, 0.07450981, 0.07450981, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvbr4"]
+bg_color = Color(0.07450981, 0.07450981, 0.07450981, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m02wu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wx6ub"]
 bg_color = Color(0.9529412, 0.9529412, 0.9529412, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qvbr4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrdxr"]
 bg_color = Color(0.9529412, 0.9529412, 0.9529412, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_rixj7"]
@@ -41,11 +55,13 @@ corner_radius_bottom_left = 8
 [resource]
 Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("1_unxbt")
+Button/styles/focus = SubResource("StyleBoxFlat_m02wu")
+Button/styles/hover = SubResource("StyleBoxFlat_qvbr4")
 Button/styles/normal = SubResource("StyleBoxEmpty_m02wu")
 HSlider/icons/grabber = ExtResource("2_m02wu")
 HSlider/icons/grabber_highlight = ExtResource("2_m02wu")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_wx6ub")
-HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_qvbr4")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_mrdxr")
 HSlider/styles/slider = SubResource("StyleBoxLine_rixj7")
 Label/font_sizes/font_size = 120
 Label/fonts/font = ExtResource("1_unxbt")

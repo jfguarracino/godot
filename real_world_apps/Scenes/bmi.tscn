@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cmp7r1wc0w61p"]
 
-[ext_resource type="Theme" uid="uid://ve2kk8m2hnbv" path="res://dark_theme_bmi.tres" id="1_wx6ub"]
+[ext_resource type="Theme" uid="uid://cukws1u21wiql" path="res://light_theme_bmi.tres" id="1_qvbr4"]
 [ext_resource type="Script" uid="uid://bgfl5lug1kwjd" path="res://Scripts/bmi.gd" id="2_qvbr4"]
 
 [node name="BMI" type="Control" unique_id=911100673]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_wx6ub")
+theme = ExtResource("1_qvbr4")
 script = ExtResource("2_qvbr4")
 
 [node name="Background" type="Panel" parent="." unique_id=683366875]
@@ -51,7 +51,7 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HeightInput/PanelContainer/MarginContainer/VBoxContainer" unique_id=253903057]
+[node name="HeightLineEdit" type="LineEdit" parent="VBoxContainer/HeightInput/PanelContainer/MarginContainer/VBoxContainer" unique_id=253903057]
 layout_mode = 2
 text = "166"
 alignment = 1
@@ -104,7 +104,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "-"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/WeightInput/PanelContainer/HBoxContainer" unique_id=268421700]
+[node name="WeightLineEdit" type="LineEdit" parent="VBoxContainer/WeightInput/PanelContainer/HBoxContainer" unique_id=268421700]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "62"
@@ -132,6 +132,8 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "Weight (kg)"
 
+[connection signal="text_changed" from="VBoxContainer/HeightInput/PanelContainer/MarginContainer/VBoxContainer/HeightLineEdit" to="." method="_on_height_line_edit_text_changed"]
 [connection signal="value_changed" from="VBoxContainer/HeightInput/PanelContainer/MarginContainer/VBoxContainer/Control/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="VBoxContainer/WeightInput/PanelContainer/HBoxContainer/MinusButton" to="." method="_on_minus_button_pressed"]
+[connection signal="text_changed" from="VBoxContainer/WeightInput/PanelContainer/HBoxContainer/WeightLineEdit" to="." method="_on_weight_line_edit_text_changed"]
 [connection signal="pressed" from="VBoxContainer/WeightInput/PanelContainer/HBoxContainer/PlusButton" to="." method="_on_plus_button_pressed"]

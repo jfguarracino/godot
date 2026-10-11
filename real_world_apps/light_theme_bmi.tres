@@ -1,0 +1,99 @@
+[gd_resource type="Theme" format=3 uid="uid://cukws1u21wiql"]
+
+[ext_resource type="FontFile" uid="uid://djwyk84ek65qg" path="res://Fonts/Unageo-Bold.ttf" id="1_noes0"]
+[ext_resource type="Texture2D" uid="uid://cfx7v7vbedaab" path="res://Sprites/grabber_light.png" id="2_cdpou"]
+[ext_resource type="FontFile" uid="uid://draadt5w6ybae" path="res://Fonts/Unageo-Medium.ttf" id="3_kx8c8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kx8c8"]
+bg_color = Color(0.84705883, 0.8980392, 0.9882353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.039215688)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f844b"]
+bg_color = Color(0.84705883, 0.8980392, 0.9882353, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.039215688)
+shadow_size = 2
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdpou"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wckrg"]
+bg_color = Color(0.7841405, 0.85600746, 0.9835617, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+shadow_size = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdpou"]
+bg_color = Color(0.40784314, 0.6666667, 0.96862745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_peamu"]
+bg_color = Color(0.40784314, 0.6666667, 0.96862745, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_rv3oi"]
+color = Color(0.40784314, 0.6666667, 0.96862745, 1)
+thickness = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kx8c8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_noes0"]
+
+[sub_resource type="Gradient" id="Gradient_rv3oi"]
+colors = PackedColorArray(0.90588236, 0.9411765, 0.99607843, 1, 0.94688624, 0.96678823, 0.9977587, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_noes0"]
+gradient = SubResource("Gradient_rv3oi")
+fill_from = Vector2(0.44347826, 0.8)
+fill_to = Vector2(0.65652174, 0.1173913)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p63ju"]
+texture = SubResource("GradientTexture2D_noes0")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv3oi"]
+bg_color = Color(0.9764706, 0.9764706, 0.9764706, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.039215688)
+shadow_size = 2
+
+[resource]
+Button/colors/font_color = Color(0.40784314, 0.6666667, 0.96862745, 1)
+Button/colors/font_focus_color = Color(0.40784314, 0.6666667, 0.96862745, 1)
+Button/colors/font_hover_color = Color(0.40784314, 0.6666667, 0.96862745, 1)
+Button/font_sizes/font_size = 80
+Button/fonts/font = ExtResource("1_noes0")
+Button/styles/focus = SubResource("StyleBoxFlat_kx8c8")
+Button/styles/hover = SubResource("StyleBoxFlat_f844b")
+Button/styles/normal = SubResource("StyleBoxEmpty_cdpou")
+Button/styles/pressed = SubResource("StyleBoxFlat_wckrg")
+HSlider/icons/grabber = ExtResource("2_cdpou")
+HSlider/icons/grabber_highlight = ExtResource("2_cdpou")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_cdpou")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_peamu")
+HSlider/styles/slider = SubResource("StyleBoxLine_rv3oi")
+Label/colors/font_color = Color(0.40784314, 0.67058825, 0.972549, 1)
+Label/font_sizes/font_size = 120
+Label/fonts/font = ExtResource("1_noes0")
+LineEdit/colors/font_color = Color(0.40784314, 0.6666667, 0.96862745, 1)
+LineEdit/colors/selection_color = Color(0.40784314, 0.6666667, 0.96862745, 1)
+LineEdit/font_sizes/font_size = 120
+LineEdit/fonts/font = ExtResource("3_kx8c8")
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_kx8c8")
+LineEdit/styles/normal = SubResource("StyleBoxEmpty_noes0")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 0
+Panel/styles/panel = SubResource("StyleBoxTexture_p63ju")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_rv3oi")
