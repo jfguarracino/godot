@@ -1,0 +1,59 @@
+# Third Party Asset Licenses
+
+Some of the assets provided in this course are subject to third-party licenses:
+
+===================================
+
+Player Sprite
+Created by Luiz Melo
+Source: https://luizmelo.itch.io/hero-knight-2
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Enemy Sprites
+Created by Luiz Melo
+Source: https://luizmelo.itch.io/monsters-creatures-fantasy
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Environment Background
+Created by ansimuz
+Source: https://ansimuz.itch.io/bulkhead-walls-environment
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+PT Serif Font
+Created by ParaType
+Source: https://fonts.google.com/specimen/PT+Serif/
+License Info: SIL Open Font License, Version 1.1 (https://openfontlicense.org/)
+
+----------
+
+Background Music
+Created by cynicmusic
+Source: https://opengameart.org/content/battle-theme-a
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Player and Enemy Damaged SFX
+Created by Independent.nu (submitted by qubodup)
+Source: https://opengameart.org/content/37-hitspunches
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Heal SFX
+Created by artisticdude
+Source: https://opengameart.org/content/rpg-sound-pack
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Card Drag and Hover SFX
+Created by Kenney
+Source: https://kenney.nl/assets/rpg-audio
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
