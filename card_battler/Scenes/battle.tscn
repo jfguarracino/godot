@@ -1,18 +1,7 @@
 [gd_scene format=3 uid="uid://jsnw762gaxde"]
 
 [ext_resource type="Texture2D" uid="uid://b164bqk8dgcwy" path="res://Sprites/Background/background.png" id="1_w7k78"]
-[ext_resource type="SpriteFrames" uid="uid://bocxn7uo247e0" path="res://Sprites/Player/player.tres" id="2_oxf17"]
-[ext_resource type="FontFile" uid="uid://cj5hxyu5fg34k" path="res://Font/PTSerif-Bold.ttf" id="3_1ruyk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uujeg"]
-bg_color = Color(0.1728327, 0.17283267, 0.17283267, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ietan"]
-bg_color = Color(0.6729628, 0.13394022, 0.0642145, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
-font = ExtResource("3_1ruyk")
-font_size = 4
+[ext_resource type="PackedScene" uid="uid://ekl5lyenpdcf" path="res://Scenes/Characters/player_character.tscn" id="2_oxf17"]
 
 [node name="Main" type="Node2D" unique_id=160998639]
 
@@ -26,33 +15,5 @@ texture = ExtResource("1_w7k78")
 [node name="Camera2D" type="Camera2D" parent="Environment" unique_id=295929572]
 zoom = Vector2(4, 4)
 
-[node name="Character" type="Node2D" parent="." unique_id=391502786]
-position = Vector2(0, 25)
-
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="Character" unique_id=454847859]
-position = Vector2(-60, -20)
-sprite_frames = ExtResource("2_oxf17")
-animation = &"idle"
-autoplay = "idle"
-
-[node name="HealyhBar" type="ProgressBar" parent="Character" unique_id=1373790406]
-offset_left = -80.0
-offset_top = -60.0
-offset_right = -40.0
-offset_bottom = -55.0
-theme_override_styles/background = SubResource("StyleBoxFlat_uujeg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ietan")
-value = 50.0
-show_percentage = false
-
-[node name="HealthText" type="Label" parent="Character/HealyhBar" unique_id=1191804178]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "50 / 100"
-label_settings = SubResource("LabelSettings_uujeg")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="PlayerCharacter" parent="." unique_id=893356156 instance=ExtResource("2_oxf17")]
+position = Vector2(-60, 5)

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dv1mrxpto1664"]
+
+[ext_resource type="Script" uid="uid://bvue0ry5rv50q" path="res://Scripts/Character/character.gd" id="1_nv3ih"]
+[ext_resource type="SpriteFrames" uid="uid://bocxn7uo247e0" path="res://Sprites/Player/player.tres" id="2_ipqrv"]
+[ext_resource type="Script" uid="uid://c7degtc2hqjfm" path="res://Scripts/Character/character_animation.gd" id="3_c36b5"]
+[ext_resource type="Script" uid="uid://bs2w7g8oswo3a" path="res://Scripts/Character/health_bar.gd" id="4_1l7j3"]
+[ext_resource type="FontFile" uid="uid://cj5hxyu5fg34k" path="res://Font/PTSerif-Bold.ttf" id="5_yo31i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uujeg"]
+bg_color = Color(0.1728327, 0.17283267, 0.17283267, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ietan"]
+bg_color = Color(0.6729628, 0.13394022, 0.0642145, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
+font = ExtResource("5_yo31i")
+font_size = 4
+
+[node name="Character" type="Node2D" unique_id=893356156]
+script = ExtResource("1_nv3ih")
+
+[node name="CharacterAnimation" type="AnimatedSprite2D" parent="." unique_id=1579001087]
+position = Vector2(-60, -20)
+sprite_frames = ExtResource("2_ipqrv")
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("3_c36b5")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=1872397625]
+offset_left = -80.0
+offset_top = -60.0
+offset_right = -40.0
+offset_bottom = -55.0
+theme_override_styles/background = SubResource("StyleBoxFlat_uujeg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ietan")
+value = 50.0
+show_percentage = false
+script = ExtResource("4_1l7j3")
+
+[node name="HealthText" type="Label" parent="HealthBar" unique_id=1379298594]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "50 / 100"
+label_settings = SubResource("LabelSettings_uujeg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="animation_finished" from="CharacterAnimation" to="CharacterAnimation" method="_on_animation_finished"]
