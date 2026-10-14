@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b164bqk8dgcwy" path="res://Sprites/Background/background.png" id="1_w7k78"]
 [ext_resource type="PackedScene" uid="uid://ekl5lyenpdcf" path="res://Scenes/Characters/player_character.tscn" id="2_oxf17"]
+[ext_resource type="PackedScene" uid="uid://31sblgy7k345" path="res://Scenes/Characters/goblin_enemy_character.tscn" id="3_1ruyk"]
 
 [node name="Main" type="Node2D" unique_id=160998639]
 
@@ -16,4 +17,7 @@ texture = ExtResource("1_w7k78")
 zoom = Vector2(4, 4)
 
 [node name="PlayerCharacter" parent="." unique_id=893356156 instance=ExtResource("2_oxf17")]
-position = Vector2(-60, 5)
+position = Vector2(-60, 17)
+
+[node name="GoblinEnemyCharacter" parent="." unique_id=496548414 instance=ExtResource("3_1ruyk")]
+position = Vector2(60, 17)
