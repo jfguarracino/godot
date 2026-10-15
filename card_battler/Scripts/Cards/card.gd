@@ -21,13 +21,27 @@ var hover_pos : Vector2:
 	get: return idle_pos + Vector2(0, -30)
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func setup(data : CardData) -> void:
+	self.data = data
+	state = State.IDLE
+	
 	_setup_visual()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var lerp_speed : float = 10
+	var target_pos : Vector2 = idle_pos
+	
+	if state == State.HOVERED:
+		target_pos = hover_pos
+		lerp_speed = 15
+		
+	elif state == State.DRAGGING:
+		target_pos = get_global_mouse_position()
+		lerp_speed = 20
+		
+	global_position = global_position.lerp(target_pos, delta * lerp_speed)
 
 
 func _setup_visual():

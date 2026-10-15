@@ -1,42 +1,30 @@
 [gd_scene format=3 uid="uid://jsnw762gaxde"]
 
+[ext_resource type="Script" uid="uid://h6j5w0inpeay" path="res://Scripts/Managers/card_interactor.gd" id="1_k7mbx"]
+[ext_resource type="Script" uid="uid://ccfp3350n870g" path="res://Scripts/Managers/card_manager.gd" id="1_upb72"]
 [ext_resource type="Texture2D" uid="uid://b164bqk8dgcwy" path="res://Sprites/Background/background.png" id="1_w7k78"]
 [ext_resource type="PackedScene" uid="uid://ekl5lyenpdcf" path="res://Scenes/Characters/player_character.tscn" id="2_oxf17"]
 [ext_resource type="PackedScene" uid="uid://31sblgy7k345" path="res://Scenes/Characters/goblin_enemy_character.tscn" id="3_1ruyk"]
-[ext_resource type="Script" uid="uid://dm7ranomqy8gi" path="res://Scripts/Cards/card.gd" id="4_lrv64"]
-[ext_resource type="Texture2D" uid="uid://dd12l4505uk0e" path="res://Sprites/Card/card.png" id="4_pd5xk"]
-[ext_resource type="FontFile" uid="uid://cj5hxyu5fg34k" path="res://Font/PTSerif-Bold.ttf" id="5_f6xt6"]
+[ext_resource type="Resource" uid="uid://dtswgwftf7feb" path="res://Cards/Player/jab.tres" id="3_lrv64"]
+[ext_resource type="PackedScene" uid="uid://xa34kwjo1trn" path="res://Scenes/card.tscn" id="4_qeyqd"]
 [ext_resource type="Resource" uid="uid://bjlgr5ceqcas3" path="res://Cards/Player/health_potion.tres" id="5_qeyqd"]
-[ext_resource type="FontFile" uid="uid://ccybyp4jquowr" path="res://Font/PTSerif-Regular.ttf" id="6_f6xt6"]
-[ext_resource type="Texture2D" uid="uid://bo7oddwoummp2" path="res://Sprites/Card/icon_attack.png" id="7_ww2ai"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw52a"]
-size = Vector2(42, 64)
-
-[sub_resource type="LabelSettings" id="LabelSettings_sw52a"]
-line_spacing = 0.5
-font = ExtResource("5_f6xt6")
-font_size = 8
-outline_size = 2
-outline_color = Color(0.24707788, 0.1447348, 0.46705866, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_7e42s"]
-line_spacing = 0.5
-font = ExtResource("6_f6xt6")
-font_size = 6
-outline_size = 1
-outline_color = Color(0.27515364, 0.16697645, 0.04659967, 0.7607843)
-shadow_size = 2
-shadow_color = Color(0.49733794, 0.31744164, 0.1175478, 0.7607843)
-shadow_offset = Vector2(0.5, 0.5)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ste36"]
-line_spacing = 0.5
-font = ExtResource("6_f6xt6")
-font_size = 4
-font_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
 
 [node name="Main" type="Node2D" unique_id=160998639]
+
+[node name="CardManager" type="Node" parent="." unique_id=1018725582]
+script = ExtResource("1_upb72")
+player_deck = Array[Object]([ExtResource("5_qeyqd"), ExtResource("5_qeyqd"), ExtResource("3_lrv64"), ExtResource("3_lrv64")])
+card_scene = ExtResource("4_qeyqd")
+x_offset = 30.0
+
+[node name="CardOrigin" type="Node2D" parent="CardManager" unique_id=1139123625]
+position = Vector2(0, 68)
+
+[node name="CardSpawn" type="Node2D" parent="CardManager" unique_id=1524851902]
+position = Vector2(-123, 68)
+
+[node name="CardInteractor" type="Node2D" parent="." unique_id=1098520169]
+script = ExtResource("1_k7mbx")
 
 [node name="Environment" type="Node" parent="." unique_id=158941694]
 
@@ -53,56 +41,3 @@ position = Vector2(-60, 17)
 
 [node name="GoblinEnemyCharacter" parent="." unique_id=496548414 instance=ExtResource("3_1ruyk")]
 position = Vector2(60, 17)
-
-[node name="Card" type="Area2D" parent="." unique_id=124662868]
-script = ExtResource("4_lrv64")
-data = ExtResource("5_qeyqd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Card" unique_id=80195411]
-shape = SubResource("RectangleShape2D_sw52a")
-
-[node name="CardSprite" type="Sprite2D" parent="Card" unique_id=869356244]
-texture = ExtResource("4_pd5xk")
-
-[node name="CostLabel" type="Label" parent="Card" unique_id=1634092833]
-offset_left = -7.0
-offset_top = -30.0
-offset_right = 6.0
-offset_bottom = -19.333332
-text = "3"
-label_settings = SubResource("LabelSettings_sw52a")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="DisplayNameLabel" type="Label" parent="Card" unique_id=1613346152]
-custom_minimum_size = Vector2(36, 10)
-offset_left = -19.0
-offset_top = -17.0
-offset_right = 19.0
-offset_bottom = -6.333332
-text = "Card Name"
-label_settings = SubResource("LabelSettings_7e42s")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="DescriptionLabel" type="Label" parent="Card" unique_id=413050240]
-custom_minimum_size = Vector2(36, 10)
-offset_left = -19.0
-offset_top = 10.0
-offset_right = 19.0
-offset_bottom = 30.0
-text = "Description about the card and what it does goes here."
-label_settings = SubResource("LabelSettings_ste36")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Card" unique_id=1373392276]
-offset_left = -5.0
-offset_top = -2.0
-offset_right = 5.0
-offset_bottom = 8.0
-texture = ExtResource("7_ww2ai")
-expand_mode = 1
-stretch_mode = 5
