@@ -13,7 +13,14 @@ var card_nodes : Array[Card]
 @onready var card_origin : Node2D = $CardOrigin
 @onready var card_spawn : Node2D = $CardSpawn
 
-# Called when the node enters the scene tree for the first time.
+func _enter_tree() -> void:
+	ManagerRegistry.register('card_manager', self)
+
+
+func _exit_tree() -> void:
+	ManagerRegistry.unregister('card_manager')
+
+
 func _ready() -> void:
 	draw_pile = player_deck.duplicate()
 	draw_pile.shuffle()
@@ -21,16 +28,11 @@ func _ready() -> void:
 	_deal_hand()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func _rearrange_cards():
 	for i in len(card_nodes):
 		var card : Card = card_nodes[i]
 		card.idle_pos = _get_card_position(i)
-		card.z_index = i + 1
+		card.default_z_index = i + 1
 
 
 func _deal_hand():
@@ -51,6 +53,7 @@ func _deal_card():
 	add_child(card)
 	card.global_position = card_spawn.global_position
 	card_nodes.append(card)
+	card.z_index = len(card_nodes)
 	
 	card.setup(card_data)
 	_rearrange_cards()
@@ -65,4 +68,8 @@ func _get_card_position(card_index : int) -> Vector2:
 
 
 func discard_card(card : Card):
-	pass
+	discard_pile.append(card.data)
+	
+	card_nodes.erase(card)
+	card.queue_free()
+	_rearrange_cards()

@@ -2,7 +2,11 @@ extends Node2D
 
 var selected_card : Card
 var mouse_down_last_frame : bool
-
+var card_manager : CardManager:
+	get: return ManagerRegistry.get_manager('card_manager')
+var game_manager : GameManager:
+	get: return ManagerRegistry.get_manager('game_manager')
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -37,12 +41,29 @@ func _process(delta: float) -> void:
 	mouse_down_last_frame = mouse_down
 
 func _pickup_card():
+	if not selected_card:
+		return
+	
 	selected_card.begin_drag()
 
 
 func _drop_card():
+	if not selected_card:
+		return
+	
 	selected_card.end_drag()
-
+	
+	if selected_card.global_position.y > 20:
+		return
+	
+	if game_manager.current_mana < selected_card.data.cost:
+		return
+	
+	selected_card.cast()
+	game_manager.spend_mana(selected_card.data.cost)
+	card_manager.discard_card(selected_card)
+	
+	
 
 func _get_selcted_card() -> Card:
 	var mouse_pos : Vector2 = get_global_mouse_position()

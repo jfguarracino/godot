@@ -1,19 +1,53 @@
 [gd_scene format=3 uid="uid://jsnw762gaxde"]
 
 [ext_resource type="Script" uid="uid://h6j5w0inpeay" path="res://Scripts/Managers/card_interactor.gd" id="1_k7mbx"]
+[ext_resource type="Script" uid="uid://ck1tkt436elji" path="res://Scripts/Managers/game_manager.gd" id="1_rssjf"]
 [ext_resource type="Script" uid="uid://ccfp3350n870g" path="res://Scripts/Managers/card_manager.gd" id="1_upb72"]
 [ext_resource type="Texture2D" uid="uid://b164bqk8dgcwy" path="res://Sprites/Background/background.png" id="1_w7k78"]
 [ext_resource type="PackedScene" uid="uid://ekl5lyenpdcf" path="res://Scenes/Characters/player_character.tscn" id="2_oxf17"]
+[ext_resource type="Script" uid="uid://coydc4jjoaia6" path="res://Scripts/Cards/card_data.gd" id="2_qeyqd"]
+[ext_resource type="Texture2D" uid="uid://cow64lytti144" path="res://Sprites/UI/mana_bg.png" id="2_rssjf"]
 [ext_resource type="PackedScene" uid="uid://31sblgy7k345" path="res://Scenes/Characters/goblin_enemy_character.tscn" id="3_1ruyk"]
+[ext_resource type="FontFile" uid="uid://ccybyp4jquowr" path="res://Font/PTSerif-Regular.ttf" id="3_heh15"]
 [ext_resource type="Resource" uid="uid://dtswgwftf7feb" path="res://Cards/Player/jab.tres" id="3_lrv64"]
 [ext_resource type="PackedScene" uid="uid://xa34kwjo1trn" path="res://Scenes/card.tscn" id="4_qeyqd"]
 [ext_resource type="Resource" uid="uid://bjlgr5ceqcas3" path="res://Cards/Player/health_potion.tres" id="5_qeyqd"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
+font = ExtResource("3_heh15")
+font_size = 12
+outline_size = 3
+outline_color = Color(0.24705882, 0.14509805, 0.46666667, 1)
+
 [node name="Main" type="Node2D" unique_id=160998639]
+
+[node name="GameManager" type="Node" parent="." unique_id=677426214 node_paths=PackedStringArray("player", "enemy")]
+script = ExtResource("1_rssjf")
+player = NodePath("../PlayerCharacter")
+enemy = NodePath("../GoblinEnemyCharacter")
+metadata/_custom_type_script = "uid://ck1tkt436elji"
+
+[node name="UImanager" type="Node" parent="." unique_id=838239646]
+
+[node name="ManaUI" type="Node2D" parent="UImanager" unique_id=1478575903]
+position = Vector2(-120, -60)
+
+[node name="ManaBg" type="Sprite2D" parent="UImanager/ManaUI" unique_id=1023732487]
+texture = ExtResource("2_rssjf")
+
+[node name="ManaLabel" type="Label" parent="UImanager/ManaUI" unique_id=777589408]
+offset_left = -12.0
+offset_top = -10.0
+offset_right = 11.0
+offset_bottom = 11.333334
+text = "2/3"
+label_settings = SubResource("LabelSettings_uujeg")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CardManager" type="Node" parent="." unique_id=1018725582]
 script = ExtResource("1_upb72")
-player_deck = Array[Object]([ExtResource("5_qeyqd"), ExtResource("5_qeyqd"), ExtResource("3_lrv64"), ExtResource("3_lrv64")])
+player_deck = Array[ExtResource("2_qeyqd")]([ExtResource("5_qeyqd"), ExtResource("5_qeyqd"), ExtResource("3_lrv64"), ExtResource("3_lrv64")])
 card_scene = ExtResource("4_qeyqd")
 x_offset = 30.0
 
