@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ck1tkt436elji" path="res://Scripts/Managers/game_manager.gd" id="1_rssjf"]
 [ext_resource type="Script" uid="uid://ccfp3350n870g" path="res://Scripts/Managers/card_manager.gd" id="1_upb72"]
 [ext_resource type="Texture2D" uid="uid://b164bqk8dgcwy" path="res://Sprites/Background/background.png" id="1_w7k78"]
+[ext_resource type="Script" uid="uid://duhpwh8uqhubo" path="res://Scripts/Managers/ui_manager.gd" id="2_heh15"]
 [ext_resource type="PackedScene" uid="uid://ekl5lyenpdcf" path="res://Scenes/Characters/player_character.tscn" id="2_oxf17"]
 [ext_resource type="Script" uid="uid://coydc4jjoaia6" path="res://Scripts/Cards/card_data.gd" id="2_qeyqd"]
 [ext_resource type="Texture2D" uid="uid://cow64lytti144" path="res://Sprites/UI/mana_bg.png" id="2_rssjf"]
@@ -11,7 +12,9 @@
 [ext_resource type="FontFile" uid="uid://ccybyp4jquowr" path="res://Font/PTSerif-Regular.ttf" id="3_heh15"]
 [ext_resource type="Resource" uid="uid://dtswgwftf7feb" path="res://Cards/Player/jab.tres" id="3_lrv64"]
 [ext_resource type="PackedScene" uid="uid://xa34kwjo1trn" path="res://Scenes/card.tscn" id="4_qeyqd"]
+[ext_resource type="Texture2D" uid="uid://6vxm5dyh084n" path="res://Sprites/UI/draw_pile.png" id="4_xkp4y"]
 [ext_resource type="Resource" uid="uid://bjlgr5ceqcas3" path="res://Cards/Player/health_potion.tres" id="5_qeyqd"]
+[ext_resource type="Texture2D" uid="uid://bdak6d5itv4bi" path="res://Sprites/UI/discard_pile.png" id="5_vd41i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
 font = ExtResource("3_heh15")
@@ -19,15 +22,22 @@ font_size = 12
 outline_size = 3
 outline_color = Color(0.24705882, 0.14509805, 0.46666667, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ietan"]
+font = ExtResource("3_heh15")
+font_size = 13
+outline_size = 2
+outline_color = Color(0.078431375, 0.25490198, 0.078431375, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vd41i"]
+font = ExtResource("3_heh15")
+font_size = 13
+outline_size = 2
+outline_color = Color(0.25490198, 0.101960786, 0.078431375, 1)
+
 [node name="Main" type="Node2D" unique_id=160998639]
 
-[node name="GameManager" type="Node" parent="." unique_id=677426214 node_paths=PackedStringArray("player", "enemy")]
-script = ExtResource("1_rssjf")
-player = NodePath("../PlayerCharacter")
-enemy = NodePath("../GoblinEnemyCharacter")
-metadata/_custom_type_script = "uid://ck1tkt436elji"
-
 [node name="UImanager" type="Node" parent="." unique_id=838239646]
+script = ExtResource("2_heh15")
 
 [node name="ManaUI" type="Node2D" parent="UImanager" unique_id=1478575903]
 position = Vector2(-120, -60)
@@ -39,9 +49,40 @@ texture = ExtResource("2_rssjf")
 offset_left = -12.0
 offset_top = -10.0
 offset_right = 11.0
-offset_bottom = 11.333334
-text = "2/3"
+offset_bottom = 11.333336
 label_settings = SubResource("LabelSettings_uujeg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DrawPileUI" type="Node2D" parent="UImanager" unique_id=1914856247]
+position = Vector2(-120, 60)
+
+[node name="DrawPile" type="Sprite2D" parent="UImanager/DrawPileUI" unique_id=502721168]
+texture = ExtResource("4_xkp4y")
+
+[node name="DrawPileLabel" type="Label" parent="UImanager/DrawPileUI" unique_id=1365841806]
+offset_left = -9.0
+offset_top = -12.0
+offset_right = 10.0
+offset_bottom = 11.0
+text = "22"
+label_settings = SubResource("LabelSettings_ietan")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DiscardPileUI" type="Node2D" parent="UImanager" unique_id=116160851]
+position = Vector2(120, 60)
+
+[node name="DiscardPile" type="Sprite2D" parent="UImanager/DiscardPileUI" unique_id=337561160]
+texture = ExtResource("5_vd41i")
+
+[node name="DiscardPileLabel" type="Label" parent="UImanager/DiscardPileUI" unique_id=1695738150]
+offset_left = -9.0
+offset_top = -12.0
+offset_right = 10.0
+offset_bottom = 11.0
+text = "22"
+label_settings = SubResource("LabelSettings_vd41i")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -59,6 +100,12 @@ position = Vector2(-123, 68)
 
 [node name="CardInteractor" type="Node2D" parent="." unique_id=1098520169]
 script = ExtResource("1_k7mbx")
+
+[node name="GameManager" type="Node" parent="." unique_id=677426214 node_paths=PackedStringArray("player", "enemy")]
+script = ExtResource("1_rssjf")
+player = NodePath("../PlayerCharacter")
+enemy = NodePath("../GoblinEnemyCharacter")
+metadata/_custom_type_script = "uid://ck1tkt436elji"
 
 [node name="Environment" type="Node" parent="." unique_id=158941694]
 

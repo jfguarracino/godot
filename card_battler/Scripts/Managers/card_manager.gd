@@ -1,6 +1,8 @@
 class_name CardManager
 extends Node
 
+signal CardPilesChanged(draw : int, discard : int)
+
 @export var player_deck : Array[CardData]
 @export var card_scene : PackedScene
 @export var cards_to_deal : int = 3
@@ -24,6 +26,7 @@ func _exit_tree() -> void:
 func _ready() -> void:
 	draw_pile = player_deck.duplicate()
 	draw_pile.shuffle()
+	CardPilesChanged.emit(len(draw_pile), len(discard_pile))
 	
 	_deal_hand()
 
@@ -46,8 +49,10 @@ func _deal_card():
 		draw_pile = discard_pile.duplicate()
 		draw_pile.shuffle()
 		discard_pile.clear()
+		CardPilesChanged.emit(len(draw_pile), len(discard_pile))
 	
 	var card_data : CardData = draw_pile.pop_back()
+	CardPilesChanged.emit(len(draw_pile), len(discard_pile))
 	
 	var card : Card = card_scene.instantiate()
 	add_child(card)
@@ -69,6 +74,7 @@ func _get_card_position(card_index : int) -> Vector2:
 
 func discard_card(card : Card):
 	discard_pile.append(card.data)
+	CardPilesChanged.emit(len(draw_pile), len(discard_pile))
 	
 	card_nodes.erase(card)
 	card.queue_free()

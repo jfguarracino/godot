@@ -35,9 +35,10 @@ func cast():
 	cast_data.opponent = game_manager.enemy
 	
 	data.cast(cast_data)
+	
+func _ready():
+	game_manager.ManaChanged.connect(_on_mana_changed)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var lerp_speed : float = 10
 	var target_pos : Vector2 = idle_pos
@@ -73,3 +74,9 @@ func begin_drag():
 	
 func end_drag():
 	state = State.IDLE
+
+func _on_mana_changed(cur : int, max : int):
+	if cur >= data.cost:
+		cost_label.self_modulate = Color.WHITE
+	else:
+		cost_label.self_modulate = Color.ORANGE_RED
