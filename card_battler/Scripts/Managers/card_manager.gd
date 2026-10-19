@@ -11,6 +11,8 @@ signal CardPilesChanged(draw : int, discard : int)
 var draw_pile : Array[CardData]
 var discard_pile : Array[CardData]
 var card_nodes : Array[Card]
+var game_manager : GameManager:
+	get: return ManagerRegistry.get_manager('game_manager')
 
 @onready var card_origin : Node2D = $CardOrigin
 @onready var card_spawn : Node2D = $CardSpawn
@@ -24,11 +26,14 @@ func _exit_tree() -> void:
 
 
 func _ready() -> void:
+	game_manager.TurnBegan.connect(_on_turn_began)
+	game_manager.TurnEnded.connect(_on_turn_ended)
+	
 	draw_pile = player_deck.duplicate()
 	draw_pile.shuffle()
 	CardPilesChanged.emit(len(draw_pile), len(discard_pile))
 	
-	_deal_hand()
+	
 
 
 func _rearrange_cards():
@@ -76,6 +81,15 @@ func discard_card(card : Card):
 	discard_pile.append(card.data)
 	CardPilesChanged.emit(len(draw_pile), len(discard_pile))
 	
-	card_nodes.erase(card)
+	card_nodes.erase.call_deferred(card)
 	card.queue_free()
-	_rearrange_cards()
+	_rearrange_cards.call_deferred()
+
+func _on_turn_began(character : Character):
+	if character.is_player:
+		_deal_hand()
+
+func _on_turn_ended(character : Character):
+	if character.is_player:
+		for card in card_nodes:
+			discard_card(card)
