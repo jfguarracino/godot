@@ -8,6 +8,9 @@ class_name EnemyAI
 var cur_action_index : int = -1
 var game_manager : GameManager:
 	get: return ManagerRegistry.get_manager('game_manager')
+	
+@onready var next_action_icon : Sprite2D = $"../NextActionIcon"
+@onready var next_action_label : Label = $"../NextActionLabel"
 
 func _ready() -> void:
 	game_manager.TurnBegan.connect(_on_turn_began)
@@ -30,6 +33,8 @@ func _set_next_action():
 		cur_action_index = 0
 		
 	# update new action ui
+	next_action_icon.texture = actions[cur_action_index].icon
+	next_action_label.text = str(actions[cur_action_index].get_value())
 	
 func _perform_current_action():
 	await get_tree().create_timer(cast_delay).timeout

@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dm7ranomqy8gi" path="res://Scripts/Cards/card.gd" id="1_bnspj"]
 [ext_resource type="Resource" uid="uid://bjlgr5ceqcas3" path="res://Cards/Player/health_potion.tres" id="2_xnv4g"]
+[ext_resource type="AudioStream" uid="uid://dfyhi4wbmmtav" path="res://Audio/card_hover.ogg" id="3_mm04k"]
 [ext_resource type="Texture2D" uid="uid://dd12l4505uk0e" path="res://Sprites/Card/card.png" id="3_u5wvb"]
 [ext_resource type="FontFile" uid="uid://cj5hxyu5fg34k" path="res://Font/PTSerif-Bold.ttf" id="4_mm04k"]
+[ext_resource type="AudioStream" uid="uid://wbiopvryd1sm" path="res://Audio/card_drag.ogg" id="4_yvxpl"]
 [ext_resource type="FontFile" uid="uid://ccybyp4jquowr" path="res://Font/PTSerif-Regular.ttf" id="5_yvxpl"]
 [ext_resource type="Texture2D" uid="uid://bo7oddwoummp2" path="res://Sprites/Card/icon_attack.png" id="6_uf1hq"]
 
@@ -36,6 +38,8 @@ font_color = Color(0.11119685, 0.11119684, 0.11119684, 1)
 [node name="Card" type="Area2D" unique_id=408348954]
 script = ExtResource("1_bnspj")
 data = ExtResource("2_xnv4g")
+hover_sfx = ExtResource("3_mm04k")
+drag_sfx = ExtResource("4_yvxpl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1092837791]
 shape = SubResource("RectangleShape2D_sw52a")

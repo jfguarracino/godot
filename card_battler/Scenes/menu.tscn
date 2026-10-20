@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://1fo64o4jd4ey"]
+
+[ext_resource type="Texture2D" uid="uid://b164bqk8dgcwy" path="res://Sprites/Background/background.png" id="1_cayip"]
+[ext_resource type="Script" uid="uid://m42whj8oieeg" path="res://Scripts/Managers/menu.gd" id="1_wwsa2"]
+[ext_resource type="Script" uid="uid://suolfcps1erh" path="res://Scripts/Managers/camera_controller.gd" id="2_158mb"]
+[ext_resource type="FontFile" uid="uid://cj5hxyu5fg34k" path="res://Font/PTSerif-Bold.ttf" id="3_wwsa2"]
+[ext_resource type="AudioStream" uid="uid://s1fxqwmhjmty" path="res://Audio/music.mp3" id="5_jsrd8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
+font = ExtResource("3_wwsa2")
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0.9019608, 0.0627451, 0.0627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cayip"]
+bg_color = Color(0.47467142, 0.016885592, 0.15263462, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwsa2"]
+bg_color = Color(0.9867118, 0.26491752, 0.4120233, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_158mb"]
+bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Main" type="Node2D" unique_id=1922373551 node_paths=PackedStringArray("level_buttons")]
+script = ExtResource("1_wwsa2")
+level_buttons = [NodePath("LevelButton"), NodePath("LevelButton2"), NodePath("LevelButton3"), NodePath("LevelButton4")]
+
+[node name="Environment" type="Node" parent="." unique_id=1556250959]
+
+[node name="Background" type="Sprite2D" parent="Environment" unique_id=579544124]
+z_index = -100
+position = Vector2(0, -20)
+texture = ExtResource("1_cayip")
+
+[node name="Camera2D" type="Camera2D" parent="Environment" unique_id=1800246906]
+zoom = Vector2(4, 4)
+script = ExtResource("2_158mb")
+
+[node name="Title" type="Label" parent="." unique_id=80777841]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -47.0
+offset_top = -60.0
+offset_right = 47.0
+offset_bottom = -37.0
+grow_horizontal = 2
+text = "Card Battler"
+label_settings = SubResource("LabelSettings_uujeg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelButton" type="Button" parent="." unique_id=1043598077]
+offset_left = -110.0
+offset_right = -75.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("3_wwsa2")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wwsa2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_158mb")
+text = "Level 1"
+
+[node name="LevelButton2" type="Button" parent="." unique_id=1788467014]
+offset_left = -50.0
+offset_right = -15.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("3_wwsa2")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wwsa2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_158mb")
+text = "Level 2"
+
+[node name="LevelButton3" type="Button" parent="." unique_id=1258490679]
+offset_left = 10.0
+offset_right = 45.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("3_wwsa2")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wwsa2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_158mb")
+text = "Level 3"
+
+[node name="LevelButton4" type="Button" parent="." unique_id=1171675614]
+offset_left = 70.0
+offset_right = 105.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("3_wwsa2")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_cayip")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wwsa2")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_158mb")
+text = "Level 4"
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=294484028]
+stream = ExtResource("5_jsrd8")
+volume_db = -25.0
+autoplay = true

@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://ekl5lyenpdcf"]
 
 [ext_resource type="PackedScene" uid="uid://dv1mrxpto1664" path="res://Scenes/Characters/character.tscn" id="1_l560e"]
+[ext_resource type="AudioStream" uid="uid://brmg7vjccvrfp" path="res://Audio/player_damaged.ogg" id="2_c2rcm"]
 
 [node name="PlayerCharacter" unique_id=893356156 instance=ExtResource("1_l560e")]
 is_player = true
-
-[node name="CharacterAnimation" parent="." index="0" unique_id=1579001087]
-position = Vector2(0, -13)
+damaged_sfx = ExtResource("2_c2rcm")
 
 [node name="HealthBar" parent="." index="1" unique_id=1872397625]
 offset_left = -20.0

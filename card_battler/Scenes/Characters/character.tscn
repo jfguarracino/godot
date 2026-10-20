@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dv1mrxpto1664"]
 
 [ext_resource type="Script" uid="uid://bvue0ry5rv50q" path="res://Scripts/Character/character.gd" id="1_nv3ih"]
+[ext_resource type="AudioStream" uid="uid://bbrdwhycqfm2k" path="res://Audio/heal.ogg" id="2_c36b5"]
 [ext_resource type="SpriteFrames" uid="uid://bocxn7uo247e0" path="res://Sprites/Player/player.tres" id="2_ipqrv"]
 [ext_resource type="Script" uid="uid://c7degtc2hqjfm" path="res://Scripts/Character/character_animation.gd" id="3_c36b5"]
 [ext_resource type="Script" uid="uid://bs2w7g8oswo3a" path="res://Scripts/Character/health_bar.gd" id="4_1l7j3"]
@@ -16,11 +17,17 @@ bg_color = Color(0.6729628, 0.13394022, 0.0642145, 1)
 font = ExtResource("5_yo31i")
 font_size = 4
 
+[sub_resource type="Curve" id="Curve_nv3ih"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
 [node name="Character" type="Node2D" unique_id=893356156]
 script = ExtResource("1_nv3ih")
+heal_sfx = ExtResource("2_c36b5")
 
 [node name="CharacterAnimation" type="AnimatedSprite2D" parent="." unique_id=1579001087]
-position = Vector2(-60, -20)
+position = Vector2(0, -13)
 sprite_frames = ExtResource("2_ipqrv")
 animation = &"idle"
 autoplay = "idle"
@@ -55,5 +62,27 @@ text = "50 / 100"
 label_settings = SubResource("LabelSettings_uujeg")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="HealParticle" type="CPUParticles2D" parent="." unique_id=773238721]
+position = Vector2(0, -12)
+emitting = false
+amount = 50
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(12, 12)
+direction = Vector2(0, -1)
+gravity = Vector2(0, -100)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+tangential_accel_min = -60.0
+tangential_accel_max = 60.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_nv3ih")
+color = Color(0.36078432, 0.9411765, 0.16078432, 0.8784314)
 
 [connection signal="animation_finished" from="CharacterAnimation" to="CharacterAnimation" method="_on_animation_finished"]

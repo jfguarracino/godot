@@ -8,3 +8,6 @@ func get_description() -> String:
 	
 func cast(data : CastData):
 	data.caster.attack(data.opponent, attack_damage)
+
+func get_value() -> int:
+	return attack_damage

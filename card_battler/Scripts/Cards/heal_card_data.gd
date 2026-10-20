@@ -8,3 +8,6 @@ func get_description() -> String:
 
 func cast(data : CastData):
 	data.caster.heal(heal_amount)
+
+func get_value() -> int:
+	return heal_amount

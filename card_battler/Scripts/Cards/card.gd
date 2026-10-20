@@ -14,6 +14,8 @@ enum State
 @onready var icon_rect : TextureRect = $Icon
 
 @export var data : CardData
+@export var hover_sfx : AudioStream
+@export var drag_sfx : AudioStream
 
 var state : State
 var idle_pos : Vector2
@@ -22,6 +24,8 @@ var hover_pos : Vector2:
 var default_z_index : int
 var game_manager : GameManager:
 	get: return ManagerRegistry.get_manager('game_manager')
+var audio_manager : AudioManager:
+	get: return ManagerRegistry.get_manager('audio_manager')
 
 func setup(data : CardData) -> void:
 	self.data = data
@@ -64,6 +68,7 @@ func _setup_visual():
 func hover_enter():
 	state = State.HOVERED
 	z_index = 99
+	audio_manager.play(hover_sfx)
 	
 func hover_exit():
 	state = State.IDLE
@@ -71,6 +76,7 @@ func hover_exit():
 	
 func begin_drag():
 	state = State.DRAGGING
+	audio_manager.play(drag_sfx)
 	
 func end_drag():
 	state = State.IDLE

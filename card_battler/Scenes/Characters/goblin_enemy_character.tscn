@@ -3,16 +3,29 @@
 [ext_resource type="PackedScene" uid="uid://dv1mrxpto1664" path="res://Scenes/Characters/character.tscn" id="1_dxcs8"]
 [ext_resource type="Script" uid="uid://cpfgugvn1ks14" path="res://Scripts/Enemy/enemy_ai.gd" id="2_0kjr3"]
 [ext_resource type="SpriteFrames" uid="uid://d26slk7rbvc85" path="res://Sprites/Enemies/Goblin/goblin.tres" id="2_ochns"]
+[ext_resource type="AudioStream" uid="uid://dbuotossefdma" path="res://Audio/enemy_damaged.ogg" id="2_rta8c"]
 [ext_resource type="Script" uid="uid://coydc4jjoaia6" path="res://Scripts/Cards/card_data.gd" id="3_3nvn6"]
-[ext_resource type="Resource" uid="uid://dtswgwftf7feb" path="res://Cards/Player/jab.tres" id="4_duad4"]
-[ext_resource type="Resource" uid="uid://bjlgr5ceqcas3" path="res://Cards/Player/health_potion.tres" id="5_j6afl"]
+[ext_resource type="Resource" uid="uid://v2sxv8nbft5l" path="res://Cards/Goblin/goblin_attack.tres" id="4_duad4"]
+[ext_resource type="Resource" uid="uid://gohy43738m7p" path="res://Cards/Goblin/goblin_heal.tres" id="5_j6afl"]
+[ext_resource type="Resource" uid="uid://cxvkrx5kbn7se" path="res://Cards/Goblin/goblin_heavy_attack.tres" id="6_6q66t"]
+[ext_resource type="Texture2D" uid="uid://bo7oddwoummp2" path="res://Sprites/Card/icon_attack.png" id="8_6q66t"]
+[ext_resource type="FontFile" uid="uid://cj5hxyu5fg34k" path="res://Font/PTSerif-Bold.ttf" id="9_rta8c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
+font = ExtResource("9_rta8c")
+font_size = 5
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [node name="GoblinEnemyCharacter" unique_id=893356156 instance=ExtResource("1_dxcs8")]
 max_health = 15
+damaged_sfx = ExtResource("2_rta8c")
 
 [node name="EnemyAI" type="Node" parent="." index="0" unique_id=1407629279]
 script = ExtResource("2_0kjr3")
-actions = Array[ExtResource("3_3nvn6")]([ExtResource("4_duad4"), ExtResource("4_duad4"), ExtResource("5_j6afl")])
+actions = Array[ExtResource("3_3nvn6")]([ExtResource("4_duad4"), ExtResource("5_j6afl"), ExtResource("6_6q66t")])
+cast_delay = null
+end_turn_delay = null
 
 [node name="CharacterAnimation" parent="." index="1" unique_id=1579001087]
 position = Vector2(0, -25)
@@ -24,3 +37,16 @@ offset_left = -20.0
 offset_top = -50.0
 offset_right = 20.0
 offset_bottom = -45.0
+
+[node name="NextActionIcon" type="Sprite2D" parent="." index="3" unique_id=1066770880]
+position = Vector2(-25, -47)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_6q66t")
+
+[node name="NextActionLabel" type="Label" parent="." index="4" unique_id=1588064206]
+offset_left = -25.0
+offset_top = -49.0
+offset_right = -22.0
+offset_bottom = -42.333332
+text = "5"
+label_settings = SubResource("LabelSettings_uujeg")

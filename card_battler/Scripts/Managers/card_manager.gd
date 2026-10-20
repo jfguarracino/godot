@@ -32,8 +32,6 @@ func _ready() -> void:
 	draw_pile = player_deck.duplicate()
 	draw_pile.shuffle()
 	CardPilesChanged.emit(len(draw_pile), len(discard_pile))
-	
-	
 
 
 func _rearrange_cards():
@@ -41,6 +39,7 @@ func _rearrange_cards():
 		var card : Card = card_nodes[i]
 		card.idle_pos = _get_card_position(i)
 		card.default_z_index = i + 1
+		card.rotation_degrees = card.idle_pos.x * 0.1
 
 
 func _deal_hand():

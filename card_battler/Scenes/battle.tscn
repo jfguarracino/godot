@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://bdak6d5itv4bi" path="res://Sprites/UI/discard_pile.png" id="5_vd41i"]
 [ext_resource type="Texture2D" uid="uid://dyu51y2tnn1y8" path="res://Sprites/UI/end_turn_button.png" id="6_nne6o"]
 [ext_resource type="Texture2D" uid="uid://dqcy5ina3mfri" path="res://Sprites/Background/character_highlight.png" id="14_fonr4"]
+[ext_resource type="Script" uid="uid://suolfcps1erh" path="res://Scripts/Managers/camera_controller.gd" id="16_387br"]
+[ext_resource type="Script" uid="uid://bkd6sdq41ocx0" path="res://Scripts/Managers/audio_manager.gd" id="18_7vlph"]
+[ext_resource type="AudioStream" uid="uid://s1fxqwmhjmty" path="res://Audio/music.mp3" id="19_486ce"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
 font = ExtResource("3_heh15")
@@ -157,11 +160,22 @@ texture = ExtResource("1_w7k78")
 
 [node name="Camera2D" type="Camera2D" parent="Environment" unique_id=295929572]
 zoom = Vector2(4, 4)
+script = ExtResource("16_387br")
 
 [node name="PlayerCharacter" parent="." unique_id=893356156 instance=ExtResource("2_oxf17")]
 position = Vector2(-60, 17)
+heal_sfx = null
 
 [node name="GoblinEnemyCharacter" parent="." unique_id=496548414 instance=ExtResource("3_1ruyk")]
 position = Vector2(60, 17)
+heal_sfx = null
+
+[node name="AudioManager" type="Node" parent="." unique_id=1952020031]
+script = ExtResource("18_7vlph")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1710485575]
+stream = ExtResource("19_486ce")
+volume_db = -25.0
+autoplay = true
 
 [connection signal="pressed" from="UImanager/EndTurnUI/EndTurnButton" to="UImanager" method="_on_end_turn_button_pressed"]
