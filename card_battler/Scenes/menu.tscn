@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://1fo64o4jd4ey"]
 
 [ext_resource type="Texture2D" uid="uid://b164bqk8dgcwy" path="res://Sprites/Background/background.png" id="1_cayip"]
-[ext_resource type="Script" uid="uid://m42whj8oieeg" path="res://Scripts/Managers/menu.gd" id="1_wwsa2"]
+[ext_resource type="Script" uid="uid://m42whj8oieeg" path="res://Scripts/Menu/menu.gd" id="1_wwsa2"]
 [ext_resource type="Script" uid="uid://suolfcps1erh" path="res://Scripts/Managers/camera_controller.gd" id="2_158mb"]
 [ext_resource type="FontFile" uid="uid://cj5hxyu5fg34k" path="res://Font/PTSerif-Bold.ttf" id="3_wwsa2"]
 [ext_resource type="AudioStream" uid="uid://s1fxqwmhjmty" path="res://Audio/music.mp3" id="5_jsrd8"]
+[ext_resource type="Script" uid="uid://syk54lfskitj" path="res://Scripts/Menu/level_button.gd" id="5_wbdvm"]
+[ext_resource type="Resource" uid="uid://cg2ulfssyhgaq" path="res://Levels/level1.tres" id="6_7qvly"]
+[ext_resource type="Resource" uid="uid://3tvf3jxrjci3" path="res://Levels/level2.tres" id="7_rfqti"]
+[ext_resource type="Resource" uid="uid://cg2xlgxoofvpb" path="res://Levels/level3.tres" id="8_g8i7c"]
+[ext_resource type="Resource" uid="uid://bayqk58rivx48" path="res://Levels/level4.tres" id="9_23t3j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uujeg"]
 font = ExtResource("3_wwsa2")
@@ -73,6 +78,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_cayip")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wwsa2")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_158mb")
 text = "Level 1"
+script = ExtResource("5_wbdvm")
+level_data = ExtResource("6_7qvly")
 
 [node name="LevelButton2" type="Button" parent="." unique_id=1788467014]
 offset_left = -50.0
@@ -84,6 +91,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_cayip")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wwsa2")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_158mb")
 text = "Level 2"
+script = ExtResource("5_wbdvm")
+level_data = ExtResource("7_rfqti")
 
 [node name="LevelButton3" type="Button" parent="." unique_id=1258490679]
 offset_left = 10.0
@@ -95,6 +104,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_cayip")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wwsa2")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_158mb")
 text = "Level 3"
+script = ExtResource("5_wbdvm")
+level_data = ExtResource("8_g8i7c")
 
 [node name="LevelButton4" type="Button" parent="." unique_id=1171675614]
 offset_left = 70.0
@@ -106,6 +117,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_cayip")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wwsa2")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_158mb")
 text = "Level 4"
+script = ExtResource("5_wbdvm")
+level_data = ExtResource("9_23t3j")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=294484028]
 stream = ExtResource("5_jsrd8")

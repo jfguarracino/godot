@@ -18,7 +18,11 @@ var audio_manager : AudioManager:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	current_health = max_health
+	if is_player and GameData.current_health > 0:
+		current_health = GameData.current_health
+	else:
+		current_health = max_health
+		
 	HealthUpdated.emit()
 	anim.play(anim.IDLE_ANIM)
 
@@ -55,3 +59,4 @@ func heal(amount : int):
 	
 func die():
 	anim.play(anim.DEATH_ANIM)
+	ManagerRegistry.get_manager('game_manager').end_game(self)
