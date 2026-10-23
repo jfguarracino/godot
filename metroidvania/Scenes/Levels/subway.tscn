@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://d3y8163jgq6cu"]
 
 [ext_resource type="PackedScene" uid="uid://b1lbxe8lybwd7" path="res://Scenes/Levels/level.tscn" id="1_85nfg"]
+[ext_resource type="PackedScene" uid="uid://bqwjxnuodwn3b" path="res://Scenes/Characters/drone.tscn" id="2_op81p"]
 
 [node name="Subway" unique_id=1443494373 instance=ExtResource("1_85nfg")]
 
@@ -9,3 +10,6 @@ tile_map_data = PackedByteArray("AAAOABMAAAAEAAAAAAAPABMAAAAFAAAAAAAQABMAAAAGAAA
 
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(392310245) index="0" unique_id=640446857]
 position = Vector2(283, 290)
+
+[node name="Drone" parent="Entities" parent_id_path=PackedInt32Array(392310245) index="1" unique_id=1294143528 instance=ExtResource("2_op81p")]
+position = Vector2(231, 230)

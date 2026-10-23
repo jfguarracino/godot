@@ -29,11 +29,17 @@ const GUN_DIRECTIONS = {
 	Vector2i(1,-1):  7,
 }
 
+signal shoot(pos : Vector2, dir : Vector2)
+
 func get_input():
 	direction_x = Input.get_axis("left", "right")
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
+	
+	if Input.is_action_just_pressed("shoot") and not $Timer/ReloadTimer.time_left:
+		shoot.emit(position, get_local_mouse_position().normalized())
+		$Timer/ReloadTimer.start()
 
 func animation():
 	# legs
