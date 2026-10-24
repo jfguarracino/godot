@@ -51,7 +51,10 @@ radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_40svl"]
 
-[node name="Drone" type="CharacterBody2D" unique_id=1294143528]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ste36"]
+radius = 11.0
+
+[node name="Drone" type="CharacterBody2D" unique_id=1294143528 groups=["Drones"]]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_u82xt")
@@ -72,5 +75,13 @@ collision_mask = 2
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_40svl")
 
+[node name="Area2D" type="Area2D" parent="." unique_id=396976267]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1552173677]
+shape = SubResource("CircleShape2D_ste36")
+
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

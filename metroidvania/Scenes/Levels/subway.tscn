@@ -12,4 +12,4 @@ tile_map_data = PackedByteArray("AAAOABMAAAAEAAAAAAAPABMAAAAFAAAAAAAQABMAAAAGAAA
 position = Vector2(283, 290)
 
 [node name="Drone" parent="Entities" parent_id_path=PackedInt32Array(392310245) index="1" unique_id=1294143528 instance=ExtResource("2_op81p")]
-position = Vector2(231, 230)
+position = Vector2(172, 148)

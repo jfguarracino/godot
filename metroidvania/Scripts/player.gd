@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var gravity : float = 100
 var direction_x : float
+var health : int = 5
 
 @export_category('move')
 @export var speed : float = 120
@@ -75,3 +76,6 @@ func _physics_process(delta: float) -> void:
 	move(delta)
 	animation()
 	move_and_slide()
+
+func hit():
+	health -= 1

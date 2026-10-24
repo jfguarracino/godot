@@ -3,7 +3,14 @@ extends CharacterBody2D
 var direction : Vector2
 var speed : float = 50
 var player : CharacterBody2D
-var health : int = 3
+var health : int = 3:
+	set(value):
+		health = value
+		if health <= 0:
+			explode.emit(position)
+			queue_free()
+
+signal explode(pos : Vector2)
 
 func _on_player_detection_area_body_entered(body: Node2D) -> void:
 	player = body
@@ -26,3 +33,8 @@ func hit():
 	var tween = create_tween()
 	tween.tween_property($AnimatedSprite2D.material, 'shader_parameter/Progress', 1.0, 0.3)
 	tween.tween_property($AnimatedSprite2D.material, 'shader_parameter/Progress', 0.0, 0.5)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	explode.emit(position)
+	queue_free()
