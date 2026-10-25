@@ -5,6 +5,11 @@ var speed : int = 200
 
 const offset = 16
 
+func _ready() -> void:
+	$CollisionShape2D.disabled = true
+	await get_tree().create_timer(0.2).timeout
+	$CollisionShape2D.disabled = false
+
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
 

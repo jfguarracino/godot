@@ -2,6 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://Graphics/characters/player.png" id="1_3etf2"]
 [ext_resource type="Script" uid="uid://b4ghbdpf5efx4" path="res://Scripts/player.gd" id="1_40svl"]
+[ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://Graphics/lights/main.png" id="3_gy20a"]
+[ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://Graphics/ui/crosshair.png" id="3_khnq4"]
+[ext_resource type="PackedScene" uid="uid://tgvve4hadwf1" path="res://Scenes/ui.tscn" id="4_cqrjx"]
+[ext_resource type="Script" uid="uid://104qw1qdg2n7" path="res://Scripts/crosshair.gd" id="4_utp2y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uujeg"]
 radius = 6.0
@@ -19,6 +23,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [25]
+}
+
+[sub_resource type="Animation" id="Animation_khnq4"]
+resource_name = "duck"
+length = 0.06670000000000001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Legs:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [34]
 }
 
 [sub_resource type="Animation" id="Animation_cqrjx"]
@@ -75,6 +96,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gy20a"]
 _data = {
 &"RESET": SubResource("Animation_40svl"),
+&"duck": SubResource("Animation_khnq4"),
 &"idle": SubResource("Animation_cqrjx"),
 &"jump": SubResource("Animation_gy20a"),
 &"run": SubResource("Animation_al8ar")
@@ -100,6 +122,12 @@ texture = ExtResource("1_3etf2")
 hframes = 8
 vframes = 5
 
+[node name="Crosshair" type="Sprite2D" parent="Sprites" unique_id=1743840552]
+position = Vector2(67, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_khnq4")
+script = ExtResource("4_utp2y")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1126568821]
 shape = SubResource("CapsuleShape2D_uujeg")
 
@@ -114,3 +142,15 @@ libraries/ = SubResource("AnimationLibrary_gy20a")
 [node name="ReloadTimer" type="Timer" parent="Timer" unique_id=1288260746]
 wait_time = 0.5
 one_shot = true
+
+[node name="DashTimer" type="Timer" parent="Timer" unique_id=550472877]
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="Timer" unique_id=1463836083]
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1331272660]
+energy = 0.5
+texture = ExtResource("3_gy20a")
+
+[node name="UI" parent="." unique_id=361342618 instance=ExtResource("4_cqrjx")]
