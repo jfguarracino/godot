@@ -1,19 +1,18 @@
 extends Node2D
 
 var bullet_scene = preload("res://Scenes/bullet.tscn")
-var explosion_scene = preload('res://Scenes/explosion.tscn')
+var explosion_scene = preload("res://Scenes/explosion.tscn")
 
 func _ready() -> void:
 	for drone in get_tree().get_nodes_in_group('Drones'):
 		drone.connect('explode', create_explosion)
 
-
-func create_explosion(pos : Vector2):
+func create_explosion(pos: Vector2):
 	var explosion = explosion_scene.instantiate()
 	explosion.setup(pos)
 	call_deferred('_add_explosion', explosion)
-	
-	
+
+
 func _add_explosion(explosion):
 	$Bullets.add_child(explosion)
 

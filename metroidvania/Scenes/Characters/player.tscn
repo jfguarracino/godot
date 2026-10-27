@@ -1,55 +1,22 @@
-[gd_scene format=3 uid="uid://nchkkvvohg75"]
+[gd_scene format=3 uid="uid://da5mlm4gym12d"]
 
-[ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://Graphics/characters/player.png" id="1_3etf2"]
-[ext_resource type="Script" uid="uid://b4ghbdpf5efx4" path="res://Scripts/player.gd" id="1_40svl"]
-[ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://Graphics/lights/main.png" id="3_gy20a"]
-[ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://Graphics/ui/crosshair.png" id="3_khnq4"]
-[ext_resource type="PackedScene" uid="uid://tgvve4hadwf1" path="res://Scenes/ui.tscn" id="4_cqrjx"]
-[ext_resource type="Script" uid="uid://104qw1qdg2n7" path="res://Scripts/crosshair.gd" id="4_utp2y"]
+[ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://Graphics/characters/player.png" id="1_rp718"]
+[ext_resource type="Script" uid="uid://u2me56tfgrqe" path="res://Scripts/player.gd" id="1_yewv4"]
+[ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://Graphics/lights/main.png" id="3_76oj4"]
+[ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://Graphics/ui/crosshair.png" id="3_kqtwu"]
+[ext_resource type="Script" uid="uid://ci46eimn8aw5b" path="res://Scripts/crosshair.gd" id="4_6eyoc"]
+[ext_resource type="PackedScene" uid="uid://drqewml4qy4h1" path="res://Scenes/ui.tscn" id="4_dyp2m"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uujeg"]
-radius = 6.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yewv4"]
+radius = 5.0
+height = 31.0
 
-[sub_resource type="Animation" id="Animation_40svl"]
+[sub_resource type="Animation" id="Animation_76oj4"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Legs:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [25]
-}
-
-[sub_resource type="Animation" id="Animation_khnq4"]
-resource_name = "duck"
-length = 0.06670000000000001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Legs:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [34]
-}
-
-[sub_resource type="Animation" id="Animation_cqrjx"]
-resource_name = "idle"
-length = 0.06670000000000001
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Legs:frame")
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,14 +26,45 @@ tracks/0/keys = {
 "values": [24]
 }
 
-[sub_resource type="Animation" id="Animation_gy20a"]
-resource_name = "jump"
-length = 0.06666667
+[sub_resource type="Animation" id="Animation_kqtwu"]
+resource_name = "duck"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Legs:frame")
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [34]
+}
+
+[sub_resource type="Animation" id="Animation_atpat"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="Animation" id="Animation_dyp2m"]
+resource_name = "jump"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,81 +74,80 @@ tracks/0/keys = {
 "values": [25]
 }
 
-[sub_resource type="Animation" id="Animation_al8ar"]
+[sub_resource type="Animation" id="Animation_yewv4"]
 resource_name = "run"
 length = 1.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/Legs:frame")
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1666666),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [26, 27, 28, 29, 30, 31, 32]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gy20a"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqtwu"]
 _data = {
-&"RESET": SubResource("Animation_40svl"),
-&"duck": SubResource("Animation_khnq4"),
-&"idle": SubResource("Animation_cqrjx"),
-&"jump": SubResource("Animation_gy20a"),
-&"run": SubResource("Animation_al8ar")
+&"RESET": SubResource("Animation_76oj4"),
+&"duck": SubResource("Animation_kqtwu"),
+&"idle": SubResource("Animation_atpat"),
+&"jump": SubResource("Animation_dyp2m"),
+&"run": SubResource("Animation_yewv4")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=640446857]
+[node name="Player" type="CharacterBody2D" unique_id=205427907]
 collision_layer = 2
 collision_mask = 13
-script = ExtResource("1_40svl")
+script = ExtResource("1_yewv4")
 
-[node name="Sprites" type="Node2D" parent="." unique_id=1954250726]
+[node name="Sprites" type="Node2D" parent="." unique_id=1297927411]
 
-[node name="Legs" type="Sprite2D" parent="Sprites" unique_id=597035389]
-position = Vector2(0, -5)
-texture = ExtResource("1_3etf2")
-hframes = 8
-vframes = 5
-frame = 25
-
-[node name="Torso" type="Sprite2D" parent="Sprites" unique_id=57806013]
+[node name="TorsoSprite" type="Sprite2D" parent="Sprites" unique_id=861118230]
 position = Vector2(0, -8)
-texture = ExtResource("1_3etf2")
+texture = ExtResource("1_rp718")
 hframes = 8
 vframes = 5
 
-[node name="Crosshair" type="Sprite2D" parent="Sprites" unique_id=1743840552]
-position = Vector2(67, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_khnq4")
-script = ExtResource("4_utp2y")
+[node name="LegSprite" type="Sprite2D" parent="Sprites" unique_id=1968249127]
+position = Vector2(0, -7)
+texture = ExtResource("1_rp718")
+hframes = 8
+vframes = 5
+frame = 24
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1126568821]
-shape = SubResource("CapsuleShape2D_uujeg")
+[node name="Crosshair" type="Sprite2D" parent="Sprites" unique_id=1084502942]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_kqtwu")
+script = ExtResource("4_6eyoc")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1094276839]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1526610022]
+shape = SubResource("CapsuleShape2D_yewv4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2020332631]
 zoom = Vector2(2, 2)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1290365105]
-libraries/ = SubResource("AnimationLibrary_gy20a")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=126566754]
+libraries/ = SubResource("AnimationLibrary_kqtwu")
 
-[node name="Timer" type="Node" parent="." unique_id=1688280255]
+[node name="Timer" type="Node" parent="." unique_id=1114311019]
 
-[node name="ReloadTimer" type="Timer" parent="Timer" unique_id=1288260746]
+[node name="ReloadTimer" type="Timer" parent="Timer" unique_id=245615821]
 wait_time = 0.5
 one_shot = true
 
-[node name="DashTimer" type="Timer" parent="Timer" unique_id=550472877]
+[node name="DashTimer" type="Timer" parent="Timer" unique_id=1092290425]
 one_shot = true
 
-[node name="CoyoteTimer" type="Timer" parent="Timer" unique_id=1463836083]
+[node name="CoyoteTimer" type="Timer" parent="Timer" unique_id=1611612717]
 one_shot = true
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1331272660]
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=754289845]
 energy = 0.5
-texture = ExtResource("3_gy20a")
+texture = ExtResource("3_76oj4")
 
-[node name="UI" parent="." unique_id=361342618 instance=ExtResource("4_cqrjx")]
+[node name="UI" parent="." unique_id=2084967506 instance=ExtResource("4_dyp2m")]

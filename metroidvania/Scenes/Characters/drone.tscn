@@ -1,87 +1,88 @@
-[gd_scene format=3 uid="uid://bqwjxnuodwn3b"]
+[gd_scene load_steps=13 format=3 uid="uid://b2nvy7d1ptka0"]
 
-[ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://Graphics/characters/drone.png" id="1_kpcib"]
-[ext_resource type="Script" uid="uid://c2co4btxjd107" path="res://Scripts/drone.gd" id="1_u82xt"]
-[ext_resource type="Shader" uid="uid://d0ew16ecljkpp" path="res://Shaders/flash.tres" id="2_agohi"]
+[ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_rpnsq"]
+[ext_resource type="Script" uid="uid://mkqsho00vus6" path="res://scenes/characters/drone.gd" id="1_rxpq6"]
+[ext_resource type="Shader" uid="uid://cwiab7gjlrsvv" path="res://shaders/flash.tres" id="2_k0cur"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n54tl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_waagf"]
 resource_local_to_scene = true
-shader = ExtResource("2_agohi")
+shader = ExtResource("2_k0cur")
 shader_parameter/Color = Color(1, 1, 1, 1)
 shader_parameter/Progress = 0.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u82xt"]
-atlas = ExtResource("1_kpcib")
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxpq6"]
+atlas = ExtResource("1_rpnsq")
 region = Rect2(0, 0, 32, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_agohi"]
-atlas = ExtResource("1_kpcib")
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0cur"]
+atlas = ExtResource("1_rpnsq")
 region = Rect2(32, 0, 32, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5y6rt"]
-atlas = ExtResource("1_kpcib")
+[sub_resource type="AtlasTexture" id="AtlasTexture_waagf"]
+atlas = ExtResource("1_rpnsq")
 region = Rect2(64, 0, 32, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gry1w"]
-atlas = ExtResource("1_kpcib")
+[sub_resource type="AtlasTexture" id="AtlasTexture_amngf"]
+atlas = ExtResource("1_rpnsq")
 region = Rect2(96, 0, 32, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_sw52a"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_4in0l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u82xt")
+"texture": SubResource("AtlasTexture_rxpq6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_agohi")
+"texture": SubResource("AtlasTexture_k0cur")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5y6rt")
+"texture": SubResource("AtlasTexture_waagf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gry1w")
+"texture": SubResource("AtlasTexture_amngf")
 }],
-"loop": 1,
+"loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sw52a"]
-radius = 8.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_3e7lx"]
+radius = 7.071068
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_40svl"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rpnsq"]
+radius = 134.01492
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ste36"]
-radius = 11.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_k0cur"]
+radius = 12.0
 
-[node name="Drone" type="CharacterBody2D" unique_id=1294143528 groups=["Drones"]]
+[node name="Drone" type="CharacterBody2D" groups=["Drones"]]
 collision_layer = 4
 collision_mask = 11
-script = ExtResource("1_u82xt")
+script = ExtResource("1_rxpq6")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=462939297]
-material = SubResource("ShaderMaterial_n54tl")
-sprite_frames = SubResource("SpriteFrames_sw52a")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_waagf")
+sprite_frames = SubResource("SpriteFrames_4in0l")
 autoplay = "default"
+frame_progress = 0.051387403
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1900035623]
-shape = SubResource("CircleShape2D_sw52a")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_3e7lx")
 
-[node name="PlayerDetectionArea" type="Area2D" parent="." unique_id=1810695014]
+[node name="PlayerDetectionArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea" unique_id=486476793]
-scale = Vector2(20, 20)
-shape = SubResource("CircleShape2D_40svl")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+shape = SubResource("CircleShape2D_rpnsq")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=396976267]
+[node name="CollisionShape2D2" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1552173677]
-shape = SubResource("CircleShape2D_ste36")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D2"]
+shape = SubResource("CircleShape2D_k0cur")
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="CollisionShape2D2" to="." method="_on_collision_shape_2d_2_body_entered"]
