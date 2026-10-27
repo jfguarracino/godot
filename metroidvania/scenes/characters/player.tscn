@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://da5mlm4gym12d"]
+
+[ext_resource type="Texture2D" uid="uid://de5wf7al0hknv" path="res://graphics/characters/player.png" id="1_rp718"]
+[ext_resource type="Script" uid="uid://u2me56tfgrqe" path="res://scenes/characters/player.gd" id="1_yewv4"]
+[ext_resource type="Texture2D" uid="uid://dijla4pisrrw8" path="res://graphics/lights/main.png" id="3_76oj4"]
+[ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="3_kqtwu"]
+[ext_resource type="Script" uid="uid://ci46eimn8aw5b" path="res://scenes/characters/crosshair.gd" id="4_6eyoc"]
+[ext_resource type="PackedScene" uid="uid://drqewml4qy4h1" path="res://scenes/ui/ui.tscn" id="4_dyp2m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yewv4"]
+radius = 5.0
+height = 31.0
+
+[sub_resource type="Animation" id="Animation_76oj4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="Animation" id="Animation_kqtwu"]
+resource_name = "duck"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [34]
+}
+
+[sub_resource type="Animation" id="Animation_atpat"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="Animation" id="Animation_dyp2m"]
+resource_name = "jump"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [25]
+}
+
+[sub_resource type="Animation" id="Animation_yewv4"]
+resource_name = "run"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/LegSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [26, 27, 28, 29, 30, 31, 32]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqtwu"]
+_data = {
+&"RESET": SubResource("Animation_76oj4"),
+&"duck": SubResource("Animation_kqtwu"),
+&"idle": SubResource("Animation_atpat"),
+&"jump": SubResource("Animation_dyp2m"),
+&"run": SubResource("Animation_yewv4")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=205427907]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_yewv4")
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1297927411]
+
+[node name="TorsoSprite" type="Sprite2D" parent="Sprites" unique_id=861118230]
+position = Vector2(0, -8)
+texture = ExtResource("1_rp718")
+hframes = 8
+vframes = 5
+
+[node name="LegSprite" type="Sprite2D" parent="Sprites" unique_id=1968249127]
+position = Vector2(0, -7)
+texture = ExtResource("1_rp718")
+hframes = 8
+vframes = 5
+frame = 24
+
+[node name="Crosshair" type="Sprite2D" parent="Sprites" unique_id=1084502942]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("3_kqtwu")
+script = ExtResource("4_6eyoc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1526610022]
+shape = SubResource("CapsuleShape2D_yewv4")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2020332631]
+zoom = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=126566754]
+libraries/ = SubResource("AnimationLibrary_kqtwu")
+
+[node name="Timer" type="Node" parent="." unique_id=1114311019]
+
+[node name="ReloadTimer" type="Timer" parent="Timer" unique_id=245615821]
+wait_time = 0.5
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="Timer" unique_id=1092290425]
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="Timer" unique_id=1611612717]
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=754289845]
+energy = 0.5
+texture = ExtResource("3_76oj4")
+
+[node name="UI" parent="." unique_id=2084967506 instance=ExtResource("4_dyp2m")]
