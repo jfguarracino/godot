@@ -28,7 +28,6 @@ func _physics_process(_delta: float) -> void:
 
 
 func hit():
-	print('drone was hit')
 	health -= 1
 	var tween = create_tween()
 	tween.tween_property($AnimatedSprite2D.material, 'shader_parameter/Progress', 1.0, 0.3)

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+
 var health := 5:
 	set(value):
 		health = value
@@ -6,6 +7,10 @@ var health := 5:
 var direction_x: float
 var duck: bool
 var on_floor: bool
+var controller_aim : bool
+var target_dir : Vector2
+var current_gun : Data.Gun
+
 @export_category('move')
 @export var speed := 120
 @export var acceleration := 600
@@ -17,13 +22,14 @@ var on_floor: bool
 @export var jump_time_to_descent: float = 0.4
 @export_category('shooting')
 @export var crosshair_distance := 50
+@export var shotgun_distance : int = 30
 
 @onready var jump_velocity: float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
 @onready var jump_gravity: float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
 @onready var fall_gravity: float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_descent)) * -1.0
 #source: https://www.youtube.com/watch?v=IOe1aGY6hXA
 
-signal shoot(pos: Vector2, dir: Vector2)
+signal shoot(pos: Vector2, dir: Vector2, gun_type: Data.Gun)
 
 const GUN_DIRECTIONS = {
 	Vector2i(0,0):   0,
@@ -40,19 +46,33 @@ func _ready() -> void:
 	$UI.set_health(health)
 
 
+func _input(event: InputEvent) -> void:
+	if Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down"):
+		controller_aim = true
+	
+	if event is InputEventMouseMotion:
+		controller_aim = false
+
 func get_input():
 	direction_x = Input.get_axis("left", "right")
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or $Timer/CoyoteTimer.time_left):
 		velocity.y = jump_velocity
 	if Input.is_action_just_pressed("shoot") and not $Timer/ReloadTimer.time_left:
-		shoot.emit(position, get_local_mouse_position().normalized())
+		shoot.emit(position, get_aim_dir(), current_gun)
 		$Timer/ReloadTimer.start()
+		if current_gun == Data.Gun.SHOTGUN:
+			$ShotgunParticles.position = get_aim_dir() * shotgun_distance
+			$ShotgunParticles.process_material.set('direction', get_aim_dir())
+			$ShotgunParticles.emitting = true
 	if Input.is_action_just_pressed("dash") and not $Timer/DashTimer.time_left:
 		$Timer/DashTimer.start()
 		var tween = create_tween()
 		tween.tween_property(self, 'velocity:x', velocity.x + direction_x * dash_speed, 0.3)
 		tween.tween_callback(_dash_finish)
 	duck = Input.is_action_pressed("duck") and is_on_floor()
+	
+	if Input.is_action_just_pressed('toggle'):
+		current_gun = posmod(current_gun + 1, Data.Gun.size()) as Data.Gun
 
 
 func _dash_finish():
@@ -70,9 +90,9 @@ func animation():
 		$AnimationPlayer.current_animation = 'jump'
 	
 	# torso 
-	var raw_dir = get_local_mouse_position().normalized()
+	var raw_dir = get_aim_dir()
 	var adjusted_dir = Vector2i(round(raw_dir.x), round(raw_dir.y))
-	$Sprites/TorsoSprite.frame = GUN_DIRECTIONS[adjusted_dir]
+	$Sprites/TorsoSprite.frame = GUN_DIRECTIONS[adjusted_dir] + int(current_gun) * $Sprites/TorsoSprite.hframes
 	$Sprites/TorsoSprite.position.y = 0 if duck else -8
 
 
@@ -101,10 +121,23 @@ func _physics_process(delta: float) -> void:
 
 
 func _process(_delta: float) -> void:
-	$Sprites/Crosshair.update(get_local_mouse_position().normalized(), crosshair_distance, duck)
+	$Sprites/Crosshair.update(get_aim_dir(), crosshair_distance, duck)
 	if on_floor and not is_on_floor() and velocity.y >= 0:
 		$Timer/CoyoteTimer.start()
 
 func hit():
 	health -= 1
 	print(health)
+
+func get_aim_dir() -> Vector2:
+	if controller_aim:
+		var controller_aim_dir = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+		
+		if controller_aim_dir.length():
+			target_dir = controller_aim_dir.normalized()
+			
+	else:
+		target_dir = get_local_mouse_position().normalized()
+		
+	return target_dir
+	

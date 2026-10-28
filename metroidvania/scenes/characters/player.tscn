@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://otyoj5px7yk7" path="res://graphics/ui/crosshair.png" id="3_kqtwu"]
 [ext_resource type="Script" uid="uid://ci46eimn8aw5b" path="res://scenes/characters/crosshair.gd" id="4_6eyoc"]
 [ext_resource type="PackedScene" uid="uid://drqewml4qy4h1" path="res://scenes/ui/ui.tscn" id="4_dyp2m"]
+[ext_resource type="Texture2D" uid="uid://cya8nsfxd5dut" path="res://graphics/fire/shotgun_explosion.png" id="7_6eyoc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yewv4"]
 radius = 5.0
@@ -100,6 +101,20 @@ _data = {
 &"run": SubResource("Animation_yewv4")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ietan"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uujeg"]
+particle_flag_disable_z = true
+initial_velocity_min = 200.0
+initial_velocity_max = 280.0
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 0.29999998
+anim_speed_max = 2.0
+
 [node name="Player" type="CharacterBody2D" unique_id=205427907]
 collision_layer = 2
 collision_mask = 13
@@ -129,7 +144,7 @@ script = ExtResource("4_6eyoc")
 shape = SubResource("CapsuleShape2D_yewv4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2020332631]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=126566754]
 libraries/ = SubResource("AnimationLibrary_kqtwu")
@@ -151,3 +166,12 @@ energy = 0.5
 texture = ExtResource("3_76oj4")
 
 [node name="UI" parent="." unique_id=2084967506 instance=ExtResource("4_dyp2m")]
+
+[node name="ShotgunParticles" type="GPUParticles2D" parent="." unique_id=685394212]
+material = SubResource("CanvasItemMaterial_ietan")
+emitting = false
+amount = 20
+texture = ExtResource("7_6eyoc")
+lifetime = 0.3
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_uujeg")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dptiboknmyklp"]
+[gd_scene format=3 uid="uid://dptiboknmyklp"]
 
 [ext_resource type="Texture2D" uid="uid://c7v0ifpdabs2i" path="res://graphics/tilesets/subway.png" id="1_377w7"]
 [ext_resource type="Script" uid="uid://dsqbwxwg7wwh6" path="res://scenes/levels/level.gd" id="1_b2cq8"]
@@ -1470,30 +1470,32 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_bovvr")
 sources/1 = SubResource("TileSetAtlasSource_urvlt")
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" unique_id=2059507024]
 script = ExtResource("1_b2cq8")
 
-[node name="Layers" type="Node2D" parent="."]
+[node name="Layers" type="Node2D" parent="." unique_id=717730123]
 
-[node name="BGLayer" type="TileMapLayer" parent="Layers"]
+[node name="BGLayer" type="TileMapLayer" parent="Layers" unique_id=845555860]
 tile_set = SubResource("TileSet_b2cq8")
 
-[node name="BGDetailLayer" type="TileMapLayer" parent="Layers"]
+[node name="BGDetailLayer" type="TileMapLayer" parent="Layers" unique_id=644100045]
 tile_set = SubResource("TileSet_b2cq8")
 
-[node name="CollisionLayer" type="TileMapLayer" parent="Layers"]
+[node name="CollisionLayer" type="TileMapLayer" parent="Layers" unique_id=765734710]
 tile_set = SubResource("TileSet_b2cq8")
 
-[node name="FGDetailLayer" type="TileMapLayer" parent="Layers"]
+[node name="FGDetailLayer" type="TileMapLayer" parent="Layers" unique_id=671522758]
 z_index = 1
 tile_set = SubResource("TileSet_b2cq8")
 
-[node name="Entities" type="Node2D" parent="."]
+[node name="Entities" type="Node2D" parent="." unique_id=1891853711]
 
-[node name="Player" parent="Entities" instance=ExtResource("2_bovvr")]
+[node name="Player" parent="Entities" unique_id=1656597648 instance=ExtResource("2_bovvr")]
 
-[node name="Bullets" type="Node2D" parent="."]
+[node name="Bullets" type="Node2D" parent="." unique_id=697808093]
 
-[node name="Light" type="Node2D" parent="."]
+[node name="Light" type="Node2D" parent="." unique_id=1665302735]
+
+[node name="Gates" type="Node2D" parent="." unique_id=571304983]
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]
