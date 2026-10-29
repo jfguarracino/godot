@@ -21,4 +21,5 @@ func _change_scene(target_level : Data.Level, current_level : Data.Level):
 	var scene = load(Data.LEVEL_PATHS[target_level]).instantiate()
 	get_tree().root.add_child(scene)
 	get_tree().current_scene = scene
+	scene.position_player(current_level)
 	Data.current_level = target_level

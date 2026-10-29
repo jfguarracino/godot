@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwx81i28u52aj" path="res://graphics/sky/nuvens_3.png" id="2_baaf3"]
 [ext_resource type="Texture2D" uid="uid://b063xwi30iqud" path="res://graphics/sky/nuvens_2.png" id="3_s0dui"]
 [ext_resource type="Texture2D" uid="uid://xrralref6v36" path="res://graphics/sky/nuvens_1.png" id="4_s0dui"]
+[ext_resource type="PackedScene" uid="uid://d14lk0wujtlhs" path="res://scenes/levels/transition_gate.tscn" id="5_0rn0b"]
 
 [sub_resource type="Gradient" id="Gradient_s0dui"]
 colors = PackedColorArray(0.70980394, 0.23921569, 0.19215687, 1, 0.70980394, 0.23921569, 0.19215687, 1)
@@ -77,5 +78,9 @@ tile_map_data = PackedByteArray("AAADAAkAAAACAAAAAAAEAAkAAAACAAAAAAAFAAkAAAACAAA
 [node name="FGDetailLayer" parent="Layers" parent_id_path=PackedInt32Array(717730123) index="6" unique_id=671522758]
 tile_map_data = PackedByteArray("AAALAAkAAAAJAAAAAAALAAoAAAAFAAIAAAALAAsAAAAFAAMAAAALAAwAAAAFAAQAAAAbAAkAAAAFAAEAAAAbAAoAAAAFAAIAAAAbAAsAAAAFAAMAAAAbAAwAAAAFAAQAAAAkAAkAAAAFAAEAAAAkAAoAAAAFAAIAAAAkAAsAAAAFAAMAAAAkAAwAAAAFAAQAAAArAAkAAAAHAAAAAAArAAoAAAAFAAIAAAArAAsAAAAFAAMAAAArAAwAAAAFAAQAAAA0AAsAAAAFAAEAAAA0AAwAAAAFAAIAAAA0AA0AAAAFAAMAAAA0AA4AAAAFAAQAAAA7AAsAAAAFAAEAAAA7AAwAAAAFAAIAAAA7AA0AAAAFAAMAAAA7AA4AAAAFAAQAAAAFAAkAAAAHAAAAAAAYAAkAAAAHAAAAAAAQAAoAAAAHAAAAAAATAAoAAAAHAAAAAAAfAAkAAAAHAAAAAAAjAAkAAAAHAAAAAAAnAAkAAAAHAAAAAAAaAAkAAAAJAAAAAAAhAAkAAAAJAAAAAAAHAAkAAAAJAAAAAAAeAAkAAAAFAAAAAAApAAkAAAAFAAAAAAA2AAsAAAAFAAAAAAA9AAsAAAAFAAAAAAAzAAsAAAAFAAAAAAA5AAsAAAAHAAAAAAA1AAsAAAAHAAAAAAAJAAkAAAAHAAAAAAA=")
 
-[node name="Player" parent="Entities" parent_id_path=PackedInt32Array(1891853711) index="0" unique_id=1656597648]
-position = Vector2(107, 128)
+[node name="TransitionGate" parent="Gates" parent_id_path=PackedInt32Array(571304983) index="0" unique_id=25690964 instance=ExtResource("5_0rn0b")]
+position = Vector2(609, 114)
+target = 1
+
+[node name="Marker2D" type="Marker2D" parent="Gates/TransitionGate" index="1" unique_id=539443768]
+position = Vector2(37, 10)

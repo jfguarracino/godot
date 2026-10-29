@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://diq1arwiy8cbo"]
 
 [ext_resource type="PackedScene" uid="uid://dptiboknmyklp" path="res://scenes/levels/level.tscn" id="1_1eclv"]
-[ext_resource type="PackedScene" uid="uid://b2nvy7d1ptka0" path="res://scenes/characters/drone.tscn" id="2_6c57m"]
 [ext_resource type="Texture2D" uid="uid://bo5lofshl02cv" path="res://graphics/lights/l0.png" id="3_kq76o"]
 [ext_resource type="PackedScene" uid="uid://d14lk0wujtlhs" path="res://scenes/levels/transition_gate.tscn" id="4_uu0wy"]
+[ext_resource type="PackedScene" uid="uid://bfbkdgl4t1ffu" path="res://scenes/levels/enemy_spawner.tscn" id="5_k75p2"]
 
 [node name="Subway" unique_id=1786131563 instance=ExtResource("1_1eclv")]
 
@@ -20,16 +20,7 @@ tile_map_data = PackedByteArray("AAABAAEAAAACAAQAAAACAAEAAAACAAQAAAADAAEAAAACAAQ
 tile_map_data = PackedByteArray("AAAfAAcAAAALAAQAAAAMABUAAAAHAAEAAAANABUAAAAIAAEAAAAOABUAAAAJAAEAAAD7/xYAAAAGAAEAAAD7/xcAAAAGAAIAAAA=")
 
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(1891853711) index="0" unique_id=1656597648]
-position = Vector2(217, 403)
-
-[node name="Drone" parent="Entities" parent_id_path=PackedInt32Array(1891853711) index="1" unique_id=459005526 instance=ExtResource("2_6c57m")]
-position = Vector2(692, 117)
-
-[node name="Drone2" parent="Entities" parent_id_path=PackedInt32Array(1891853711) index="2" unique_id=211436437 instance=ExtResource("2_6c57m")]
-position = Vector2(159, 104)
-
-[node name="Drone3" parent="Entities" parent_id_path=PackedInt32Array(1891853711) index="3" unique_id=1306983367 instance=ExtResource("2_6c57m")]
-position = Vector2(715, 366)
+position = Vector2(-24, 417)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Light" parent_id_path=PackedInt32Array(1665302735) index="0" unique_id=355620164]
 color = Color(0.23921569, 0.23921569, 0.23921569, 1)
@@ -44,5 +35,20 @@ texture = ExtResource("3_kq76o")
 position = Vector2(-60, 401)
 target = 2
 
+[node name="Marker2D" type="Marker2D" parent="Gates/TransitionGate" index="1" unique_id=1879848322]
+position = Vector2(35, 15)
+
 [node name="TransitionGate2" parent="Gates" parent_id_path=PackedInt32Array(571304983) index="1" unique_id=1274343354 instance=ExtResource("4_uu0wy")]
 position = Vector2(756, 142)
+
+[node name="Marker2D" type="Marker2D" parent="Gates/TransitionGate2" index="1" unique_id=1234824571]
+position = Vector2(-38, 18)
+
+[node name="EnemySpawner" parent="EnemySpawns" parent_id_path=PackedInt32Array(128411058) index="0" unique_id=204600739 instance=ExtResource("5_k75p2")]
+position = Vector2(690, 119)
+
+[node name="EnemySpawner2" parent="EnemySpawns" parent_id_path=PackedInt32Array(128411058) index="1" unique_id=822743518 instance=ExtResource("5_k75p2")]
+position = Vector2(160, 104)
+
+[node name="EnemySpawner3" parent="EnemySpawns" parent_id_path=PackedInt32Array(128411058) index="2" unique_id=2127289265 instance=ExtResource("5_k75p2")]
+position = Vector2(717, 367)

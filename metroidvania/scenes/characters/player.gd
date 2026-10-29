@@ -1,15 +1,13 @@
 extends CharacterBody2D
 
-var health := 5:
-	set(value):
-		health = value
-		$UI.set_health(health)
+
 var direction_x: float
 var duck: bool
 var on_floor: bool
 var controller_aim : bool
 var target_dir : Vector2
 var current_gun : Data.Gun
+var frozen : bool = false
 
 @export_category('move')
 @export var speed := 120
@@ -43,7 +41,7 @@ const GUN_DIRECTIONS = {
 	Vector2i(1,-1):  7,
 }
 func _ready() -> void:
-	$UI.set_health(health)
+	$UI.set_health(Data.player_health)
 
 
 func _input(event: InputEvent) -> void:
@@ -113,11 +111,12 @@ func get_custom_gravity() -> float:
 
 
 func _physics_process(delta: float) -> void:
-	get_input()
-	move(delta)
-	animation()
-	on_floor = is_on_floor() 
-	move_and_slide() 
+	if not frozen:
+		get_input()
+		move(delta)
+		animation()
+		on_floor = is_on_floor() 
+		move_and_slide() 
 
 
 func _process(_delta: float) -> void:
@@ -126,8 +125,9 @@ func _process(_delta: float) -> void:
 		$Timer/CoyoteTimer.start()
 
 func hit():
-	health -= 1
-	print(health)
+	Data.player_health -= 1
+	$UI.set_health(Data.player_health)
+
 
 func get_aim_dir() -> Vector2:
 	if controller_aim:
@@ -141,3 +141,6 @@ func get_aim_dir() -> Vector2:
 		
 	return target_dir
 	
+func freeze():
+	frozen = true
+	$AnimationPlayer.pause()
