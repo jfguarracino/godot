@@ -1,25 +1,42 @@
 extends CharacterBody2D
 
+var direction : Vector2i = Vector2i.RIGHT
+var player : CharacterBody2D
+var health : int = 2
+var speed : float = 20
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+func move():
+	velocity = direction * speed * int(player is not CharacterBody2D)
+	
+	move_and_slide()
+
+
+func animation():
+	$Sprite.flip_h = direction.x < 0
+	
+	if direction:
+		$Animation.current_animation = 'run'
+	
+	if player:
+		$Animation.current_animation = 'shoot_h'
 
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	move()
+	animation()
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+func _on_floor_left_area_body_exited(_body: Node2D) -> void:
+	direction = Vector2i.RIGHT
 
-	move_and_slide()
+
+func _on_floor_right_area_body_exited(_body: Node2D) -> void:
+	direction = Vector2i.LEFT
+
+
+func _on_player_area_body_entered(body: Node2D) -> void:
+	player = body
+
+
+func _on_player_area_body_exited(body: Node2D) -> void:
+	player = null

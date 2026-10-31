@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bntigahljoani"]
 
+[ext_resource type="Script" uid="uid://trvxxw5ynro7" path="res://scenes/characters/soldier.gd" id="1_53ncc"]
 [ext_resource type="Texture2D" uid="uid://cqkfptu3l3gw1" path="res://graphics/characters/ARMob.png" id="1_q648l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uujeg"]
@@ -39,7 +40,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0hlyi"]
 resource_name = "run"
-length = 1.5999999999999999
+length = 1.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -56,7 +57,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_8tti8"]
 resource_name = "shoot_h"
-length = 0.19999999999999998
+length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -73,7 +74,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_op21a"]
 resource_name = "shoot_up"
-length = 0.19999999999999998
+length = 0.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -97,7 +98,14 @@ _data = {
 &"shoot_up": SubResource("Animation_op21a")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw52a"]
+size = Vector2(5, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sw52a"]
+radius = 100.0
+
 [node name="Soldier" type="CharacterBody2D" unique_id=902178959]
+script = ExtResource("1_53ncc")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1758278114]
 texture = ExtResource("1_q648l")
@@ -110,3 +118,29 @@ shape = SubResource("CapsuleShape2D_uujeg")
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=1991791983]
 libraries/ = SubResource("AnimationLibrary_qk1c0")
+
+[node name="FloorLeftArea" type="Area2D" parent="." unique_id=871226332]
+position = Vector2(-13, 22)
+collision_layer = 0
+
+[node name="Collider" type="CollisionShape2D" parent="FloorLeftArea" unique_id=1850328915]
+shape = SubResource("RectangleShape2D_sw52a")
+
+[node name="FloorRightArea" type="Area2D" parent="." unique_id=941230601]
+position = Vector2(15, 22)
+collision_layer = 0
+
+[node name="Collider" type="CollisionShape2D" parent="FloorRightArea" unique_id=1747363666]
+shape = SubResource("RectangleShape2D_sw52a")
+
+[node name="PlayerArea" type="Area2D" parent="." unique_id=920885466]
+collision_layer = 4
+collision_mask = 2
+
+[node name="Collider" type="CollisionShape2D" parent="PlayerArea" unique_id=1717290247]
+shape = SubResource("CircleShape2D_sw52a")
+
+[connection signal="body_exited" from="FloorLeftArea" to="." method="_on_floor_left_area_body_exited"]
+[connection signal="body_exited" from="FloorRightArea" to="." method="_on_floor_right_area_body_exited"]
+[connection signal="body_entered" from="PlayerArea" to="." method="_on_player_area_body_entered"]
+[connection signal="body_exited" from="PlayerArea" to="." method="_on_player_area_body_exited"]
