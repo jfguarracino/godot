@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dptiboknmyklp" path="res://scenes/levels/level.tscn" id="1_ghk2a"]
 [ext_resource type="PackedScene" uid="uid://d14lk0wujtlhs" path="res://scenes/levels/transition_gate.tscn" id="2_a6d5v"]
+[ext_resource type="PackedScene" uid="uid://bfbkdgl4t1ffu" path="res://scenes/levels/enemy_spawner.tscn" id="3_su143"]
 
 [node name="Sewer" unique_id=1629509456 instance=ExtResource("1_ghk2a")]
 
@@ -20,3 +21,11 @@ target = 1
 
 [node name="Marker2D" type="Marker2D" parent="Gates/TransitionGate" index="1" unique_id=1040817898]
 position = Vector2(34, 18)
+
+[node name="EnemySpawner4" parent="EnemySpawns" parent_id_path=PackedInt32Array(128411058) index="0" unique_id=204600739 instance=ExtResource("3_su143")]
+position = Vector2(202, 245)
+type = 1
+
+[node name="EnemySpawner5" parent="EnemySpawns" parent_id_path=PackedInt32Array(128411058) index="1" unique_id=1752180337 instance=ExtResource("3_su143")]
+position = Vector2(453, 121)
+type = 1

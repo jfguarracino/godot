@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2nvy7d1ptka0"]
+[gd_scene format=3 uid="uid://b2nvy7d1ptka0"]
 
 [ext_resource type="Texture2D" uid="uid://vyr0ks75oxum" path="res://graphics/characters/drone.png" id="1_rpnsq"]
 [ext_resource type="Script" uid="uid://mkqsho00vus6" path="res://scenes/characters/drone.gd" id="1_rxpq6"]
 [ext_resource type="Shader" uid="uid://cwiab7gjlrsvv" path="res://shaders/flash.tres" id="2_k0cur"]
+[ext_resource type="AudioStream" uid="uid://d2evll5nybww1" path="res://audio/hit.ogg" id="4_waagf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_waagf"]
 resource_local_to_scene = true
@@ -41,7 +42,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_amngf")
 }],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }]
@@ -55,33 +56,36 @@ radius = 134.01492
 [sub_resource type="CircleShape2D" id="CircleShape2D_k0cur"]
 radius = 12.0
 
-[node name="Drone" type="CharacterBody2D" groups=["Drones"]]
+[node name="Drone" type="CharacterBody2D" unique_id=1551665715 groups=["Drones"]]
 collision_layer = 4
 collision_mask = 11
 script = ExtResource("1_rxpq6")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1428467644]
 material = SubResource("ShaderMaterial_waagf")
 sprite_frames = SubResource("SpriteFrames_4in0l")
 autoplay = "default"
 frame_progress = 0.051387403
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1829747894]
 shape = SubResource("CircleShape2D_3e7lx")
 
-[node name="PlayerDetectionArea" type="Area2D" parent="."]
+[node name="PlayerDetectionArea" type="Area2D" parent="." unique_id=642689741]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea" unique_id=122234277]
 shape = SubResource("CircleShape2D_rpnsq")
 
-[node name="CollisionShape2D2" type="Area2D" parent="."]
+[node name="CollisionShape2D2" type="Area2D" parent="." unique_id=390829843]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D2" unique_id=1376388641]
 shape = SubResource("CircleShape2D_k0cur")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="." unique_id=396749410]
+stream = ExtResource("4_waagf")
 
 [connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]

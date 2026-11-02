@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ci46eimn8aw5b" path="res://scenes/characters/crosshair.gd" id="4_6eyoc"]
 [ext_resource type="PackedScene" uid="uid://drqewml4qy4h1" path="res://scenes/ui/ui.tscn" id="4_dyp2m"]
 [ext_resource type="Texture2D" uid="uid://cya8nsfxd5dut" path="res://graphics/fire/shotgun_explosion.png" id="7_6eyoc"]
+[ext_resource type="AudioStream" uid="uid://d2evll5nybww1" path="res://audio/hit.ogg" id="8_eojnx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yewv4"]
 radius = 5.0
@@ -175,3 +176,6 @@ texture = ExtResource("7_6eyoc")
 lifetime = 0.3
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_uujeg")
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="." unique_id=518074288]
+stream = ExtResource("8_eojnx")

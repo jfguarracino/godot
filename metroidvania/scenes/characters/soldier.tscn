@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://trvxxw5ynro7" path="res://scenes/characters/soldier.gd" id="1_53ncc"]
 [ext_resource type="Texture2D" uid="uid://cqkfptu3l3gw1" path="res://graphics/characters/ARMob.png" id="1_q648l"]
+[ext_resource type="Shader" uid="uid://cwiab7gjlrsvv" path="res://shaders/flash.tres" id="2_ixdpc"]
+[ext_resource type="AudioStream" uid="uid://d2evll5nybww1" path="res://audio/hit.ogg" id="4_0hlyi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rd8pd"]
+shader = ExtResource("2_ixdpc")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Progress = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uujeg"]
 radius = 7.0
@@ -36,6 +43,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [19, 20, 21, 22]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stay_dead"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_0hlyi"]
@@ -104,10 +125,11 @@ size = Vector2(5, 5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_sw52a"]
 radius = 100.0
 
-[node name="Soldier" type="CharacterBody2D" unique_id=902178959]
+[node name="Soldier" type="CharacterBody2D" unique_id=902178959 groups=["Enemies", "Soldiers"]]
 script = ExtResource("1_53ncc")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1758278114]
+material = SubResource("ShaderMaterial_rd8pd")
 texture = ExtResource("1_q648l")
 hframes = 24
 frame = 11
@@ -140,7 +162,14 @@ collision_mask = 2
 [node name="Collider" type="CollisionShape2D" parent="PlayerArea" unique_id=1717290247]
 shape = SubResource("CircleShape2D_sw52a")
 
+[node name="ShootTimer" type="Timer" parent="." unique_id=234740495]
+wait_time = 2.0
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="." unique_id=840027209]
+stream = ExtResource("4_0hlyi")
+
 [connection signal="body_exited" from="FloorLeftArea" to="." method="_on_floor_left_area_body_exited"]
 [connection signal="body_exited" from="FloorRightArea" to="." method="_on_floor_right_area_body_exited"]
 [connection signal="body_entered" from="PlayerArea" to="." method="_on_player_area_body_entered"]
 [connection signal="body_exited" from="PlayerArea" to="." method="_on_player_area_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

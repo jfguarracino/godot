@@ -127,6 +127,7 @@ func _process(_delta: float) -> void:
 func hit():
 	Data.player_health -= 1
 	$UI.set_health(Data.player_health)
+	$Hit.play()
 
 
 func get_aim_dir() -> Vector2:

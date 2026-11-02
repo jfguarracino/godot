@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b063xwi30iqud" path="res://graphics/sky/nuvens_2.png" id="3_s0dui"]
 [ext_resource type="Texture2D" uid="uid://xrralref6v36" path="res://graphics/sky/nuvens_1.png" id="4_s0dui"]
 [ext_resource type="PackedScene" uid="uid://d14lk0wujtlhs" path="res://scenes/levels/transition_gate.tscn" id="5_0rn0b"]
+[ext_resource type="PackedScene" uid="uid://bfbkdgl4t1ffu" path="res://scenes/levels/enemy_spawner.tscn" id="6_b4255"]
 
 [sub_resource type="Gradient" id="Gradient_s0dui"]
 colors = PackedColorArray(0.70980394, 0.23921569, 0.19215687, 1, 0.70980394, 0.23921569, 0.19215687, 1)
@@ -84,3 +85,13 @@ target = 1
 
 [node name="Marker2D" type="Marker2D" parent="Gates/TransitionGate" index="1" unique_id=539443768]
 position = Vector2(37, 10)
+
+[node name="EnemySpawner5" parent="EnemySpawns" parent_id_path=PackedInt32Array(128411058) index="0" unique_id=204600739 instance=ExtResource("6_b4255")]
+position = Vector2(100, 133)
+type = 1
+
+[node name="EnemySpawner6" parent="EnemySpawns" parent_id_path=PackedInt32Array(128411058) index="1" unique_id=474819785 instance=ExtResource("6_b4255")]
+position = Vector2(864, 52)
+
+[node name="EnemySpawner7" parent="EnemySpawns" parent_id_path=PackedInt32Array(128411058) index="2" unique_id=859487968 instance=ExtResource("6_b4255")]
+position = Vector2(349, 21)

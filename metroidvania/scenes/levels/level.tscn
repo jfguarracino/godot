@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://dsqbwxwg7wwh6" path="res://scenes/levels/level.gd" id="1_b2cq8"]
 [ext_resource type="PackedScene" uid="uid://da5mlm4gym12d" path="res://scenes/characters/player.tscn" id="2_bovvr"]
 [ext_resource type="Texture2D" uid="uid://cgh7234wked4l" path="res://graphics/tilesets/walls.png" id="3_xb4v1"]
+[ext_resource type="AudioStream" uid="uid://tkjj51je3two" path="res://audio/laser.wav" id="5_urvlt"]
+[ext_resource type="AudioStream" uid="uid://ifh6om7jbydc" path="res://audio/shotgun_shoot.wav" id="6_mbbpy"]
+[ext_resource type="AudioStream" uid="uid://dtnqyh7corvdx" path="res://audio/explosion.wav" id="7_ouxo3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bovvr"]
 texture = ExtResource("1_377w7")
@@ -1499,5 +1502,16 @@ tile_set = SubResource("TileSet_b2cq8")
 [node name="Gates" type="Node2D" parent="." unique_id=571304983]
 
 [node name="EnemySpawns" type="Node2D" parent="." unique_id=128411058]
+
+[node name="Sounds" type="Node2D" parent="." unique_id=771423784]
+
+[node name="GunSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1075888136]
+stream = ExtResource("5_urvlt")
+
+[node name="ShotgunSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1908849734]
+stream = ExtResource("6_mbbpy")
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1804615666]
+stream = ExtResource("7_ouxo3")
 
 [connection signal="shoot" from="Entities/Player" to="." method="_on_player_shoot"]

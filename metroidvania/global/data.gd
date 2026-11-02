@@ -2,7 +2,7 @@ extends Node
 
 enum Gun {SINGLE, SHOTGUN, ROCKET}
 enum Level {SKY, SUBWAY, SEWER}
-enum Enemy {DRONE}
+enum Enemy {DRONE, SOLDIER}
 
 var current_level : Level = Level.SUBWAY
 var player_health : int = 5
