@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://db0kqmsw4rywv"]
+
+[ext_resource type="Texture2D" uid="uid://li8enjc54fih" path="res://graphics/Ships/ship_0000.png" id="1_6xk8f"]
+[ext_resource type="Script" uid="uid://c2wh1wapl5r6w" path="res://scenes/enemies/enemy.gd" id="1_8e3ao"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uujeg"]
+radius = 11.0
+
+[node name="Enemy" type="Area2D" unique_id=219412636]
+collision_mask = 2
+script = ExtResource("1_8e3ao")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=852454116]
+rotation = 1.5707964
+texture = ExtResource("1_6xk8f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1869401749]
+shape = SubResource("CircleShape2D_uujeg")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

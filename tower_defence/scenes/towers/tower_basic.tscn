@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cvre2ojkp3lev"]
+
+[ext_resource type="PackedScene" uid="uid://b6rbxuje4hp8j" path="res://scenes/towers/tower.tscn" id="1_kruwa"]
+[ext_resource type="Texture2D" uid="uid://dcus2mnf1agk7" path="res://graphics/towers/basic/basic tower bottom.png" id="2_4fgg7"]
+[ext_resource type="Script" uid="uid://ccul2yvbfjvie" path="res://scenes/towers/tower_basic.gd" id="2_6ku0u"]
+[ext_resource type="Texture2D" uid="uid://drqd7mybdere0" path="res://graphics/towers/basic/basic tower top.png" id="3_6ku0u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_by3tn"]
+radius = 100.0
+
+[node name="TowerBasic" unique_id=765421831 instance=ExtResource("1_kruwa")]
+script = ExtResource("2_6ku0u")
+
+[node name="Base" parent="." index="0" unique_id=237561043]
+texture = ExtResource("2_4fgg7")
+
+[node name="Turret" parent="." index="1" unique_id=2141750500]
+texture = ExtResource("3_6ku0u")
+
+[node name="CollisionShape2D" parent="EnemyDetectionArea" parent_id_path=PackedInt32Array(54959257) index="0" unique_id=626168910]
+shape = SubResource("CircleShape2D_by3tn")
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
