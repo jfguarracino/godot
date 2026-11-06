@@ -1,0 +1,75 @@
+# Third Party Asset Licenses
+
+Some of the assets provided in this course are subject to third-party licenses:
+
+===================================
+
+Ships, Bullets, and Tilesets
+Created by Kenney
+Source: https://kenney.nl/assets/pixel-shmup
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Digitalt Font
+Created by gluk
+Source: https://www.dafont.com/digitalt.font
+License Info: SIL Open Font License, Version 1.1 (https://openfontlicense.org/)
+
+----------
+
+Towers, Explosions, and UI Elements
+Commissioned by Christian Koch from Scarloxy (https://scarloxy.itch.io/)
+Source: https://github.com/fariazz/TutorialAssets/tree/main
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Explosion SFX
+Created by Rick Hoppmann
+Source: https://opengameart.org/content/explosion-0
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Bullet SFX
+Created by Kenney
+Source: https://kenney.nl/assets/sci-fi-sounds
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Fire SFX
+Created by crazyduckgames
+Source: https://opengameart.org/content/soundpack-03
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Impact SFX
+Created by StarNinjas
+Source: https://opengameart.org/content/10-impactshield-blocks
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+Background Music
+Created by Zane Little Music
+Source: https://opengameart.org/content/10-free-chiptune-tracks-a-bag-of-chips
+License Info: Creative Commons CC0 (https://creativecommons.org/publicdomain/zero/1.0/)
+
+----------
+
+[Video Only] Town Center Background Music
+Created by Trevor Lentz
+Source: https://opengameart.org/content/town-center
+License Info: Creative Commons CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)
+
+----------
+
+[Video Only] Laser Bullet SFX
+Created by dklon
+Source: https://opengameart.org/content/laser-fire
+License Info: Creative Commons CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)
+
+* Note that some audio assets differ from those presented in the video. All audio included with the files is under CC0.
