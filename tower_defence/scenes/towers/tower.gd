@@ -3,7 +3,6 @@ class_name Tower
 
 var enemies : Array
 
-@warning_ignore('unused_signal')
 signal shoot(pos : Vector2, direction : float, bullet_enum : Data.Bullet)
 
 func _process(_delta: float) -> void:

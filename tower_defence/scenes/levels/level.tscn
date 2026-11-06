@@ -512,6 +512,10 @@ curve = SubResource("Curve2D_d4w6o")
 [node name="Bullets" type="Node2D" parent="." unique_id=634819537]
 
 [node name="PlayerCamera" parent="." unique_id=1057423733 instance=ExtResource("5_urvlt")]
+zoom = Vector2(2, 2)
 acceleration = 0.25
 
 [node name="UI" parent="." unique_id=501053043 instance=ExtResource("6_d4w6o")]
+
+[connection signal="place_tower" from="UI" to="." method="_on_ui_place_tower"]
+[connection signal="start_wave" from="UI" to="." method="_on_ui_start_wave"]

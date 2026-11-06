@@ -47,3 +47,15 @@ const ENEMY_DATA = {
 	Enemy.FAST: {'health': 3, 'texture': "res://graphics/Ships/ship_0007.png", 'speed': 50},
 	Enemy.STRONG: {'health': 6, 'texture': "res://graphics/Ships/ship_0000.png", 'speed': 25},
 	Enemy.BIG: {'health': 20, 'texture': "res://graphics/Ships/ship_0015.png", 'speed': 15}}
+
+var money : int = 100:
+	set(value):
+		money = value
+		get_tree().get_first_node_in_group('UI').update_stats(money, health)
+		for tower_card in get_tree().get_nodes_in_group('TowerCard'):
+			tower_card.toggle_active(money)
+var health : int = 100:
+	set(value):
+		health = value
+		get_tree().get_first_node_in_group('UI').update_stats(money, health)
+var current_wave : int = 0
