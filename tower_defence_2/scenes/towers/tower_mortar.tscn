@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dmoemstgpqhqp"]
+
+[ext_resource type="PackedScene" uid="uid://to6d1j5dni6t" path="res://scenes/towers/tower.tscn" id="1_xecwa"]
+[ext_resource type="Texture2D" uid="uid://decyie3x0j0su" path="res://graphics/ui/crosshair.png" id="2_3wrqq"]
+[ext_resource type="Texture2D" uid="uid://1t08v8xyx2kj" path="res://graphics/towers/mortar/mortar tower down.png" id="2_e6joa"]
+[ext_resource type="Script" uid="uid://dqyflb28r0mfy" path="res://scenes/towers/tower_mortar.gd" id="2_kgixf"]
+
+[node name="TowerMortar" unique_id=265875759 instance=ExtResource("1_xecwa")]
+script = ExtResource("2_kgixf")
+
+[node name="Base" parent="." index="0" unique_id=2019686008]
+texture = ExtResource("2_e6joa")
+
+[node name="CrosshairSprite" type="Sprite2D" parent="." index="4" unique_id=1185703979]
+visible = false
+texture = ExtResource("2_3wrqq")
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
