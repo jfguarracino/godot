@@ -17,4 +17,8 @@ func finish_placing():
 
 
 func _on_reload_timer_timeout() -> void:
-	shoot.emit($CrosshairSprite.global_position, 0, Data.Bullet.MORTAR_EXPLOSION)
+	shoot.emit($CrosshairSprite.global_position, 0, bullet_type)
+
+
+func tower_upgrade():
+	$Base.texture = load('res://graphics/towers/mortar/mortar tower upgrade down.png')

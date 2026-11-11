@@ -31,6 +31,7 @@ func _input(event: InputEvent) -> void:
 			used_cells.append(pos)
 			var tower = load(tower_scenes[selected_tower]).instantiate()
 			tower.position = pos * 16 + Vector2i(8,8)
+			tower.setup(selected_tower)
 			tower.connect('shoot', create_bullet)
 			tower.connect('select', tower_selection)
 			$Towers.add_child(tower)

@@ -142,6 +142,7 @@ offset_bottom = -10.0
 grow_vertical = 0
 
 [node name="TowerCard" parent="TowerCards/TowerCardsContainer" unique_id=1470283878 instance=ExtResource("5_0dwhk")]
+visible = false
 layout_mode = 2
 
 [node name="MenuToggleButton" type="TextureButton" parent="TowerCards" unique_id=1748397073]
