@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cr2502tsofcuh" path="res://scenes/ui/tower_menu.gd" id="1_atwrq"]
 
 [node name="TowerMenu" type="Control" unique_id=164318755]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
