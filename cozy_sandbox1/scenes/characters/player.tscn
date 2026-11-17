@@ -667,6 +667,7 @@ animation = &"move_left"
 animation = &"move_left"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3uc7m"]
+sync_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_7xgtv")
 blend_point_0/pos = Vector2(0, 0)
 blend_point_0/name = &"move_down"
@@ -699,9 +700,11 @@ blend_point_8/name = &"move_left 3"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7k8pb"]
+switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5njio"]
+switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jk2m4"]
@@ -710,6 +713,8 @@ states/Idle/position = Vector2(374, 100)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_3uc7m")
 states/Move/position = Vector2(588, 100)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_xrqxk"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_7k8pb"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_5njio")]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_yewv4"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3wg1y"]
 animation = &"axe_down"
@@ -1042,13 +1047,15 @@ transitions = ["Start", "hoe", SubResource("AnimationNodeStateMachineTransition_
 graph_offset = Vector2(35, -329)
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6eyoc"]
-graph_offset = Vector2(0, -102)
-nodes/output/position = Vector2(720, 144)
+graph_offset = Vector2(-310.5067, -266.02002)
+nodes/output/position = Vector2(620, 80)
 nodes/ToolStateMachine/node = SubResource("AnimationNodeStateMachine_vwwfy")
-nodes/ToolStateMachine/position = Vector2(160, 340)
+nodes/ToolStateMachine/position = Vector2(-180, 360)
 nodes/MovementStateMachine/node = SubResource("AnimationNodeStateMachine_jk2m4")
-nodes/MovementStateMachine/position = Vector2(140, 20)
-node_connections = [&"output", 0, &"MovementStateMachine"]
+nodes/MovementStateMachine/position = Vector2(-180, 0)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_yewv4")
+nodes/OneShot/position = Vector2(320, 80)
+node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"MovementStateMachine", &"OneShot", 1, &"ToolStateMachine"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1625778383]
 collision_layer = 2
@@ -1076,3 +1083,8 @@ parameters/ToolStateMachine/sword/blend_position = Vector2(-0.0178317, -0.028407
 parameters/ToolStateMachine/water/blend_position = Vector2(0, 0)
 parameters/MovementStateMachine/Idle/blend_position = Vector2(0, 0)
 parameters/MovementStateMachine/Move/blend_position = Vector2(0, 0)
+parameters/OneShot/active = true
+parameters/OneShot/internal_active = true
+parameters/OneShot/request = 0
+
+[connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
