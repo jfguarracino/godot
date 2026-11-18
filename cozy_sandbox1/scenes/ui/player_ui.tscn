@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://beglrrlisxwm7"]
+
+[ext_resource type="Script" uid="uid://dgijcrifbwpse" path="res://scenes/ui/player_ui.gd" id="1_2sf84"]
+[ext_resource type="Texture2D" uid="uid://u41jedtjm8mt" path="res://graphics/ui/tools.png" id="1_s4ogp"]
+
+[node name="PlayerUI" type="Node2D" unique_id=1709314610]
+script = ExtResource("1_2sf84")
+
+[node name="Tools" type="Node2D" parent="." unique_id=1829616528]
+
+[node name="Main" type="Sprite2D" parent="Tools" unique_id=1344334626]
+texture = ExtResource("1_s4ogp")
+hframes = 5
+
+[node name="Left" type="Sprite2D" parent="Tools" unique_id=971876130]
+position = Vector2(-18, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_s4ogp")
+hframes = 5
+
+[node name="Right" type="Sprite2D" parent="Tools" unique_id=1926086883]
+position = Vector2(18, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_s4ogp")
+hframes = 5
+
+[node name="Timer" type="Timer" parent="." unique_id=574795525]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

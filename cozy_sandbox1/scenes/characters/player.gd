@@ -3,6 +3,7 @@ extends CharacterBody2D
 # movement
 var direction : Vector2
 var can_move : bool = true
+var current_tool : Global.Tools = Global.Tools.HOE
 	
 @export var speed : float = 200
 
@@ -32,9 +33,14 @@ func _physics_process(_delta: float) -> void:
 func get_input():
 	direction = Input.get_vector("left", 'right', 'up', "down")
 	
-	if Input.is_action_just_pressed('Action'):
-		tool_state_machine.travel('sword')
+	if Input.is_action_just_pressed('action'):
+		tool_state_machine.travel(state_names[current_tool])
 		$AnimationTree.set('parameters/OneShot/request', AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+		
+	if Input.is_action_just_pressed("tool_forward") or Input.is_action_just_pressed("tool_backward"):
+		var toggle_dir = int(Input.get_axis("tool_backward", "tool_forward"))
+		current_tool = posmod(current_tool + toggle_dir, Global.Tools.size()) as Global.Tools
+		$PlayerUI.reveal(current_tool)
 
 
 func set_animation():
