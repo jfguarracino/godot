@@ -1091,5 +1091,6 @@ parameters/OneShot/request = 0
 position = Vector2(0, -20)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=755513857]
+limit_top = -300
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
