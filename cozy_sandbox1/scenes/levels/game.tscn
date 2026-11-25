@@ -1,11 +1,23 @@
 [gd_scene format=4 uid="uid://bf0yuue48pk6v"]
 
+[ext_resource type="Script" uid="uid://bjja8qk404vry" path="res://scenes/levels/game.gd" id="1_7rg7d"]
 [ext_resource type="Texture2D" uid="uid://b134tjp5ngghx" path="res://graphics/tilesets/water.png" id="1_61jgc"]
 [ext_resource type="PackedScene" uid="uid://ca106qafnt25o" path="res://scenes/characters/player.tscn" id="1_e6yxx"]
 [ext_resource type="Texture2D" uid="uid://baw527j36pxgi" path="res://graphics/tilesets/grass.png" id="1_eqihu"]
 [ext_resource type="Texture2D" uid="uid://dcwcdle3cjkv6" path="res://graphics/tilesets/hills.png" id="3_riktp"]
 [ext_resource type="PackedScene" uid="uid://h8qy75tty0q6" path="res://scenes/levels/tree.tscn" id="5_a1osm"]
 [ext_resource type="PackedScene" uid="uid://c1lkatf1e2ycq" path="res://scenes/levels/simple_object.tscn" id="6_limtx"]
+[ext_resource type="Shader" uid="uid://wur83gbysj5u" path="res://shaders/day_transition.gdshader" id="8_xmnyv"]
+[ext_resource type="AudioStream" uid="uid://7a4rv3t3jhq3" path="res://audio/music.mp3" id="9_cx7qy"]
+
+[sub_resource type="Gradient" id="Gradient_xmnyv"]
+offsets = PackedFloat32Array(0, 0.4680851, 1)
+colors = PackedColorArray(0.9137255, 0.827451, 0.7607843, 1, 0.9843137, 0.9843137, 0.9843137, 1, 0.24313726, 0.3372549, 0.58431375, 1)
+
+[sub_resource type="Curve" id="Curve_cx7qy"]
+_limits = [-30.0, 0.0, 0.0, 1.0]
+_data = [Vector2(0.0012019239, -10), 0.0, 0.0, 0, 0, Vector2(0.24759616, 0), 0.0, 0.0, 0, 0, Vector2(0.6334135, 0), 0.0, 0.0, 0, 0, Vector2(0.9975962, -30), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_riktp"]
 texture = ExtResource("1_61jgc")
@@ -452,7 +464,14 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_a1osm")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uujeg"]
+shader = ExtResource("8_xmnyv")
+shader_parameter/progress = 0.0
+
 [node name="Game" type="Node2D" unique_id=540885620]
+script = ExtResource("1_7rg7d")
+daytime_gradient = SubResource("Gradient_xmnyv")
+music_curve = SubResource("Curve_cx7qy")
 
 [node name="Layers" type="Node2D" parent="." unique_id=246270896]
 z_index = -2
@@ -491,6 +510,7 @@ y_sort_enabled = true
 position = Vector2(-264, -195)
 
 [node name="SimpleObject" parent="Objects" unique_id=256237002 instance=ExtResource("6_limtx")]
+z_index = -1
 
 [node name="SimpleObject2" parent="Objects" unique_id=223543022 instance=ExtResource("6_limtx")]
 z_index = -1
@@ -507,3 +527,25 @@ position = Vector2(-101, 196)
 [node name="SimpleObject5" parent="Objects" unique_id=1056194415 instance=ExtResource("6_limtx")]
 z_index = -1
 position = Vector2(-236, -17)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1631012195]
+
+[node name="DayTimer" type="Timer" parent="." unique_id=1698646818]
+wait_time = 300.0
+one_shot = true
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1475654414]
+
+[node name="DayTransition" type="ColorRect" parent="CanvasLayer" unique_id=1648211872]
+material = SubResource("ShaderMaterial_uujeg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=399451275]
+stream = ExtResource("9_cx7qy")
+autoplay = true
